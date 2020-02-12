@@ -14,6 +14,13 @@ import initialState from './local-state/initial-state';
 import schema from './local-state/schema';
 import resolvers from './local-state/resolvers';
 
+import theme from './styledComponents/theme';
+import { ThemeProvider } from 'styled-components';
+import './mainStyles/bootstrapStyles.scss';
+import './mainStyles/index.scss';
+
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import App from './App';
 
 const cache = new InMemoryCache();
@@ -43,7 +50,11 @@ const destination = document.getElementById('root');
 
 ReactDOM.render(
 	<ApolloProvider client={client} >
-		<App />
+		<ThemeProvider theme={theme}>
+			<Router>
+				<App />
+			</Router>			
+		</ThemeProvider>		
 	</ApolloProvider>,
 	destination
 );

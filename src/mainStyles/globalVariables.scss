@@ -1,0 +1,82 @@
+$mainBlack: #000;
+$mainWhite: #FFF;
+$mainTransition: all 0.3s linear;
+
+$lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
+$darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+
+$Main-Blue-Dark: #101626;
+$Main-Green-Dark: #1A3c40;
+$Main-Beige-Dark: #D9CA9C;
+$Main-Orange-Dark: #D9A05B;
+$Main-Brown-Sand: #A66844;
+
+
+$Light-Header-Box-Shadow: 1px 1px 5px whitesmoke;
+$Light-Header-Text-Shadow: white 1px 1px 10px;
+$mainSpacing1: 2px;
+
+
+
+$LightBlue: #A6D3FA;
+$LightCoral: lightcoral;
+$Blue-Base: #354069;
+$Blue-Dark2: #252D4A;
+$ErrorColor: rgba(255, 100, 100, 0.85);
+
+
+$PageMaxWidth: 1280px;
+
+
+
+// Font-face Mixin
+
+@mixin fontFace($font-family,$file-path) {
+    
+    @font-face {
+        
+        font: {
+            family: $font-family;
+            weight: normal;
+            style: normal;
+        }    
+        //Modern Browsers
+        src: url('#{$file-path}.ttf') format('truetype'),
+            url('#{$file-path}.woff') format('woff');
+    }
+        
+}
+
+// Pixels to Rems Mixin
+
+@mixin fontSize($sizeValue: 1.6) {  // 1rem = 10px , 1.6rem = 16px
+    
+    font-size: ($sizeValue * 10) + px;
+    font-size: $sizeValue + rem;
+    
+}
+
+
+//Desktop-first Media Query Mixin
+@mixin forSmallScreens($media) {
+    
+    @media (max-width: $media/16+em) { @content; }
+}
+
+
+  %quick-look-button {
+	background: $Blue-Base;
+	color: white;
+	border: 1px solid $Blue-Base;
+	border-radius: 3px;
+	@include fontSize(1);
+	padding: 0 10px;
+
+	&:hover {
+		background: white;
+		color: $Blue-Base;
+	}
+}
+
+  
+
