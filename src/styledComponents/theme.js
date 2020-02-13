@@ -3,8 +3,10 @@ const theme = {
 	colorMainGreenDark: '#1A3C40',
 	colorMainBeigeDark: '#D9CA9C',
 	colorMainOrangeDark: '#D9A05B',
-	colorMainBrownSand: '#A66844'
-	
+	colorMainBrownSand: '#A66844',
+	colorBrownDark: '#754A06',
+	mainTransition: 'all 0.3s linear',
+	whiteBoxShadow: '1px 1px 15px whitesmoke'
 
 };
 

@@ -1,0 +1,55 @@
+@import '../../../mainStyles/globalVariables.scss';
+
+.masthead {
+
+	width: 100%;
+	
+	border-bottom: solid 1px $Main-Beige-Dark;
+	
+	p {
+		@include fontSize(1.2);
+		word-spacing: 5px;
+		padding: 5px 0;
+	}
+
+}
+
+.masthead-address-line {
+	text-align: center;
+	background-color: $Main-Blue-Dark;	
+	color: white;
+	
+}
+
+.masthead-body {
+	background-color: $Main-Green-Dark;
+	padding: 10px 0 10px 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.main-nav {
+	width: 50%;
+}
+
+.main-nav ul {
+	display: flex;
+	justify-content: space-around;
+	list-style-type: none;
+
+	li a {
+		display: block;
+		color: $Main-Beige-Dark;
+		text-decoration: none;
+		transition: all .3s linear;
+		transform: scale(1);
+	}
+
+	li a:hover {
+		color: red;
+		transform: scale(1.1);
+		color: $Main-Orange-Dark;
+	}
+}
+

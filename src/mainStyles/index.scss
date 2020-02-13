@@ -27,11 +27,14 @@ body {
 	background: $mainWhite;
 	font-family: Rubik,Verdana, Geneva, Tahoma, sans-serif;
 	@include fontSize(1.6); 
-	line-height: calc(12px + 1.4vw);
+	//line-height: calc(12px + 1.4vw);
+	max-width: 2048px;
+	margin: 0 auto;
 }
 
 p {
 	@include fontSize(1.6); 
+	margin: 0;
 }
 
 h1 { 
@@ -69,7 +72,7 @@ h6 {
 
 h4, h5, h6 {
 
-	line-height: calc(20px + 1.4vw);
+	//line-height: calc(20px + 1.4vw);
 }
 
 h1, h2, h3, h4, h5, h6 {

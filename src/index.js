@@ -19,7 +19,7 @@ import { ThemeProvider } from 'styled-components';
 import './mainStyles/bootstrapStyles.scss';
 import './mainStyles/index.scss';
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import App from './App';
 

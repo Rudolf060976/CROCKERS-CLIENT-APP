@@ -1,0 +1,67 @@
+import React, { useState } from 'react';
+import styled, { keyframes } from 'styled-components';
+import Banner from '../Banner/Banner';
+
+
+const animation = keyframes`
+
+	from {
+		transform: scale(1);
+	}
+
+	to {
+		transform: scale(1.1) translateY(-15%);
+	}
+
+`;
+
+const StyledContainer = styled.div`
+
+	width: 100%;
+	overflow: hidden;
+	margin-bottom: -8%;
+
+`;
+
+const StyledImage = styled.img`
+
+	max-width: 100%;
+	transform: scale(1);
+	animation-name: ${props => props.animate ? animation : "none" };
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+`;
+
+
+
+
+
+function Hero(props) {
+	
+	const {
+		imageObject,
+		animate
+	} = props;
+
+	const [showBanner, setShowBanner] = useState(false);
+
+	const handleBanner = () => {
+
+		setShowBanner(true);
+
+	};
+
+	const SHOWBANNER = (
+		<Banner title="ENJOY THE CROCKERS EXPERIENCE" subtitle="Redefining the Way the world eats Burgers" buttonTitle="OUR  FOOD" linkTo="/" animate={animate} />
+	);
+
+	
+	return (
+		<StyledContainer>
+			<StyledImage src={imageObject} animate={animate} onAnimationEnd={handleBanner} />
+			{showBanner ? SHOWBANNER : null}			
+		</StyledContainer>
+	);
+};
+
+export default Hero;
