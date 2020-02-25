@@ -23,7 +23,7 @@ const StyledMessage = styled.p`
 	width: 50%;
 	margin: 0 auto;
 	font-size: 2rem;
-
+	text-indent: 40px;
 `;
 
 

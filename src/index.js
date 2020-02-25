@@ -4,12 +4,8 @@ import ReactDOM from 'react-dom';
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
-import { ApolloProvider } from '@apollo/react-hooks';
-import { ApolloClient } from 'apollo-client';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { createUploadLink } from 'apollo-upload-client';
-import { onError } from 'apollo-link-error';
-import { ApolloLink } from 'apollo-link';
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
+
 import initialState from './local-state/initial-state';
 import schema from './local-state/schema';
 import resolvers from './local-state/resolvers';
@@ -24,17 +20,13 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 
 const cache = new InMemoryCache();
-
-const link = createUploadLink({
-      uri: 'http://localhost:8000/graphql',
-      credentials: 'same-origin'
-});
  
 const client = new ApolloClient({
 	cache,
-	link,
+	uri: 'http://localhost:8000/graphql',
 	typeDefs: schema,
-	resolvers
+	resolvers,
+	credentials: 'include'		
 });
 
 cache.writeData({

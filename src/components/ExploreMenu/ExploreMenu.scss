@@ -1,0 +1,89 @@
+
+@import '../../mainStyles/globalVariables.scss';
+
+
+.explore-menu-container {
+   
+    width: 100%;
+    padding: 50px 20px;
+   
+    display: grid;
+    grid-template-areas:
+    "header header  header  header"
+    "one    two     three   four"
+    "five   six     seven   eight";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 50px 10px;
+    grid-auto-flow: row;
+    justify-items: center;
+}
+
+.explore-menu-header {
+
+    grid-area: header;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+.explore-menu-title {
+
+
+
+}
+
+.explore-menu-full-menu-button {
+
+    margin-left: 25px;
+
+    width: 10rem;
+	font-size: 1.5rem;
+	padding: 5px 2px;
+	border-radius: 5px;
+	background-color: $Main-Orange-Dark;
+	border: none;
+	color: $Main-Blue-Dark;
+	transition: $mainTransition;
+	
+	&:focus {
+		outline: none;
+	}
+
+	&:hover {
+		color: $Main-Orange-Dark;
+        background-color: $Main-Blue-Dark;
+        font-size: 1.6rem;		
+	}
+
+}
+
+.explore-menu-order-now-button {
+
+    margin-left: 25px;
+
+    width: 10rem;
+	font-size: 1.5rem;
+	padding: 5px 2px;
+	border-radius: 5px;
+	background-color: $Main-Orange-Dark;
+	border: none;
+	color: $Main-Blue-Dark;
+	transition: $mainTransition;
+	
+	&:focus {
+		outline: none;
+	}
+
+	&:hover {
+		color: $Main-Orange-Dark;
+        background-color: $Main-Blue-Dark;
+        font-size: 1.6rem;		
+	}
+
+
+}
