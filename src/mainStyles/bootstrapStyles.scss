@@ -24,9 +24,17 @@ $container-max-widths: (
   xl: 1920px
 ) !default;
 
-$carousel-control-color: black;
-$carousel-control-opacity: .1;
-$carousel-control-hover-opacity: .5;
+$carousel-control-color: #A66844;
+$carousel-control-opacity: .5;
+$carousel-control-hover-opacity: .9;
 $carousel-control-width: 15%;
+
+.carousel-inner {
+  
+  max-width: 1170px;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
 
 @import '../../node_modules/bootstrap/scss/bootstrap';

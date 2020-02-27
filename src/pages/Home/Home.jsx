@@ -6,8 +6,11 @@ import Header from '../../components/layout/Header/Header';
 import Hero from '../../components/layout/Hero/Hero';
 import Welcome from '../../components/Welcome/Welcome';
 import ExploreMenu from '../../components/ExploreMenu/ExploreMenu';
-
-
+import SignUp from './SignUp';
+import Redefining from './Redefining';
+import OnlineOrdering from './OnlineOrdering';
+import HomeGallery from '../../components/HomeGallery/HomeGallery';
+import Footer from '../../components/layout/Footer/Footer';
 
 function Home() {
 
@@ -18,6 +21,11 @@ function Home() {
 			<Hero imageObject={homeImage} animate />
 			<Welcome />	
 			<ExploreMenu />							
+			<SignUp />
+			<Redefining />
+			<OnlineOrdering />
+			<HomeGallery />
+			<Footer />
 		</main>
 	);
 }
