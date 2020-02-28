@@ -25,7 +25,7 @@ const StyledContainer = styled.div`
 
 const StyledImage = styled.img`
 
-	max-width: 100%;
+	width: 100%;
 	transform: scale(1);
 	animation-name: ${props => props.animate ? animation : "none" };
 	animation-duration: 2s;
@@ -40,7 +40,8 @@ function Hero(props) {
 	
 	const {
 		imageObject,
-		animate
+		animate,
+		bannerProps
 	} = props;
 
 	const [showBanner, setShowBanner] = useState(false);
@@ -52,7 +53,7 @@ function Hero(props) {
 	};
 
 	const SHOWBANNER = (
-		<Banner title="ENJOY THE CROCKERS EXPERIENCE" subtitle="Redefining the Way the world eats Burgers" buttonTitle="OUR  FOOD" linkTo="/" animate={animate} />
+		<Banner animate={animate} {...bannerProps} />
 	);
 
 	

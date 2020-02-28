@@ -16,7 +16,7 @@ function Header() {
 				<nav className="main-nav">
 					<ul>
 						<li><Link to="/">LOCATION & HOURS</Link></li>
-						<li><Link to="/">MENU</Link></li>
+						<li><Link to="/menu">MENU</Link></li>
 						<li><Link to="/">CONTACT</Link></li>
 						<li><Link to="/">ORDER NOW</Link></li>
 						<li><Link to="/">RESERVATIONS</Link></li>

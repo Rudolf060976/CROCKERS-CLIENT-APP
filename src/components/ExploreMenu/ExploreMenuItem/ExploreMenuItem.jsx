@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
-
+import { Link } from 'react-router-dom';
 
 const descriptionEffect = keyframes`
 
@@ -176,7 +176,7 @@ function ExploreMenuItem(props) {
                 <StyledName>{item.name}</StyledName>
                 <StyledDescriptionBody show={showDescrip}>
                     <StyledDetails>{item.description}</StyledDetails>
-                    <StyledButton >Full Menu</StyledButton>  
+                    <Link to="/menu"><StyledButton >Full Menu</StyledButton></Link>
                 </StyledDescriptionBody>                                           
             </StyledDescriptionContainer>
             <StyledImage src={item.imageURL} />                                   

@@ -14,6 +14,7 @@ import theme from './styledComponents/theme';
 import { ThemeProvider } from 'styled-components';
 import './mainStyles/bootstrapStyles.scss';
 import './mainStyles/index.scss';
+import './assets/fontAwesome/library'; // LOADING FONTAWESOME LIBRARY
 
 import { BrowserRouter as Router } from 'react-router-dom';
 

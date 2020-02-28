@@ -14,11 +14,17 @@ import Footer from '../../components/layout/Footer/Footer';
 
 function Home() {
 
+	const bannerProps = {
+		title: "ENJOY THE CROCKERS EXPERIENCE",
+		subtitle: "Redefining the Way the world eats Burgers",
+		buttonTitle: "OUR  FOOD",
+		linkTo: "/menu"
+	};
 	
 	return (
 		<main className="home-container">
 			<Header />
-			<Hero imageObject={homeImage} animate />
+			<Hero imageObject={homeImage} animate bannerProps={bannerProps} />
 			<Welcome />	
 			<ExploreMenu />							
 			<SignUp />

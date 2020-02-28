@@ -29,14 +29,14 @@ export const GET_MENU_ITEMS_SHOW_AT_HOME = gql`
 
 export const GET_MENU_ITEMS_BY_GROUP = gql`
 	query GetMenuItemsByGroup($groupId: ID!, $first: Int, $last: Int, $after: String, $before: String) {
-		getMenuItemsShowAtHome(groupId: $groupId, first: $first, last:$last, after:$after, before:$before) {
+		getMenuItemsByGroup(groupId: $groupId, first: $first, last:$last, after:$after, before:$before) {
 			nodes {
 				id
 				name
-				description
-				group 
+				description				
 				price
-				image		
+				image
+				imageURL @client		
 			}
 		}
 	}

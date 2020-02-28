@@ -10,6 +10,8 @@ import FetchError from '../layout/FetchError/FetchError';
 
 import ExploreMenuItem from './ExploreMenuItem/ExploreMenuItem';
 
+import { Link } from 'react-router-dom';
+
 import './ExploreMenu.scss';
 
 
@@ -39,8 +41,8 @@ function ExploreMenu() {
 		<div className="explore-menu-container">
 			<div className="explore-menu-header">
 				<h4 className="explore-menu-title">EXPLORE OUR MENU</h4>
-				<button className="explore-menu-full-menu-button">Full Menu</button>	
-				<button className="explore-menu-order-now-button">Order Now</button>
+				<Link to="/menu"><button className="explore-menu-full-menu-button">Full Menu</button></Link>
+				<Link to="/"><button className="explore-menu-order-now-button">Order Now</button></Link>
 			</div>
 			{ menuGrid(itemsArray) }
 		</div>
