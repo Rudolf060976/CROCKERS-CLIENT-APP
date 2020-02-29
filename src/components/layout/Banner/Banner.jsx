@@ -34,10 +34,11 @@ const StyledContainer = styled.div`
 	width: 60rem;
 	height: 30rem;
 	position: absolute;
-	left: 50%;
-	margin-left: -30rem;	
 	top: 50%;
-	margin-top: -15rem;
+	left: 50%;
+	transform: translate(-50%, -50%);	
+	
+	
 	/* box-shadow: ${props => props.theme.whiteBoxShadow}; */
 
 
@@ -48,6 +49,8 @@ const StyledContainer = styled.div`
 	animation-name: ${props => props.animate ? bannerEffect : "none" };
 	animation-duration: 0.8s;
 	animation-fill-mode: forwards;
+
+	box-shadow: ${props => props.theme.glassBoxShadow};
 `;
 
 
@@ -74,6 +77,7 @@ const StyledSubtitle = styled.p`
 
 	padding: 20px 0;
 	font-size: 2rem;
+	
 
 `;
 

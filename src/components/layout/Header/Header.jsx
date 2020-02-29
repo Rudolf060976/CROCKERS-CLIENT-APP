@@ -11,11 +11,11 @@ function Header() {
 			</div>
 			<div className="masthead-body">
 				<figure className="header-logo-container">
-					<img className="header-logo" src={Logo} alt="logo" />
+					<Link to="/"><img className="header-logo" src={Logo} alt="logo" /></Link>
 				</figure>
 				<nav className="main-nav">
 					<ul>
-						<li><Link to="/">LOCATION & HOURS</Link></li>
+						<li><Link to="/location">LOCATION & HOURS</Link></li>
 						<li><Link to="/menu">MENU</Link></li>
 						<li><Link to="/">CONTACT</Link></li>
 						<li><Link to="/">ORDER NOW</Link></li>

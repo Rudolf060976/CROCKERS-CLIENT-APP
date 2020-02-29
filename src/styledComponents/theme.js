@@ -6,8 +6,8 @@ const theme = {
 	colorMainBrownSand: '#A66844',
 	colorBrownDark: '#754A06',
 	mainTransition: 'all 0.3s linear',
-	whiteBoxShadow: '1px 1px 15px whitesmoke'
-
+	whiteBoxShadow: '1px 1px 15px whitesmoke',
+	glassBoxShadow: '2px 2px 5px white inset'
 };
 
 export default theme;
