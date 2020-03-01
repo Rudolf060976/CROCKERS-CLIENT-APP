@@ -11,6 +11,11 @@ const initialState = {
 			email: ''
 		}
 	},
+	iuState: {
+		__typename: 'IUState',
+		signUpModalOpen: false,
+		logInModalOpen: false
+	}
 	
 };
 

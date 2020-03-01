@@ -1,0 +1,25 @@
+@import '../../mainStyles/globalVariables.scss';
+
+
+.signup-form-error-effect-appear {
+	opacity: 0;
+}
+
+.signup-form-error-effect-appear-active {
+	opacity: 1;
+	transition: opacity .5s linear;
+}
+
+
+#signup-form-error-container {
+
+	background: $ErrorColor;
+	padding: 2px 10px;
+	color: white;
+	border-radius: 3px;
+	@include fontSize(1.4);
+}
+
+#signup-form-error-message {
+	  margin-left: 10px;
+  }

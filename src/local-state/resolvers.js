@@ -1,13 +1,123 @@
 import * as localQueries from './queries';
 import * as fetchFunctions from '../Utilities/fetchFunctions';
 
+import * as queries from './queries';
+
 
 const resolvers = {
 	Query: {
 
 	},
 	Mutation: {
-		
+		setLogInUser: (parent, { input }, { cache }) => {
+
+			const { fullname, username, email } = input;
+
+			const { userState } = cache.readQuery({
+				query: queries.GET_USER_STATE
+			});
+
+			const newState = {
+				__typename: 'UserState',
+				isLoggedIn: true,
+				loggedUser: {
+					__typename: 'LocalUser',
+					fullname,
+					username,
+					email
+				}
+			};
+
+			cache.writeQuery({
+				query: queries.GET_USER_STATE,
+				data: { userState: newState }
+			});
+
+		},
+		setLogOutUser: (parent, args, { cache }) => {
+
+			cache.writeQuery({
+				query: queries.GET_USER_STATE,
+				data: { userState: {
+					__typename: 'UserState',
+					isLoggedIn: false,
+					loggedUser: null
+				}}
+			});
+
+		},
+		signUpModalOpen: (parent, args, { cache }) => {
+
+			const { iuState } = cache.readQuery({ query: queries.GET_IU_STATE });
+
+
+			cache.writeQuery({
+				query: queries.GET_IU_STATE,
+				data: {
+					iuState: {
+						...iuState,
+						signUpModalOpen: true,
+						logInModalOpen: false
+
+					}
+				}
+
+			});
+
+		},
+		signUpModalClose: (parent, args, { cache }) => {
+
+			const { iuState } = cache.readQuery({ query: queries.GET_IU_STATE });
+
+
+			cache.writeQuery({
+				query: queries.GET_IU_STATE,
+				data: {
+					iuState: {
+						...iuState,
+						signUpModalOpen: false
+					}
+				}
+
+			});
+
+		},
+		logInModalOpen: (parent, args, { cache }) => {
+
+			const { iuState } = cache.readQuery({ query: queries.GET_IU_STATE });
+
+
+			cache.writeQuery({
+				query: queries.GET_IU_STATE,
+				data: {
+					iuState: {
+						...iuState,
+						logInModalOpen: true,
+						signUpModalOpen: false
+					}
+				}
+
+			});
+
+		},
+		logInModalClose: (parent, args, { cache }) => {
+
+			const { iuState } = cache.readQuery({ query: queries.GET_IU_STATE });
+
+
+			cache.writeQuery({
+				query: queries.GET_IU_STATE,
+				data: {
+					iuState: {
+						...iuState,
+						logInModalOpen: false
+					}
+				}
+
+			});
+
+		},
+	
 	},
 	MenuItem: {
 		imageURL: async (menuItem, args, { cache }) => {

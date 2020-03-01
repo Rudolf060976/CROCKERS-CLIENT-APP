@@ -13,3 +13,12 @@ export const GET_USER_STATE = gql`
 	}
 `;
 
+export const GET_IU_STATE = gql`
+	query GetIUState {
+		iuState @client {
+			signUpModalOpen
+			logInModalOpen
+		}
+	}
+`;
+
