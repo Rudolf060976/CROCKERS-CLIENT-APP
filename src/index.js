@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
-import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloProvider, ApolloClient, InMemoryCache, HttpLink, ApolloLink, concat } from '@apollo/client';
 
 import initialState from './local-state/initial-state';
 import schema from './local-state/schema';
@@ -22,15 +22,25 @@ import App from './App';
 
 const cache = new InMemoryCache();
  
+const httpLink = new HttpLink({ uri: 'http://localhost:8000/graphql' });
+
+const authMiddleware = new ApolloLink((operation, forward) => {
+	// add the authorization to the headers
+	operation.setContext({
+	  headers: {
+		'x-token': localStorage.getItem('x-token') || '',
+	  }
+	});
+  
+	return forward(operation);
+  })
+
 const client = new ApolloClient({
 	cache,
-	uri: 'http://localhost:8000/graphql',
+	link: concat(authMiddleware, httpLink),
 	typeDefs: schema,
 	resolvers,
-	credentials: 'include',
-	headers: {
-		'x-token': localStorage.getItem('x-token') || ''
-	}		
+	credentials: 'include'
 });
 
 cache.writeData({

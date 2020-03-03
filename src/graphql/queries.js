@@ -42,3 +42,39 @@ export const GET_MENU_ITEMS_BY_GROUP = gql`
 	}
 `;
 
+export const ME = gql`
+	query Me {
+		me {
+			id 
+			username
+			email
+			firstname
+			lastname
+			role
+		}
+	}
+`;
+
+export const GET_USER = gql`
+	query GetUser {
+		getUser {
+			id 
+			username
+			email
+			firstname
+			lastname
+			gender
+			dateOfBirth
+			mainPhoneNumber
+			secondaryPhoneNumber
+			country
+			region
+			city
+			zone
+			mainAddress
+			referencePoint
+			role
+		}
+	}
+`;
+

@@ -1,5 +1,379 @@
 @import '../../mainStyles/globalVariables.scss';
 
+// THIS STYLES BELOW ARE FOR STOPPING GOOGLE CHROM FROM ASIGNNING STYLES TO AUTOCOMPLETE INPUTS....
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+	transition: background-color 5000s ease-in-out 0s;	
+}
+
+input:focus {
+	outline: 0;
+	
+}
+
+textarea:focus {
+	outline: 0;
+}
+
+
+.signup-form-container {
+
+	width: 50rem;
+	height: auto;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-left: -25rem;
+	margin-top: -45rem;
+	z-index: 1000;
+	background-color: white;
+	color: black;
+	font-family: Rubik, Verdana, Geneva, Tahoma, sans-serif;
+	border-radius: 10px;
+
+	border: solid 1px $Main-Green-Dark;
+	box-shadow: 0px 0px 8px $Main-Green-Dark;
+	
+}
+.signup-form-close-button {
+
+	width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    background-color: transparent;
+    color: $Main-Orange-Dark;
+    font-size: 2rem;
+    transition: $mainTransition;
+    
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+
+}
+
+#signup-form {
+
+	padding: 40px;
+
+	
+
+}
+
+
+#signup-form-header {
+
+	padding: 20px 0 30px 0;
+
+	text-align: center;
+
+	h6 {
+
+		color: lighten($Main-Green-Dark,10%);
+		font-weight: bold;
+
+	}
+}
+
+
+.signup-form-text-div {
+	
+	width: 80%;
+	margin: 0 auto;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 3px 0;
+	
+	
+	p {
+
+
+
+		label {
+
+			@include fontSize(1);
+			
+			
+		}
+
+	}
+
+	input {
+
+		@include fontSize(1);
+
+		width: 60%;
+		padding: 3px 5px;
+		border-radius: 3px;
+		
+
+		&:focus {
+			background-color: lighten($Main-Green-Dark, 10%);
+			color: white;
+		}
+
+		&::selection {
+			background-color: white;
+		}
+	}
+
+}
+
+.resetpsw-form-eye-button {
+
+	width: 40px;
+	background: transparent;
+	border: none;
+	outline: none;
+	color: lightgray;
+	display: inline-block;
+	margin-left: 10px;
+	
+
+	&:hover {
+		outline: none;
+	}
+
+	&:focus {
+		outline: none;
+	}
+
+
+}
+
+.signup-form-radio-div {
+
+	width: 80%;
+	margin: 0 auto;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 5px 0;
+
+	p {
+
+		@include fontSize(1);
+	}
+
+
+	div {
+
+		width: 60%;
+
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		
+
+		input {
+
+			
+
+		}
+
+
+
+		label {
+
+			@include fontSize(1);
+			padding-top: 2px;
+			margin: 0 25px 0 10px;
+	
+		}
+	}	
+	
+
+
+
+}
+
+.signup-form-date-div {
+
+	width: 80%;
+	margin: 0 auto;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 3px 0;
+
+	p {
+
+		@include fontSize(1);
+
+	}
+
+	input {
+		width: 60%;
+		@include fontSize(1);
+
+
+	}
+	
+
+}
+
+.signup-form-select-div {
+
+	width: 80%;
+	margin: 0 auto;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 3px 0;
+
+	p {
+
+		@include fontSize(1);
+
+	}
+
+	select {
+		width: 60%;
+		padding: 5px 3px;
+		@include fontSize(1);
+
+
+		&:focus {
+			background-color: lighten($Main-Green-Dark, 10%);
+			color: white;
+		}
+
+		
+
+	}
+
+
+}
+
+.signup-form-textarea-div {
+
+	width: 80%;
+	margin: 0 auto;
+
+	padding: 0;
+
+	p {
+
+		label {
+
+			@include fontSize(1);
+
+		}
+
+	}
+
+	textarea {
+
+		@include fontSize(1);
+		width: 100%;
+		height: 4rem;
+
+		border: solid 1px gray;
+		border-radius: 3px;
+
+		&:focus {
+			background-color: lighten($Main-Green-Dark, 10%);
+			color: white;
+		}
+
+		&::selection {
+			background-color: white;
+		}
+
+	}
+
+}
+
+.signup-form-checkbox-div {
+
+
+	width: 80%;
+	margin: 0 auto;
+
+	padding: 0;
+
+	input {
+
+
+
+	}
+
+	label {
+
+		@include fontSize(1);
+		margin-left: 10px;
+
+	}
+
+}
+
+#signup-form-submit-button-container {
+
+	width: 80%;
+	margin: 0 auto;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	padding: 20px 0;
+
+	button {
+
+		@include fontSize(1.4);
+		padding: 5px 20px;
+		border-radius: 5px;
+		border: none;
+		background-color: $Main-Orange-Dark;
+		color: $Main-Blue-Dark;
+		transition: $mainTransition;
+
+		&:focus {
+			outline: 0;
+		}
+
+		&:hover {
+
+			color: $Main-Orange-Dark;
+			background-color: lighten($Main-Green-Dark,10%);
+			
+
+		}
+
+	}
+
+}
+
+
+#signup-form-footer {
+
+	width: 80%;
+	margin: 0 auto;
+
+	p {
+
+		@include fontSize(0.8);
+
+
+	}
+
+
+}
+
+
 
 .signup-form-error-effect-appear {
 	opacity: 0;

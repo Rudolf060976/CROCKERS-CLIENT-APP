@@ -111,7 +111,7 @@ function OnlineOrdering() {
 
     const handleScroll = () => {
      
-        console.log('ESTOY AQUI');
+        
         const introPosition = containerElement.current.getBoundingClientRect().top;
 
         const screenHeight = window.innerHeight;

@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useMutation, useApolloClient } from '@apollo/client';
 import './SignUp.scss';
 import * as yup from 'yup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CSSTransition } from 'react-transition-group';
 import { Formik, Form, Field } from 'formik';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import { Link } from 'react-router-dom';
+
+import * as localMutations from '../../local-state/mutations';
+import * as mutations from '../../graphql/mutations';
+import * as queries from '../../graphql/queries';
+
 
 import SuccessModal from '../Modals/SuccessModal/SuccessModal';
-import ErrorModal from '../Modals/ErrorModal/ErrorModal';
+
 import imageChecked from '../../assets/images/checkedIcon.svg';
 
 const initialValues = {
@@ -21,8 +28,8 @@ const initialValues = {
     secondaryPhoneNumber: '',
     password: '',
     confirmPassword: '',
-    country: 'Select a Country',
-    region: 'Select a Region',
+    country: 'Select a Region',
+    region: '',
     city: '',
     zone: '',
     mainAddress: '',
@@ -34,13 +41,13 @@ const initialValues = {
 const schema = yup.object().shape({
     username: yup.string().required('Username is Required!').max(70),
     email: yup.string().required('Email is Required!').max(100).email('Please Insert a valid email!'),
-    firstname: yup.string().required('Username is Required!').max(40),
-    lastname: yup.string().required('Username is Required!').max(40),
+    firstname: yup.string().required('First Name is Required!').max(40),
+    lastname: yup.string().required('Last Name is Required!').max(40),
     gender: yup.string().required('Gender is Required!').matches(/(Male|Female)/),
     dateOfBirth: yup.date(),
     mainPhoneNumber: yup.string().required('Main Phone Number is Required!').max(20),
     secondaryPhoneNumber: yup.string().max(20),
-    password: yup.string().required('Password is Required!').max(30),
+    password: yup.string().required('Password is Required!').min(8,'The Password must have at least 8 characters').max(30),
     confirmPassword: yup.string().required('Password is Required!').max(30),
     country: yup.string().required('Country is Required!').max(100),
     region: yup.string().required('Region is Required!').max(50),
@@ -66,26 +73,14 @@ const eyeIcon = (visible, handleClick) => {
 
 	if (visible) {
 		// eslint-disable-next-line
-		return (<button type="button" className="resetpsw-form-eye-button" onClick={handleClick}><FontAwesomeIcon icon="eye" size="lg" /></button>);
+		return (<span type="button" className="resetpsw-form-eye-button" onClick={handleClick}><FontAwesomeIcon icon="eye" size="sm" /></span>);
 		// eslint-disable-next-line
 	} else {
 		// eslint-disable-next-line
-		return (<button type="button" className="resetpsw-form-eye-button" onClick={handleClick}><FontAwesomeIcon icon="eye-slash" size="lg" /></button>);
+		return (<span type="button" className="resetpsw-form-eye-button" onClick={handleClick}><FontAwesomeIcon icon="eye-slash" size="sm" /></span>);
 	}
 
 };
-
-const handleFormSubmit = (values, options, setError, setErrorMessage, setSuccess, setNotificationTitle, setNotificationContent) => {
-
-    
-
-
-
-}
-
-
-
-
 
 function SignUp() {
 
@@ -97,8 +92,11 @@ function SignUp() {
     const [pswVisible, setPswVisible] = useState(false);
     const [psw1Type, setPsw1Type] = useState('password');
     
+    const client = useApolloClient();
 
-
+    const [closeModal] = useMutation(localMutations.SET_SIGNUP_MODAL_CLOSE);
+           
+   
     const handleEyeClick = (e) => {
 
 		if (pswVisible) {
@@ -121,15 +119,185 @@ function SignUp() {
 
 		}
 
-	};
+    };
+    
+    const handleCloseButtonClick = (e) => {
+
+        closeModal();
+
+    };
+
+
+    const handleFormSubmit = async (values, options, setError, setErrorMessage, setSuccess, setNotificationTitle, setNotificationContent) => {
+
+        const {
+            username,
+            email,
+            firstname,
+            lastname,
+            gender,
+            dateOfBirth,
+            mainPhoneNumber,
+            secondaryPhoneNumber,
+            password,
+            confirmPassword,
+            country,
+            region,
+            city,
+            zone,
+            mainAddress,
+            referencePoint,
+            receiveNews,
+            iam21orOlder
+        }= values;
+
+        if (password !== confirmPassword) {
+
+            setErrorMessage('Password Confirmation & Password Field must be equal!');
+
+            setError(true);
+
+            //return  options.setSubmitting(false);     // NO HACE FALTA PORQUE onSubmit ES ASYNC ASI QUE LLAMA setSubmitting AUTOMATICAMENTE 
+
+            return;
+        }
+
+        if (!iam21orOlder) {
+
+            setErrorMessage('You must confirm that you are 21 year old or older!');
+
+            setError(true);
+
+            //return options.setSubmitting(false);
+
+            return;
+        }
+
+        try {
+
+                        
+            const mutData = await client.mutate({
+                mutation: mutations.SIGN_UP,
+                variables: {
+                    input: {
+                        username,
+                        email,
+                        firstname,
+                        lastname,
+                        gender,
+                        dateOfBirth,
+                        mainPhoneNumber,
+                        secondaryPhoneNumber,
+                        password,
+                        country,
+                        region,
+                        city,
+                        zone,
+                        mainAddress,
+                        referencePoint,
+                        receiveNews
+                    }            
+                }
+            });
+
+            const {
+                data: {
+                    signUp: {
+                        token
+                    }
+                }
+            } = mutData;
+           
+            
+            localStorage.removeItem('x-token'); // BORRAMOS PRIMERO EL TOKEN PARA NO ENVIAR TOKEN AL SERVIDOR
+            localStorage.setItem('x-token', token);
+       
+            
+        } catch (error) {
+            
+
+            setErrorMessage(error.message);
+
+            setError(true);
+
+            return;
+
+        }
+
+        try {
+            
+            const meData = await client.query({
+
+                query: queries.ME,
+                fetchPolicy: "no-cache"
+            });
+                      
+            if (meData.data && meData.data.me) {
+
+                const {
+                    data: {
+                        me: {
+                            id,
+                            username,
+                            email,
+                            firstname,
+                            lastname,
+                            role
+                        }
+                    }
+                } = meData;
+
+                await client.mutate({
+                    
+                    mutation: localMutations.SET_LOGIN_USER,
+                    variables: {
+                        input: {
+                            fullname: firstname + ' ' + lastname,
+                            username,
+                            email
+                        }
+                    }
+                });
+
+                setNotificationTitle('Sign up completed!');
+
+                setNotificationContent('Thank you for signing up. Enjoy our great services!');
+    
+                setSuccess(true);                   
+
+
+            } else {
+
+                await client.mutate({
+                    
+                    mutation: localMutations.SET_LOGOUT_USER
+
+                });
+
+
+            }
+
+                      
+
+        } catch (error) {
+            
+            setErrorMessage(error.message);
+
+            setError(true);
+
+        }       
+      
+
+    }
 
 
     return (
-        <>
+        <>            
             { success ? <SuccessModal image={imageChecked} title={notificationTitle} content={notificationContent} buttonTitle="Done" linkPath="/" /> : (
 
                 <div className="signup-form-container">
-                    <div className="signup-form">
+                    <span className="signup-form-close-button" onClick={handleCloseButtonClick} ><FontAwesomeIcon icon="window-close" size="lg" /></span>
+                    <div id="signup-form">
                         <div id="signup-form-header">
 							<h6>Create your account to continue</h6>
 						</div>
@@ -141,9 +309,10 @@ function SignUp() {
                             validateOnChange={false}
                             onSubmit={(values, options) => {
 
-                                setTimeout(() => {
+                                
+                                setTimeout(async () => {
                                     
-                                    handleFormSubmit(values, options, setError, setErrorMessage, setSuccess, setNotificationTitle, setNotificationContent);
+                                    await handleFormSubmit(values, options, setError, setErrorMessage, setSuccess, setNotificationTitle, setNotificationContent);
 
 
                                     options.setSubmitting(false);
@@ -172,13 +341,21 @@ function SignUp() {
                                             </div>
                                         )}
                                     </Field>
-                                    <Field name="password" >
-                                        {({ field }) => (
-                                            <div className="signup-form-text-div">
-                                                <p><label htmlFor="signup-lastname">Last Name :</label></p>
-                                                <input {...field} autoComplete="off" type="text" id="signup-lastname" />        
-                                            </div>
-                                        )}
+                                    <Field name="password">
+										{({ field }) => (
+											<div className="signup-form-text-div">
+												<p><label htmlFor="signup-password">Password :</label>{eyeIcon(pswVisible, handleEyeClick)}</p>
+												<input {...field} autoComplete="off" type={psw1Type} id="signup-password" />				
+											</div>
+										)}         
+                                    </Field>
+                                    <Field name="confirmPassword">
+										{({ field }) => (
+											<div className="signup-form-text-div">
+												<p><label htmlFor="signup-confirm-password">Confirm Password :</label></p>
+												<input {...field} autoComplete="off" type="password" id="signup-confirm-password" />				
+											</div>
+										)}         
                                     </Field>
                                     <Field name="firstname" >
                                         {({ field }) => (
@@ -200,8 +377,10 @@ function SignUp() {
                                         {({ field }) => (
                                             <div className="signup-form-radio-div">
                                                 <p>Gender: </p>
-                                                <input {...field} type="radio" id="g1" value="Male" checked={field.value === 'Male'} /><label htmlFor="g1">Male</label>
-                                                <input {...field} type="radio" id="g2" value="Female" checked={field.value === 'Female'} /><label htmlFor="g2">Female</label>        
+                                                <div>
+                                                    <input {...field} type="radio" id="g1" value="Male" checked={field.value === 'Male'} /><label htmlFor="g1">Male</label>
+                                                    <input {...field} type="radio" id="g2" value="Female" checked={field.value === 'Female'} /><label htmlFor="g2">Female</label>   
+                                                </div>                                                     
                                             </div>
                                         )}
                                     </Field>
@@ -228,28 +407,12 @@ function SignUp() {
                                                 <input {...field} autoComplete="off" type="text" id="signup-secPhoneNumber" />        
                                             </div>
                                         )}
-                                    </Field>
-                                    <Field name="password">
-										{({ field }) => (
-											<div className="signup-form-text-div">
-												<p><label htmlFor="signup-password">Password :</label>{eyeIcon(pswVisible, handleEyeClick)}</p>
-												<input {...field} autoComplete="off" type={psw1Type} id="signup-password" />				
-											</div>
-										)}         
-                                    </Field>
-                                    <Field name="confirmPassword">
-										{({ field }) => (
-											<div className="signup-form-text-div">
-												<p><label htmlFor="signup-confirm-password">Confirm Password :</label></p>
-												<input {...field} autoComplete="off" id="signup-confirm-password" />				
-											</div>
-										)}         
-                                    </Field>
+                                    </Field>       
                                     <Field name="country">
 										{({ field }) => (
 											<div className="signup-form-select-div">
 												<p>Country: </p>
-												<CountryDropdown {...field} />		
+												<CountryDropdown {...field} onChange={(_, e) => field.onChange(e)} defaultOptionLabel="Select a Country" />                                                
 											</div>
 										)}         
                                     </Field>
@@ -257,7 +420,7 @@ function SignUp() {
 										{({ field }) => (
 											<div className="signup-form-select-div">
 												<p>Region: </p>
-												<RegionDropdown {...field} country={values.country} />		
+												<RegionDropdown {...field} country={values.country} defaultOptionLabel="Select a Region" onChange={(_, e) => field.onChange(e)}/>		
 											</div>
 										)}         
                                     </Field>
@@ -272,7 +435,7 @@ function SignUp() {
                                     <Field name="zone" >
                                         {({ field }) => (
                                             <div className="signup-form-text-div">
-                                                <p><label htmlFor="signup-zone">City :</label></p>
+                                                <p><label htmlFor="signup-zone">Zone :</label></p>
                                                 <input {...field} autoComplete="off" type="text" id="signup-zone" />        
                                             </div>
                                         )}
@@ -281,7 +444,7 @@ function SignUp() {
                                         {({ field }) => (
                                             <div className="signup-form-textarea-div">
                                                 <p><label htmlFor="signup-main-address">Main Address :</label></p>
-                                                <textarea {...field} id="signup-main-address" />        
+                                                <textarea {...field} id="signup-main-address" autoComplete="off" />        
                                             </div>
                                         )}
                                     </Field>
@@ -289,7 +452,7 @@ function SignUp() {
                                         {({ field }) => (
                                             <div className="signup-form-textarea-div">
                                                 <p><label htmlFor="signup-reference-point">Reference Point :</label></p>
-                                                <textarea {...field} id="signup-reference-point" />        
+                                                <textarea {...field} id="signup-reference-point" autoComplete="off" />        
                                             </div>
                                         )}
                                     </Field>
@@ -307,7 +470,10 @@ function SignUp() {
 							                </div>
 						                )}
 					                </Field>
-                                        <button type="button" disabled={isSubmitting} onClick={submitForm} className="signup-form-button">{ isSubmitting ? 'Loading...' : 'SIGN UP'}</button>
+                                    <div id="signup-form-submit-button-container">
+                                        <button type="button" disabled={isSubmitting} onClick={submitForm} >{ isSubmitting ? 'Loading...' : 'SIGN UP'}</button>
+                                    </div>
+                                        
                                 </Form>                            
                             )}
                         </Formik>

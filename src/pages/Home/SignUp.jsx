@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { useMutation } from '@apollo/client';
+
+import * as localMutations from '../../local-state/mutations';
+
 
 const StyledContainer = styled.div`
 
@@ -47,10 +51,20 @@ const StyledButton = styled.button`
 
 
 function SignUp() {
+
+    const [openModal] = useMutation(localMutations.SET_SIGNUP_MODAL_OPEN);
+
+    const handleClick = () => {
+
+        openModal();
+    };
+
+
+
     return (
         <StyledContainer>
             <StyledTitle>SIGN UP FOR EXCLUSIVE OFFERS U WON’T WANT TO MISS!</StyledTitle>
-            <StyledButton>SIGN UP</StyledButton>
+            <StyledButton onClick={handleClick}>SIGN UP</StyledButton>
         </StyledContainer>
     );
 }

@@ -30,7 +30,6 @@ const StyledClose = styled.span`
 
     width: 5rem;
     height: 5rem;
-    background-color: red;
     position: absolute;
     top: 3%;
     right: 3%;
