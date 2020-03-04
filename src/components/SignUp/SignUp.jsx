@@ -290,10 +290,16 @@ function SignUp() {
 
     }
 
+    const handleSuccessModalButtonClick = () => {
+
+        closeModal();
+
+    };
+
 
     return (
-        <>            
-            { success ? <SuccessModal image={imageChecked} title={notificationTitle} content={notificationContent} buttonTitle="Done" linkPath="/" /> : (
+        <>   
+            { success ? <SuccessModal image={imageChecked} title={notificationTitle} content={notificationContent} buttonTitle="Done" linkPath="/" handleButtonClick={()=> handleSuccessModalButtonClick()} /> : (
 
                 <div className="signup-form-container">
                     <span className="signup-form-close-button" onClick={handleCloseButtonClick} ><FontAwesomeIcon icon="window-close" size="lg" /></span>

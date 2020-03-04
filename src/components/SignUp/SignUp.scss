@@ -284,6 +284,8 @@ textarea:focus {
 		border: solid 1px gray;
 		border-radius: 3px;
 
+		padding: 5px;
+
 		&:focus {
 			background-color: lighten($Main-Green-Dark, 10%);
 			color: white;
