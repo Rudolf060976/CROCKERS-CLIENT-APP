@@ -78,3 +78,11 @@ export const GET_USER = gql`
 	}
 `;
 
+export const GET_IF_USER_EXISTS = gql`
+	query GetIfUserExists($username: String!, $email: String!) {
+		getIfUserExists(username: $username, email: $email) {
+			username
+			email
+		}
+	}
+`;

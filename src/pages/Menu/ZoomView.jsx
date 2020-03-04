@@ -8,7 +8,7 @@ const StyledContainer = styled.div`
     position: fixed;
 
     max-width: 700px;
-    height: auto;
+    height: auto;   
 
     top: 50%;
     left: 50%;
@@ -22,7 +22,9 @@ const StyledImage = styled.img`
 
     max-width: 100%;
     border-radius: 5px;
-    border: solid 2px ${props => props.theme.colorMainBeigeDark};
+    /* border: solid 2px ${props => props.theme.colorMainBeigeDark}; */
+    border: solid 1px ${props => props.theme.colorMainGreenDark };
+	box-shadow: 0px 0px 8px ${props => props.theme.colorMainGreenDark };
     
 `;
 
@@ -45,12 +47,11 @@ const StyledClose = styled.span`
 `;
 
 
-
 function ZoomView({ item, handleCloseZoom }) {
     return (
         <StyledContainer>
             <StyledImage src={item.imageURL} />
-            <StyledClose onClick={() => handleCloseZoom()} ><FontAwesomeIcon icon="window-close" size="lg" /></StyledClose>
+            <StyledClose onClick={() => handleCloseZoom()} ><FontAwesomeIcon icon="window-close" size="lg" /></StyledClose>            
         </StyledContainer>
     );
 }

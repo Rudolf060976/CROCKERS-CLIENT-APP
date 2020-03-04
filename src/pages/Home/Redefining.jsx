@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {rgba} from 'polished';
+import { lighten } from 'polished';
 
 const StyledContainer = styled.div`
     height: 200px;
@@ -27,25 +28,35 @@ const StyledTitle = styled.h4`
 
 const StyledButton = styled.button`
 
-    width: 10rem;
-    font-size: 1.5rem;
+    width: 14rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    letter-spacing: 2px;
     padding: 5px 2px;
     border-radius: 5px;
-    background-color: ${props => props.theme.colorMainOrangeDark};
+    
     border: none;
-    color: ${props => props.theme.colorMainBlueDark};
-    transition: ${props => props.theme.mainTransition};
+    /* background-color: ${props => props.theme.colorMainBeigeDark};
+    color: ${props => props.theme.colorMainBlueDark}; */
+    transition: all .2s linear;
     margin-left: 40px;
+
+    color: ${props => props.theme.colorMainBeigeDark};
+    background-color: ${props => lighten(0.05,props.theme.colorMainGreenDark) };
+    box-shadow: 1px 1px 15px white;
     
     &:focus {
         outline: none;
     }
 
     &:hover {
-        color: ${props => props.theme.colorMainOrangeDark};
-        background-color: ${props => props.theme.colorMainBlueDark};
+        /* color: ${props => props.theme.colorMainBeigeDark};
+        background-color: ${props => props.theme.colorMainGreenDark}; */
+
+        background-color: ${props => props.theme.colorMainBeigeDark};
+        color: ${props => props.theme.colorMainBlueDark};
         font-size: 1.6rem;	
-        box-shadow: ${props => props.theme.whiteBoxShadow};
+        box-shadow: none;
 	
     }
 

@@ -19,7 +19,7 @@ function Menu() {
     return (
         <main className="menu-container">
             <Header />
-            <Hero imageObject={menuImage} animate bannerProps={bannerProps} />
+            <Hero imageObject={menuImage} animate bannerProps={bannerProps} bottomBorderColor='#163237' />
             <MenuGroup />            
             <Footer />
         </main>

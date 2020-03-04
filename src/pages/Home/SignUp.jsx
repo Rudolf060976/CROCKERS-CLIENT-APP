@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { lighten } from 'polished';
+
 import { useMutation } from '@apollo/client';
 
 import * as localMutations from '../../local-state/mutations';
@@ -26,8 +28,9 @@ const StyledTitle = styled.h4`
 
 const StyledButton = styled.button`
 
-    width: 10rem;
-    font-size: 1.5rem;
+    width: 12rem;
+    font-size: 1.6rem;
+    
     padding: 5px 2px;
     border-radius: 5px;
     background-color: ${props => props.theme.colorMainOrangeDark};
@@ -43,8 +46,9 @@ const StyledButton = styled.button`
 
     &:hover {
         color: ${props => props.theme.colorMainOrangeDark};
-        background-color: ${props => props.theme.colorMainBlueDark};
-        font-size: 1.6rem;		
+        background-color: ${props => lighten(0.1, props.theme.colorMainGreenDark)};
+        /* background-color: ${props => props.theme.colorMainBlueDark}; */
+        /* font-size: 1.6rem; */
     }
 
 `;

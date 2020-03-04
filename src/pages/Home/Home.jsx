@@ -24,7 +24,7 @@ function Home() {
 	return (
 		<main className="home-container">
 			<Header />
-			<Hero imageObject={homeImage} animate bannerProps={bannerProps} />
+			<Hero imageObject={homeImage} animate bannerProps={bannerProps} bottomBorderColor='#163237' />
 			<Welcome />	
 			<ExploreMenu />							
 			<SignUp />

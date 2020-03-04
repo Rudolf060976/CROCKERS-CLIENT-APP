@@ -20,7 +20,7 @@ const StyledContainer = styled.div`
 	width: 100%;
 	overflow: hidden;
 	margin-bottom: -8%;
-
+	
 `;
 
 const StyledImage = styled.img`
@@ -30,6 +30,8 @@ const StyledImage = styled.img`
 	animation-name: ${props => props.animate ? animation : "none" };
 	animation-duration: 2s;
 	animation-fill-mode: forwards;
+	border-bottom: solid 2px ${ props => props.bottomBorderColor };
+
 `;
 
 
@@ -41,6 +43,7 @@ function Hero(props) {
 	const {
 		imageObject,
 		animate,
+		bottomBorderColor,
 		bannerProps
 	} = props;
 
@@ -59,7 +62,7 @@ function Hero(props) {
 	
 	return (
 		<StyledContainer>
-			<StyledImage src={imageObject} animate={animate} onAnimationEnd={handleBanner} />
+			<StyledImage src={imageObject} animate={animate} onAnimationEnd={handleBanner} bottomBorderColor={bottomBorderColor} />
 			{showBanner ? SHOWBANNER : null}			
 		</StyledContainer>
 	);

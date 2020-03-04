@@ -80,14 +80,14 @@ const StyledButton = styled.button`
     grid-area: button;
     justify-self: center;
     
-    width: 12rem;
-    font-size: 1.5rem;
-	padding: 8px 5px;
+    width: 14rem;
+    font-size: 1.6rem;
+	padding: 8px 10px;
     border-radius: 5px;
     border: none;
     margin-top: 30px;
     transition: ${props => props.theme.mainTransition};
-    background-color: ${props => props.theme.colorMainBlueDark};
+    background-color: ${props => lighten(0.1, props.theme.colorMainGreenDark)};
     color: ${props => props.theme.colorMainOrangeDark};
     
     &:focus {
@@ -97,7 +97,7 @@ const StyledButton = styled.button`
     &:hover {
 		color: ${props => props.theme.colorMainBlueDark};
 		background-color: ${props => props.theme.colorMainOrangeDark};
-		border: solid 1px ${props => props.theme.colorMainBlueDark};
+		/* border: solid 1px ${props => props.theme.colorMainBlueDark}; */
 		transform: scale(1.1);
     }
 

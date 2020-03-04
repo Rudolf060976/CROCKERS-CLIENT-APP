@@ -56,8 +56,9 @@
 
 	&:hover {
 		color: $Main-Orange-Dark;
-        background-color: $Main-Blue-Dark;
-        font-size: 1.6rem;		
+		//background-color: $Main-Blue-Dark;
+		background-color: lighten($Main-Green-Dark,10%);
+        //font-size: 1.6rem;		
 	}
 
 }
@@ -81,8 +82,9 @@
 
 	&:hover {
 		color: $Main-Orange-Dark;
-        background-color: $Main-Blue-Dark;
-        font-size: 1.6rem;		
+		//background-color: $Main-Blue-Dark;
+		background-color: lighten($Main-Green-Dark,10%);
+        //font-size: 1.6rem;		
 	}
 
 

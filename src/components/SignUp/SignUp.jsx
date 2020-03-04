@@ -151,6 +151,60 @@ function SignUp() {
             iam21orOlder
         }= values;
 
+        // PRIMERO HAY QUE CHEQUEAR SI EL USERNAME Y EL EMAIL YA EXISTEN, EN ESE CASO SE SUSPENDE EL SUBMIT
+        try {
+            
+            const data = await client.query({
+                query: queries.GET_IF_USER_EXISTS,
+                variables: {
+                    username,
+                    email
+                }
+            });
+           
+            const {
+                data: {
+                    getIfUserExists: {
+                        username: usernameExists,
+                        email: emailExists
+                    }
+                }
+            } = data;
+
+            
+
+            if (usernameExists) {
+
+                setErrorMessage('Username already exists in our database!');
+
+                setError(true);
+    
+                return;
+            }
+
+            if (emailExists) {
+
+                setErrorMessage('Email already exists in our database!');
+
+                setError(true);
+    
+                return;
+            }
+
+            
+        } catch (error) {
+            
+            setErrorMessage(error.message);
+
+            setError(true);
+
+            return;
+        }
+
+
+        // AHORA HAY QUE CHEQUEAR SI EL PASSWORD = CONFIRM PASSWORD
+
+
         if (password !== confirmPassword) {
 
             setErrorMessage('Password Confirmation & Password Field must be equal!');
@@ -162,6 +216,8 @@ function SignUp() {
             return;
         }
 
+        // LUEGO CHEQUEAR SI SE TILDO QUE ES MAYOR DE EDAD
+
         if (!iam21orOlder) {
 
             setErrorMessage('You must confirm that you are 21 year old or older!');
@@ -172,6 +228,9 @@ function SignUp() {
 
             return;
         }
+
+
+        // SI TODO LO ANTERIOR ESTA BIEN AHORA ENVIAMOS EL MUTATION DEL SIGNUP CON LOS DATOS AL SERVIDOR
 
         try {
 
@@ -197,8 +256,10 @@ function SignUp() {
                         referencePoint,
                         receiveNews
                     }            
-                }
+                }                
             });
+
+            // EL SERVIDOR NOS DEVUELVE UN TOKEN
 
             const {
                 data: {
@@ -208,6 +269,7 @@ function SignUp() {
                 }
             } = mutData;
            
+            // GUARDAMOS EL TOKEN EN EL LOCAL STORAGE, PARA QUE SEA ENVIADO EN EL SIGUIENTE REQUEST.
             
             localStorage.removeItem('x-token'); // BORRAMOS PRIMERO EL TOKEN PARA NO ENVIAR TOKEN AL SERVIDOR
             localStorage.setItem('x-token', token);
@@ -223,6 +285,8 @@ function SignUp() {
             return;
 
         }
+
+        // AHORA CONSULTAMOS EL ME DEL SERVIDOR PARA QUE NOS ENVIE LOS DATOS BASICOS DEL USUARIO
 
         try {
             
@@ -246,6 +310,9 @@ function SignUp() {
                         }
                     }
                 } = meData;
+
+
+                // Y CON ESOS DATOS DEL USUARIO ACTUALIZAMOS EL ESTADO LOCAL ( CACHE )
 
                 await client.mutate({
                     
@@ -298,7 +365,7 @@ function SignUp() {
 
 
     return (
-        <>   
+        <>  
             { success ? <SuccessModal image={imageChecked} title={notificationTitle} content={notificationContent} buttonTitle="Done" linkPath="/" handleButtonClick={()=> handleSuccessModalButtonClick()} /> : (
 
                 <div className="signup-form-container">

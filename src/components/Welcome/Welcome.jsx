@@ -9,21 +9,23 @@ const StyledContainer = styled.div`
 	display: flex;
 	flex-flow: column nowrap;
 	align-items: center;
-
+	font-family: 'Rubik', Verdana, Geneva, Tahoma, sans-serif;
+	
 `;
 
-const StyledTitle = styled.h4`
+const StyledTitle = styled.h3`
 
 	padding: 20px 0;
-
+	
 `;
 
 const StyledMessage = styled.p`
 
 	width: 50%;
-	margin: 0 auto;
+	
 	font-size: 2rem;
 	text-indent: 40px;
+	font-weight: bold;
 `;
 
 
