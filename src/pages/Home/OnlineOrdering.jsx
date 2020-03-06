@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import image from '../../assets/images/DELIVERY1.png';
 import {darken, lighten} from 'polished';
-
+import { Link } from 'react-router-dom';
 
 const imageEffect = keyframes`
 
@@ -142,7 +142,7 @@ function OnlineOrdering() {
                 <StyledImage src={image} play={play} />
                 <StyledTitle>ONLINE ORDERING</StyledTitle>                  
                 <StyledContent>Now Delivering! Order online and we'll be there in a few minutes with your favourite burgers!</StyledContent>
-                <StyledButton>ORDER AHEAD</StyledButton>
+                <Link to="/delivery"><StyledButton>ORDER AHEAD</StyledButton></Link>
             </StyledGridContainer>
         </StyledContainer>
     );

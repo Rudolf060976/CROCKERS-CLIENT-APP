@@ -18,7 +18,7 @@ function Header() {
 						<li><Link to="/location">LOCATION & HOURS</Link></li>
 						<li><Link to="/menu">MENU</Link></li>
 						<li><Link to="/">CONTACT</Link></li>
-						<li><Link to="/">ORDER NOW</Link></li>
+						<li><Link to="/delivery">ORDER NOW</Link></li>
 						<li><Link to="/">RESERVATIONS</Link></li>
 					</ul>
 				</nav>

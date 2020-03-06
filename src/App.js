@@ -8,11 +8,14 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Menu from './pages/Menu/Menu';
 import LocationHours from './pages/LocationHours/LocationHours';
+import DeliveryHome from './pages/Delivery/DeliveryHome';
+
 
 import SignUp from './components/SignUp/SignUp';
 import Login from './components/Login/Login';
 
 import * as queries from './local-state/queries';
+
 
 
 
@@ -35,6 +38,9 @@ function App() {
 				</Route>
 				<Route exact path="/location">
 					<LocationHours />					
+				</Route>
+				<Route exact path="/delivery">
+					<DeliveryHome />
 				</Route>
 			</Switch>
 		</>

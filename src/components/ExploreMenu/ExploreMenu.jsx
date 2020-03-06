@@ -42,7 +42,7 @@ function ExploreMenu() {
 			<div className="explore-menu-header">
 				<h4 className="explore-menu-title">EXPLORE OUR MENU</h4>
 				<Link to="/menu"><button className="explore-menu-full-menu-button">Full Menu</button></Link>
-				<Link to="/"><button className="explore-menu-order-now-button">Order Now</button></Link>
+				<Link to="/delivery"><button className="explore-menu-order-now-button">Order Now</button></Link>
 			</div>
 			{ menuGrid(itemsArray) }
 		</div>

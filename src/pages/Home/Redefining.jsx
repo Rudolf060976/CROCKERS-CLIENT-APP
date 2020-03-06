@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {rgba} from 'polished';
 import { lighten } from 'polished';
+import { Link } from 'react-router-dom';
 
 const StyledContainer = styled.div`
     height: 200px;
@@ -67,7 +68,7 @@ function Redefining() {
     return (
         <StyledContainer>
             <StyledTitle>Redefining the way the World eats Burgers</StyledTitle>            
-            <StyledButton>Order Now</StyledButton>
+            <Link to="/delivery"><StyledButton>Order Now</StyledButton></Link>
         </StyledContainer>
     );
 }

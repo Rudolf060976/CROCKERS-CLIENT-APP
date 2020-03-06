@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useMutation, useApolloClient } from '@apollo/client';
 import './SignUp.scss';
 import * as yup from 'yup';
@@ -39,7 +39,7 @@ const initialValues = {
 };
 
 const schema = yup.object().shape({
-    username: yup.string().required('Username is Required!').max(70),
+    username: yup.string().required('Username is Required!').max(100),
     email: yup.string().required('Email is Required!').max(100).email('Please Insert a valid email!'),
     firstname: yup.string().required('First Name is Required!').max(40),
     lastname: yup.string().required('Last Name is Required!').max(40),
@@ -94,8 +94,23 @@ function SignUp() {
     
     const client = useApolloClient();
 
+    const outerDiv = useRef(); // LO USAREMOS PARA DETECTAR CLICK FUERA DEL CONTENEDOR Y CERRAR EL MODAL
+
     const [closeModal] = useMutation(localMutations.SET_SIGNUP_MODAL_CLOSE);
-           
+    
+    useEffect(() => {
+        
+        document.addEventListener('click', handleClick, false);
+        
+
+        return () => {
+
+            document.removeEventListener('click', handleClick, false);
+            
+
+        };
+
+    }, []);
    
     const handleEyeClick = (e) => {
 
@@ -128,7 +143,28 @@ function SignUp() {
     };
 
 
-    const handleFormSubmit = async (values, options, setError, setErrorMessage, setSuccess, setNotificationTitle, setNotificationContent) => {
+    const handleClick = (e) => {
+
+        if (outerDiv.current.contains(e.target)) {
+
+            return;
+
+        }
+
+       handleClickOutside(e);
+
+    };
+
+    const handleClickOutside= (e) => {
+
+        e.preventDefault();
+
+        closeModal();
+
+    };
+
+
+    const handleFormSubmit = async (values, options) => {
 
         const {
             username,
@@ -232,8 +268,9 @@ function SignUp() {
 
         // SI TODO LO ANTERIOR ESTA BIEN AHORA ENVIAMOS EL MUTATION DEL SIGNUP CON LOS DATOS AL SERVIDOR
 
-        try {
+        // COMO ES MUTATION DEVUELVE UN OBJECTO  logInResponse QUE EN CASO DE ERROR YA TIENE EL CODE Y MESSAGE, NO ES NECESARIO USAR TRY CATCH
 
+      
                         
             const mutData = await client.mutate({
                 mutation: mutations.SIGN_UP,
@@ -259,35 +296,44 @@ function SignUp() {
                 }                
             });
 
-            // EL SERVIDOR NOS DEVUELVE UN TOKEN
+            // EL SERVIDOR NOS DEVUELVE UN OBJETO type logInResponse QUE CONTIENE UN token
 
             const {
                 data: {
                     signUp: {
+                        code,
+                        success,
+                        message,
                         token
                     }
                 }
             } = mutData;
            
+            if(!success) {
+
+                setErrorMessage(message);
+
+                setError(true);
+    
+                return;
+
+            }
+            
             // GUARDAMOS EL TOKEN EN EL LOCAL STORAGE, PARA QUE SEA ENVIADO EN EL SIGUIENTE REQUEST.
             
             localStorage.removeItem('x-token'); // BORRAMOS PRIMERO EL TOKEN PARA NO ENVIAR TOKEN AL SERVIDOR
             localStorage.setItem('x-token', token);
-       
-            
-        } catch (error) {
-            
 
-            setErrorMessage(error.message);
 
-            setError(true);
+            setNotificationTitle('Sign up completed!');
 
-            return;
+            setNotificationContent('Thank you for signing up. Enjoy our great services!');
 
-        }
+            setSuccess(true);              
 
         // AHORA CONSULTAMOS EL ME DEL SERVIDOR PARA QUE NOS ENVIE LOS DATOS BASICOS DEL USUARIO
 
+        /*
         try {
             
             const meData = await client.query({
@@ -352,7 +398,7 @@ function SignUp() {
 
             setError(true);
 
-        }       
+        }       */
       
 
     }
@@ -368,7 +414,7 @@ function SignUp() {
         <>  
             { success ? <SuccessModal image={imageChecked} title={notificationTitle} content={notificationContent} buttonTitle="Done" linkPath="/" handleButtonClick={()=> handleSuccessModalButtonClick()} /> : (
 
-                <div className="signup-form-container">
+                <div className="signup-form-container" ref={outerDiv}>
                     <span className="signup-form-close-button" onClick={handleCloseButtonClick} ><FontAwesomeIcon icon="window-close" size="lg" /></span>
                     <div id="signup-form">
                         <div id="signup-form-header">
@@ -385,7 +431,7 @@ function SignUp() {
                                 
                                 setTimeout(async () => {
                                     
-                                    await handleFormSubmit(values, options, setError, setErrorMessage, setSuccess, setNotificationTitle, setNotificationContent);
+                                    await handleFormSubmit(values, options);
 
 
                                     options.setSubmitting(false);

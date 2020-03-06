@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -48,8 +48,43 @@ const StyledClose = styled.span`
 
 
 function ZoomView({ item, handleCloseZoom }) {
+
+    const outerDiv = useRef();
+
+    useEffect(() => {
+        
+        document.addEventListener('click', handleClick, false);
+
+        return () => {
+
+            document.removeEventListener('click', handleClick, false);
+
+        };
+
+    }, []);
+
+
+    const handleClick = (e) => {
+
+        if (outerDiv.current.contains(e.target)) {
+
+            return;
+
+        }
+
+        handleClickOutside();
+
+    };
+
+    const handleClickOutside = (e) => {
+
+        handleCloseZoom();
+
+    };
+
+
     return (
-        <StyledContainer>
+        <StyledContainer ref={outerDiv}>
             <StyledImage src={item.imageURL} />
             <StyledClose onClick={() => handleCloseZoom()} ><FontAwesomeIcon icon="window-close" size="lg" /></StyledClose>            
         </StyledContainer>
