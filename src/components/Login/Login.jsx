@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as yup from 'yup';
 import { useMutation, useApolloClient } from '@apollo/client';
 import './Login.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CSSTransition } from 'react-transition-group';
 import { Formik, Form, Field } from 'formik';
-import { Link } from 'react-router-dom';
+
 
 import * as localMutations from '../../local-state/mutations';
 import * as mutations from '../../graphql/mutations';
@@ -60,8 +60,28 @@ function Login() {
 
     const client = useApolloClient();
 
+    const outerDiv = useRef(); // LO USAREMOS PARA DETECTAR CLICK FUERA DEL CONTENEDOR Y CERRAR EL MODAL
+
     const [closeModal] = useMutation(localMutations.SET_LOGIN_MODAL_CLOSE);
-           
+
+    const [openSignUp] = useMutation(localMutations.SET_SIGNUP_MODAL_OPEN);
+    
+    
+    useEffect(() => {
+        
+        document.addEventListener('click', handleClick, false);
+        
+
+        return () => {
+
+            document.removeEventListener('click', handleClick, false);
+            
+
+        };
+
+    }, []);
+
+
     const handleEyeClick = (e) => {
 
 		if (pswVisible) {
@@ -85,6 +105,13 @@ function Login() {
 		}
 
     };
+
+    const handleCloseButtonClick = (e) => {
+
+        closeModal();
+
+    };
+
 
 
     const handleFormSubmit = async (values, options) => {
@@ -179,9 +206,78 @@ function Login() {
         }
 
          // GUARDAMOS EL TOKEN EN EL LOCAL STORAGE, PARA QUE SEA ENVIADO EN EL SIGUIENTE REQUEST.
-         console.log('ESTOY AQUI: TOKEN: ', token);   
+        
          localStorage.removeItem('x-token'); // BORRAMOS PRIMERO EL TOKEN PARA NO ENVIAR TOKEN AL SERVIDOR
          localStorage.setItem('x-token', token);
+
+
+
+         // AHORA CONSULTAMOS EL ME DEL SERVIDOR PARA QUE NOS ENVIE LOS DATOS BASICOS DEL USUARIO
+
+        
+         try {
+            
+            const meData = await client.query({
+
+                query: queries.ME,
+                fetchPolicy: "no-cache"
+            });
+                      
+            if (meData.data && meData.data.me) {
+
+                const {
+                    data: {
+                        me: {
+                            id,
+                            username,
+                            email,
+                            firstname,
+                            lastname,
+                            role
+                        }
+                    }
+                } = meData;
+
+
+                // Y CON ESOS DATOS DEL USUARIO ACTUALIZAMOS EL ESTADO LOCAL ( CACHE )
+
+                await client.mutate({
+                    
+                    mutation: localMutations.SET_LOGIN_USER,
+                    variables: {
+                        input: {
+                            id,
+                            fullname: firstname + ' ' + lastname,
+                            username,
+                            email
+                        }
+                    }
+                });
+
+            } else {
+
+                await client.mutate({
+                    
+                    mutation: localMutations.SET_LOGOUT_USER
+
+                });
+
+                localStorage.removeItem('x-token');
+
+                setErrorMessage('There was a Problem with Server Response.');
+
+                setError(true);
+
+            }
+
+
+        } catch (error) {
+            
+            setErrorMessage(error.message);
+
+            setError(true);
+
+        }       
 
          // AHORA CERRAMOS EL FORMULARIO LOGIN
 
@@ -190,13 +286,42 @@ function Login() {
 
     }
 
+    const handleSignUpClick = (e) => {
+
+        openSignUp();
+
+        closeModal();
+
+    };
+
+
+    const handleClick = (e) => {
+
+        if (outerDiv.current.contains(e.target)) {
+
+            return;
+
+        }
+
+       handleClickOutside(e);
+
+    };
+
+    const handleClickOutside= (e) => {
+
+        e.preventDefault();
+
+        closeModal();
+
+    };
+
 
     return (
-        <div className="login-form-container">
-            <span className="login-form-close-button" onClick={handleCloseButtonClick} ><FontAwesomeIcon icon="window-close" size="lg" /></span>
+        <div id="login-form-container" ref={outerDiv}>
+            <span id="login-form-close-button" onClick={handleCloseButtonClick} ><FontAwesomeIcon icon="window-close" size="lg" /></span>
             <div id="signup-form">
                 <div id="login-form-header">
-					<h6>Client Login</h6>
+					<h6>Login to Continue</h6>
 				</div>
                 {responseError ? <ErrorAlert msg={errorMessage} /> : null}
                 <Formik
@@ -245,7 +370,7 @@ function Login() {
                     )}
                 </Formik>
                 <div id="login-form-footer">					
-					<p>You don't have an Account? Create one here: <Link to="/login">SignUp</Link></p>
+					<p>Don't you have an Account? Create one here: <a href="#" onClick={handleSignUpClick}>SignUp</a></p>
 				</div>        
             </div>       
        </div>

@@ -6,6 +6,7 @@ const initialState = {
 		isLoggedIn: false,
 		loggedUser: {
 			__typename: 'LocalUser',
+			id: '',
 			fullname: '',
 			username: '',
 			email: ''

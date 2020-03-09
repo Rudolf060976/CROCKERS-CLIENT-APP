@@ -1,0 +1,161 @@
+@import '../../mainStyles/globalVariables.scss';
+
+
+#login-form-container {
+
+    width: 50rem;
+	height: auto;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-left: -25rem;
+	margin-top: -15rem;
+	z-index: 1000;
+	background-color: white;
+	color: black;
+	font-family: Rubik, Verdana, Geneva, Tahoma, sans-serif;
+	border-radius: 10px;
+
+	border: solid 1px $Main-Green-Dark;
+	box-shadow: 0px 0px 8px $Main-Green-Dark;
+
+}
+
+#login-form-close-button {
+
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    background-color: transparent;
+    color: $Main-Orange-Dark;
+    font-size: 2rem;
+    transition: $mainTransition;
+    
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+
+}
+
+#signup-form {
+
+    padding: 40px;
+
+}
+
+#login-form-header {
+
+	padding: 20px 0 30px 0;
+
+	text-align: center;
+
+	h6 {
+
+		color: lighten($Main-Green-Dark,10%);
+		font-weight: bold;
+
+	}
+}
+
+.login-form-text-div {
+	
+	width: 80%;
+	margin: 0 auto;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 10px 0;
+	
+	
+	p {
+
+		label {
+
+			@include fontSize(1.2);
+			
+			
+		}
+
+	}
+
+	input {
+
+		@include fontSize(1.2);
+
+		width: 60%;
+		padding: 5px 10px;
+		border-radius: 5px;
+		
+
+		&:focus {
+			background-color: lighten($Main-Green-Dark, 10%);
+			color: white;
+		}
+
+		&::selection {
+			background-color: white;
+		}
+	}
+
+}
+
+
+#login-form-submit-button-container {
+
+	width: 80%;
+	margin: 0 auto;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	padding: 20px 0;
+
+	button {
+        width: 10rem;
+		@include fontSize(1.4);
+		padding: 5px 20px;
+		border-radius: 5px;
+		border: none;
+		background-color: $Main-Orange-Dark;
+		color: $Main-Blue-Dark;
+		transition: $mainTransition;
+
+		&:focus {
+			outline: 0;
+		}
+
+		&:hover {
+
+			color: $Main-Orange-Dark;
+			background-color: lighten($Main-Green-Dark,10%);
+			
+
+		}
+
+	}
+
+}
+
+
+#login-form-footer {
+
+	width: 80%;
+    margin: 0 auto;
+    padding-top: 1rem;
+
+	p {
+
+		@include fontSize(1);
+
+
+	}
+
+
+}
+

@@ -81,6 +81,17 @@ const StyledSubtitle = styled.p`
 
 `;
 
+const StyledLoginButtonContainer = styled.div`
+
+	background-color: transparent;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 5rem;
+
+`;
+
 const StyledButton = styled.button`
 
 	width: 10rem;
@@ -91,7 +102,7 @@ const StyledButton = styled.button`
 	border: none;
 	color: ${props => props.theme.colorBrownDark};
 	transition: ${props => props.theme.mainTransition};
-	margin-top: 20px;
+	
 
 	&:focus {
 		outline: none;
@@ -114,13 +125,13 @@ const StyledSignUpContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	padding: 25px 0;
-	
+	height: 5rem;
 
 `;
 
 const StyledSpan = styled.span`
 
-	font-size: 1.6rem;
+	font-size: 1.5rem;
 
 `;
 
@@ -151,16 +162,18 @@ const StyledSignUpButton = styled.button`
 `;
 
 
-function SpecialBanner({ title, subtitle, buttonTitle, handleButtonClick, animate }) {
+function SpecialBanner({ title, subtitle, buttonTitle, handleButtonClick, handleButton2Click, animate }) {
 	return (
 		<StyledContainer animate={animate}>
 			<StyledTitle>{ title }</StyledTitle>
 			<StyledSeparator animate={animate} />
 			<StyledSubtitle>{ subtitle }</StyledSubtitle>
-			<StyledButton onClick={(e) => handleButtonClick()}>{buttonTitle}</StyledButton>
+			<StyledLoginButtonContainer>
+				<StyledButton onClick={(e) => handleButtonClick()}>{buttonTitle}</StyledButton>
+			</StyledLoginButtonContainer>			
 			<StyledSignUpContainer>
 				<StyledSpan>Don't you have an Account?</StyledSpan>
-				<StyledSignUpButton>Sign Up</StyledSignUpButton>
+				<StyledSignUpButton onClick={(e) => handleButton2Click()}>Sign Up</StyledSignUpButton>
 			</StyledSignUpContainer>
 		</StyledContainer>
 	)

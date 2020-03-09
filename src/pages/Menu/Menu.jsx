@@ -13,7 +13,7 @@ function Menu() {
 		title: "OUR MENU",
 		subtitle: "More of Everything you want",
 		buttonTitle: "ORDER NOW",
-		linkTo: "/"
+		linkTo: "/delivery"
 	};
 
     return (

@@ -11,17 +11,14 @@ const resolvers = {
 	Mutation: {
 		setLogInUser: (parent, { input }, { cache }) => {
 
-			const { fullname, username, email } = input;
-
-			const { userState } = cache.readQuery({
-				query: queries.GET_USER_STATE
-			});
-
+			const { id, fullname, username, email } = input;
+		
 			const newState = {
 				__typename: 'UserState',
 				isLoggedIn: true,
 				loggedUser: {
 					__typename: 'LocalUser',
+					id,
 					fullname,
 					username,
 					email

@@ -97,6 +97,8 @@ function SignUp() {
     const outerDiv = useRef(); // LO USAREMOS PARA DETECTAR CLICK FUERA DEL CONTENEDOR Y CERRAR EL MODAL
 
     const [closeModal] = useMutation(localMutations.SET_SIGNUP_MODAL_CLOSE);
+
+    const [openLogIn] = useMutation(localMutations.SET_LOGIN_MODAL_OPEN);
     
     useEffect(() => {
         
@@ -324,16 +326,11 @@ function SignUp() {
             localStorage.removeItem('x-token'); // BORRAMOS PRIMERO EL TOKEN PARA NO ENVIAR TOKEN AL SERVIDOR
             localStorage.setItem('x-token', token);
 
-
-            setNotificationTitle('Sign up completed!');
-
-            setNotificationContent('Thank you for signing up. Enjoy our great services!');
-
-            setSuccess(true);              
+         
 
         // AHORA CONSULTAMOS EL ME DEL SERVIDOR PARA QUE NOS ENVIE LOS DATOS BASICOS DEL USUARIO
 
-        /*
+        
         try {
             
             const meData = await client.query({
@@ -365,6 +362,7 @@ function SignUp() {
                     mutation: localMutations.SET_LOGIN_USER,
                     variables: {
                         input: {
+                            id,
                             fullname: firstname + ' ' + lastname,
                             username,
                             email
@@ -387,9 +385,13 @@ function SignUp() {
 
                 });
 
+                localStorage.removeItem('x-token');
+
+                setErrorMessage('There was a Problem with Server Response.');
+
+                setError(true);
 
             }
-
                       
 
         } catch (error) {
@@ -398,7 +400,7 @@ function SignUp() {
 
             setError(true);
 
-        }       */
+        }       
       
 
     }
@@ -409,10 +411,18 @@ function SignUp() {
 
     };
 
+    const handleLogInClick = (e) => {
+
+        openLogIn();
+
+        closeModal();
+
+    };
+
 
     return (
         <>  
-            { success ? <SuccessModal image={imageChecked} title={notificationTitle} content={notificationContent} buttonTitle="Done" linkPath="/" handleButtonClick={()=> handleSuccessModalButtonClick()} /> : (
+            { success ? <SuccessModal image={imageChecked} title={notificationTitle} content={notificationContent} buttonTitle="Done" linkPath="/delivery" handleButtonClick={()=> handleSuccessModalButtonClick()} /> : (
 
                 <div className="signup-form-container" ref={outerDiv}>
                     <span className="signup-form-close-button" onClick={handleCloseButtonClick} ><FontAwesomeIcon icon="window-close" size="lg" /></span>
@@ -598,7 +608,7 @@ function SignUp() {
                         </Formik>
                         <div id="signup-form-footer">
 							<p>By creating an account, I agree to the <Link to="/">Terms of Service</Link>, <Link to="/">Privacy Policy</Link>, and <Link to="/">Cookie Policy</Link></p>
-							<p>Already have an account? <Link to="/login">Log in</Link></p>
+							<p>Already have an account? <a href="#" onClick={handleLogInClick}>Log in</a></p>
 						</div>
                     </div>                
                 </div>

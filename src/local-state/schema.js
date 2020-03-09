@@ -22,12 +22,14 @@ const schema = gql`
 	}
 
 	extend input inputUser {
+		id: ID!
 		fullname: String!
 		username: String!
 		email: String!
 	}
 
 	extend type LocalUser {
+		id: ID!
 		fullname: String!
 		username: String!
 		email: String!
