@@ -30,6 +30,13 @@ export const GET_MENU_ITEMS_SHOW_AT_HOME = gql`
 export const GET_MENU_ITEMS_BY_GROUP = gql`
 	query GetMenuItemsByGroup($groupId: ID!, $first: Int, $last: Int, $after: String, $before: String) {
 		getMenuItemsByGroup(groupId: $groupId, first: $first, last:$last, after:$after, before:$before) {
+			totalCount
+			pageInfo {
+				endCursor
+        		hasNextPage
+        		hasPreviousPage
+        		startCursor
+			}
 			nodes {
 				id
 				name

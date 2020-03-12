@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Home.scss';
 import homeImage from '../../assets/images/main.jpg';
 
@@ -13,6 +13,10 @@ import HomeGallery from '../../components/HomeGallery/HomeGallery';
 import Footer from '../../components/layout/Footer/Footer';
 
 function Home() {
+	
+	useEffect(() => {
+        window.scrollTo(0,0);
+    }, [])
 
 	const bannerProps = {
 		title: "ENJOY THE CROCKERS EXPERIENCE",

@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useQuery, useMutation, useApolloClient } from '@apollo/client';
 import './DeliveryHome.scss';
 
 import Header from '../../components/layout/Header/Header';
 import SpecialHero from './SpecialHero';
-import Hero from '../../components/layout/Hero/Hero';
+import Hero from './Hero';
 
 import DeliveryContent from './DeliveryContent/DeliveryContent';
 
@@ -16,6 +16,8 @@ import * as queryFunctions from '../../Utilities/queryFunctions';
 import deliveryImage from '../../assets/images/Delivery_Main.jpg';
 
 function DeliveryHome() {
+
+    const scrollToRef = useRef();
 
     const client = useApolloClient();
     
@@ -35,7 +37,8 @@ function DeliveryHome() {
         // ENVIAMOS UN ME AL SERVIDOR PARA VERIFICAR SI ESTAMOS AUTENTICADOS Y ACTUALIZAMOS EL LOCAL STATE
 
         queryFunctions.CALL_ME_AND_UPDATE_LOCAL_STATE(client);
-   
+        
+        window.scrollTo(0,0);
         
     }, []);  // SOLO SE EJECUTA AL MONTAR EL COMPONENTE
 
@@ -49,6 +52,14 @@ function DeliveryHome() {
     const handleSpecialBannerButton2Click = () => {
 
         openSignUp();
+
+    };
+
+    const handleBannerButtonClick = () => {
+        console.log('ESTOY AQUI');
+        const scrollPosY = scrollToRef.current.getBoundingClientRect().top;
+
+        window.scrollTo(0,scrollPosY);
 
     };
 
@@ -67,8 +78,8 @@ function DeliveryHome() {
         bannerProps = {
             title: "DELIVERY AREA",
             subtitle: "Welcome back " + loggedUser.fullname + "!",
-            buttonTitle: "ORDER NOW",
-            linkTo: "#content-point"
+            buttonTitle: "START NOW",
+            handleButtonClick: handleBannerButtonClick
         };
 
     }
@@ -81,7 +92,7 @@ function DeliveryHome() {
             <Header />            
             { isLoggedIn ? <Hero imageObject={deliveryImage} animate bannerProps={bannerProps} /> :
             <SpecialHero imageObject={deliveryImage} animate bannerProps={specialBannerProps} bottomBorderColor='#163237' /> }
-            { isLoggedIn ? <DeliveryContent /> : null }                 
+            { isLoggedIn ? <DeliveryContent refDiv={scrollToRef} /> : null }                 
         </main>
     );
 

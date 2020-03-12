@@ -101,7 +101,7 @@ function MenuItem({ item, handleOpenZoom }) {
         <StyledContainer>
             <StyledImageContainer>
                 <StyledImage src={item.imageURL}/>
-                <StyledPriceSpan><Badge variant="warning">$ {item.price}</Badge> </StyledPriceSpan>
+                <StyledPriceSpan><Badge variant="warning">$ {item.price.toFixed(2)}</Badge> </StyledPriceSpan>
                 <StyledZoomSpan onClick={handleZoomClick}><FontAwesomeIcon icon="search-plus" size="lg" /></StyledZoomSpan>                
             </StyledImageContainer>            
             <StyledTitle>{ item.name }</StyledTitle>

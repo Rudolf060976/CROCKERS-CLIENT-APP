@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import './LocationHours.scss';
 
@@ -10,6 +10,10 @@ import locationImage from '../../assets/images/location.jpg';
 
 
 function LocationHours() {
+
+    useEffect(() => {
+        window.scrollTo(0,0);
+    }, [])
 
     const bannerProps = {
 		title: "LOCATION & HOURS",

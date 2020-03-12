@@ -1,15 +1,22 @@
 import React from 'react';
 import './DeliveryContent.scss';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 
 import UserStatusBox from '../UserStatusBox/UserStatusBox';
 
 import * as localQueries from '../../../local-state/queries';
+import * as localMutations from '../../../local-state/mutations';
+
+import DeliveryGroups from '../DeliveryGroups/DeliveryGroups';
 
 
-function DeliveryContent() {
+
+
+function DeliveryContent({ refDiv }) {
 
     const {data: { userState }} = useQuery(localQueries.GET_USER_STATE);
+
+    const [logOut] = useMutation(localMutations.SET_LOGOUT_USER);
 
     const {
         isLoggedIn,
@@ -19,7 +26,9 @@ function DeliveryContent() {
     const handleLogOut = () => {
 
 
+        logOut();
 
+        localStorage.removeItem('x-token');
 
     };
 
@@ -31,9 +40,9 @@ function DeliveryContent() {
     };
 
     return (
-        <div id="content-point" className="delivery-content-container">
+        <div id="content-point" className="delivery-content-container" ref={refDiv}>
                <UserStatusBox user={loggedUser} handleLogoutButton={handleLogOut} handleCartButton={handleCart} />
-               HELLO!!!
+               <DeliveryGroups />
         </div>
     );
 }

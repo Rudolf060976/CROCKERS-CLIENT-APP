@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Menu.scss';
 import Header from '../../components/layout/Header/Header';
 import menuImage from '../../assets/images/menu2.jpg';
@@ -8,6 +8,10 @@ import MenuGroup from './MenuGroup';
 
 
 function Menu() {
+
+    useEffect(() => {
+        window.scrollTo(0,0);
+    }, [])
 
     const bannerProps = {
 		title: "OUR MENU",
