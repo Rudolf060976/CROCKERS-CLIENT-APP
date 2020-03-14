@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { lighten } from 'polished';
 
 
 const StyledContainer = styled.li`
 
-    width: 60%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 15px 0;
+    padding: 10px 0;
     
 `;
 
@@ -71,12 +71,18 @@ const StyledDescription = styled.div`
 const StyledName = styled.p`
 
     font-size: 1.2rem;
+    font-family: 'Lilita One', Verdana, Geneva, Tahoma, sans-serif;
+    color: ${props => props.theme.colorBrownDark};
+    letter-spacing: 1px;
+    /* font-weight: bold; */
     
 `;
 
 const StyledDetails = styled.p`
 
-    font-size: 1rem;
+    font-size: 1.2rem;
+    font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
 
 `;
 
@@ -88,6 +94,11 @@ const StyledPrice = styled.p`
     font-size: 1.2rem;
 
     padding: 0 20px;
+
+    font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+
+    color: ${props => props.theme.colorBrownDark};
 `;
 
 
@@ -95,9 +106,9 @@ const StyledButton = styled.button`
 
     flex: 0 0 40px;
 
-    background-color: ${props => props.theme.colorMainOrangeDark };
+    background-color: ${props => lighten(.10, props.theme.colorMainGreenDark) };
 
-    color: ${props => props.theme.colorMainBlueDark };
+    color: ${props => props.theme.colorMainBeigeDark };
 
     border: 0;
 
@@ -109,6 +120,10 @@ const StyledButton = styled.button`
 
     transition: ${props => props.theme.mainTransition};
 
+    font-family: 'Rubik', Verdana, Geneva, Tahoma, sans-serif;
+    
+    font-weight: bold;
+
     &:focus {
 
         outline: 0;
@@ -117,9 +132,9 @@ const StyledButton = styled.button`
 
     &:hover {
 
-        background-color: ${props => props.theme.colorMainGreenDark };
+        background-color: ${props => props.theme.colorMainOrangeDark };
 
-        color: ${props => props.theme.colorMainOrangeDark };
+        color: ${props => props.theme.colorBrownDark };
 
     }
 

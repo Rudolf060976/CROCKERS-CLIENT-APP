@@ -75,10 +75,15 @@ const StyledContent = styled.p`
     font-weight: bold;
 `;
 
-const StyledButton = styled.button`
+const StyledButtonContainer = styled.div`
 
     grid-area: button;
     justify-self: center;
+
+`;
+
+const StyledButton = styled.button`
+   
     
     width: 14rem;
     font-size: 1.6rem;
@@ -100,7 +105,7 @@ const StyledButton = styled.button`
 		/* border: solid 1px ${props => props.theme.colorMainBlueDark}; */
 		transform: scale(1.1);
     }
-
+   
 `;
 
 function OnlineOrdering() {
@@ -142,7 +147,9 @@ function OnlineOrdering() {
                 <StyledImage src={image} play={play} />
                 <StyledTitle>ONLINE ORDERING</StyledTitle>                  
                 <StyledContent>Now Delivering! Order online and we'll be there in a few minutes with your favourite burgers!</StyledContent>
-                <Link to="/delivery"><StyledButton>ORDER AHEAD</StyledButton></Link>
+                <StyledButtonContainer>
+                    <Link to="/delivery"><StyledButton>ORDER AHEAD</StyledButton></Link>
+                </StyledButtonContainer>               
             </StyledGridContainer>
         </StyledContainer>
     );

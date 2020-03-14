@@ -44,6 +44,10 @@ const StyledContent = styled.span`
 
     font-size: 1.2rem;
 
+    font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
+
+    font-weight: bold;
+
 `;
 
 

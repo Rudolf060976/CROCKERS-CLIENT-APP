@@ -55,7 +55,10 @@ const StyledPriceSpan = styled.span`
     position: absolute;
     top: 85%;
     left: -2px;
-    font-size: 1.5rem;    
+    font-size: 1.5rem;  
+    font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+   
 `;
 
 const StyledZoomSpan = styled.span`

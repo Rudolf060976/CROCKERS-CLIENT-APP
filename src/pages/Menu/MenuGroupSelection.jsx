@@ -41,6 +41,9 @@ const StyledTitle = styled.h4`
     width: 30rem;
     text-align: center;
     color: ${props => rgba(props.theme.colorMainBlueDark,0.9)};
+
+    font-family: 'Lilita One', Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: 2px;
 `;
 
 const StyledSeparator = styled.div`

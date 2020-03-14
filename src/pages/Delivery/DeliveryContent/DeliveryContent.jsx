@@ -41,8 +41,8 @@ function DeliveryContent({ refDiv }) {
 
     return (
         <div id="content-point" className="delivery-content-container" ref={refDiv}>
-               <UserStatusBox user={loggedUser} handleLogoutButton={handleLogOut} handleCartButton={handleCart} />
-               <DeliveryGroups />
+            <UserStatusBox user={loggedUser} handleLogoutButton={handleLogOut} handleCartButton={handleCart} />
+            <DeliveryGroups />                            
         </div>
     );
 }

@@ -14,14 +14,22 @@ import MenuItem from '../MenuItem/MenuItem';
 import NavigationControl from '../../../components/NavigationControl/NavitationControl';
 
 const StyledContainer = styled.div`
-
-    width: 70%;
-    margin: 0 auto;
     
+    flex: 1 1 60%;
+        
     height: 60rem;
+     
+    display: flex;
+
+    justify-content: center;
 
 `;
 
+const StyledContainer2 = styled.div`
+
+    flex: 0 1 80%;
+
+`;
 
 const StyledList = styled.ul`
 
@@ -160,11 +168,13 @@ function DeliveryGroupDetails({ groupId, handleOpenZoom }) {
     };
 
     return (
-        <StyledContainer>
-            <StyledList>
-                { itemsContent } 
-            </StyledList>
-            <NavigationControl currentPage={currentPage} totalPages={totalPages} handlePrevClick={handlePreviosPageClick} handleNextClick={handleNextPageClick} disablePrev={!hasPreviousPage} disableNext={!hasNextPage} />
+        <StyledContainer>  
+                <StyledContainer2>
+                    <StyledList>
+                        { itemsContent } 
+                    </StyledList>
+                    <NavigationControl currentPage={currentPage} totalPages={totalPages} handlePrevClick={handlePreviosPageClick} handleNextClick={handleNextPageClick} disablePrev={!hasPreviousPage} disableNext={!hasNextPage} />           
+                </StyledContainer2>                 
         </StyledContainer>
     );
 }

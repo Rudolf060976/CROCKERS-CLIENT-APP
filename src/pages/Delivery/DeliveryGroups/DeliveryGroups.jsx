@@ -8,13 +8,15 @@ import DeliveryGroupDetails from '../DeliveryGroupDetails/DeliveryGroupDetails';
 
 import * as queries from '../../../graphql/queries';
 
+import * as localQueries from '../../../local-state/queries';
+
 import ZoomView from '../../Menu/ZoomView';
 
 import Loading from '../../../components/layout/Loading/Loading';
 
 import FetchError from '../../../components/layout/FetchError/FetchError';
 
-
+import MiniCart from '../MiniCart/MiniCart';
 
 
 const StyledContainer = styled.div`
@@ -22,6 +24,13 @@ const StyledContainer = styled.div`
     width: 100%;
     position: relative;
 
+`;
+
+const StyledSplitContainer = styled.div`
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 `;
 
 
@@ -32,6 +41,8 @@ function DeliveryGroups() {
     const [zoomViewActive, setZoomViewActive] = useState(false);
 
     const [zoomViewItem, setZoomViewItem] = useState(null);
+
+    const {data: { userState:{ loggedUser } }} = useQuery(localQueries.GET_USER_STATE);
 
     const {loading, error, data} = useQuery(queries.GET_ALL_MENU_GROUPS);
 
@@ -65,7 +76,14 @@ function DeliveryGroups() {
         <StyledContainer>
             { zoomViewActive ? <ZoomView item={zoomViewItem} handleCloseZoom={handleCloseZoomView} /> : null }
             <DeliveryGroupSelection groups={groupsArray} handleSelected={handleSelectedGroup} />
-            { selectedGroupId ? <DeliveryGroupDetails groupId={selectedGroupId} handleOpenZoom={handleOpenZoomView} /> : null }  
+            { selectedGroupId ?
+                (
+                    <StyledSplitContainer>
+                        <DeliveryGroupDetails groupId={selectedGroupId} handleOpenZoom={handleOpenZoomView} /> 
+                        <MiniCart user={loggedUser} />
+                    </StyledSplitContainer>
+                ) : null
+            }        
         </StyledContainer>
     );
 }

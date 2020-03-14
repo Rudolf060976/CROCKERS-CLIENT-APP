@@ -93,3 +93,32 @@ export const GET_IF_USER_EXISTS = gql`
 		}
 	}
 `;
+
+export const GET_CART = gql`
+	query GetCart($userId: ID!) {
+		getCart(userId: $userId) {
+			id	
+			menuItem {
+				id
+				name
+				image
+			}
+			quantity
+			price
+			tax
+			itemTotal
+		}
+	}
+
+`;
+
+export const GET_CART_TOTALS = gql`
+	query GetCartTotals($userId: ID!) {
+		getCartTotals(userId: $userId) {
+			count
+			subtotal
+			tax
+			total
+		}
+	}
+`;
