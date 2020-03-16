@@ -18,6 +18,9 @@ import FetchError from '../../../components/layout/FetchError/FetchError';
 
 import MiniCart from '../MiniCart/MiniCart';
 
+import OrderModal from '../OrderModal/OrderModal';
+
+
 
 const StyledContainer = styled.div`
 
@@ -42,9 +45,15 @@ function DeliveryGroups() {
 
     const [zoomViewItem, setZoomViewItem] = useState(null);
 
+    const [orderItemModalOpen, setOrderItemModalOpen] = useState(false);
+    
+    const [orderItem, setOrderItem] = useState(null);
+
     const {data: { userState:{ loggedUser } }} = useQuery(localQueries.GET_USER_STATE);
 
     const {loading, error, data} = useQuery(queries.GET_ALL_MENU_GROUPS);
+
+   
 
     if (loading) return <Loading />;
 	if (error) return <FetchError />;
@@ -71,15 +80,32 @@ function DeliveryGroups() {
 
     };
 
+    const handleOrderButtonClick = (item) => {
+
+        setOrderItem(item);
+
+        setOrderItemModalOpen(true);
+
+    };
+
+    const handleCloseOrder = () => {
+
+        setOrderItem(null);
+
+        setOrderItemModalOpen(false);
+
+    };
+
 
     return (
         <StyledContainer>
+            { orderItemModalOpen ? <OrderModal item={orderItem} handleClose={handleCloseOrder} /> : null }
             { zoomViewActive ? <ZoomView item={zoomViewItem} handleCloseZoom={handleCloseZoomView} /> : null }
             <DeliveryGroupSelection groups={groupsArray} handleSelected={handleSelectedGroup} />
             { selectedGroupId ?
                 (
                     <StyledSplitContainer>
-                        <DeliveryGroupDetails groupId={selectedGroupId} handleOpenZoom={handleOpenZoomView} /> 
+                        <DeliveryGroupDetails groupId={selectedGroupId} handleOpenZoom={handleOpenZoomView} handleOrderButtonClick={handleOrderButtonClick} /> 
                         <MiniCart user={loggedUser} />
                     </StyledSplitContainer>
                 ) : null

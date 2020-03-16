@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Badge } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { lighten } from 'polished';
 
 
 const StyledContainer = styled.div`
@@ -41,11 +42,21 @@ const StyledTitle = styled.h6`
     text-align: center;
     padding: 20px 0;
 
+    font-size: 1.6rem;
+    font-family: 'Lilita One', Verdana, Geneva, Tahoma, sans-serif;
+    color: ${props => props.theme.colorBrownDark};
+    letter-spacing: 1px;
+
 `;
 
 const StyledDescription = styled.p`
 
     font-size: 1.2rem;
+    font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+
+    color: ${props => lighten(.2, 'black') };
+
 
 `;
 

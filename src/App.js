@@ -14,14 +14,14 @@ import DeliveryHome from './pages/Delivery/DeliveryHome';
 import SignUp from './components/SignUp/SignUp';
 import Login from './components/Login/Login';
 
-import * as queries from './local-state/queries';
+import * as localQueries from './local-state/queries';
 
 
 
 
 function App() {
 
-	const {data: { iuState }} = useQuery(queries.GET_IU_STATE);
+	const {data: { iuState }} = useQuery(localQueries.GET_IU_STATE);
 	
 	const { signUpModalOpen, logInModalOpen } = iuState;
 

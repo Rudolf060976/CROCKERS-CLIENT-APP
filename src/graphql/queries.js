@@ -122,3 +122,17 @@ export const GET_CART_TOTALS = gql`
 		}
 	}
 `;
+
+
+export const GET_EXTRAS_BY_ITEM = gql`
+	query GetExtrasByItem($itemId: ID!) {
+		getExtrasByItem(itemId: $itemId) {
+			id 
+			group
+			name
+			price
+		}
+	}
+
+`;
+

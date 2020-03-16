@@ -13,7 +13,7 @@ const schema = gql`
 		signUpModalOpen: Boolean
 		signUpModalClose: Boolean
 		logInModalOpen: Boolean
-		logInModalClose: Boolean	
+		logInModalClose: Boolean			
 	}
 
 	extend type UserState {

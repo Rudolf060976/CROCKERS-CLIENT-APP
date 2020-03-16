@@ -38,7 +38,7 @@ const StyledList = styled.ul`
 `;
 
 
-function DeliveryGroupDetails({ groupId, handleOpenZoom }) {
+function DeliveryGroupDetails({ groupId, handleOpenZoom, handleOrderButtonClick }) {
 
     const [currentPage, setCurrentPage] = useState(1);
      
@@ -93,7 +93,7 @@ function DeliveryGroupDetails({ groupId, handleOpenZoom }) {
     const itemsContent = itemsArray.map(item => {
 
         return (
-            <MenuItem key={item.id} item={item} handleOpenZoom={handleOpenZoom} />
+            <MenuItem key={item.id} item={item} handleOpenZoom={handleOpenZoom} handleOrderButtonClick={handleOrderButtonClick} />
         );
 
     });

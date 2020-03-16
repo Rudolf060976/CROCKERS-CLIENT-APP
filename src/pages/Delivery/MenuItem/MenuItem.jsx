@@ -70,7 +70,7 @@ const StyledDescription = styled.div`
 
 const StyledName = styled.p`
 
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     font-family: 'Lilita One', Verdana, Geneva, Tahoma, sans-serif;
     color: ${props => props.theme.colorBrownDark};
     letter-spacing: 1px;
@@ -83,6 +83,8 @@ const StyledDetails = styled.p`
     font-size: 1.2rem;
     font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
+
+    color: ${props => lighten(.2, 'black') };
 
 `;
 
@@ -143,7 +145,7 @@ const StyledButton = styled.button`
 `;
 
 
-function MenuItem({ item, handleOpenZoom }) {
+function MenuItem({ item, handleOpenZoom, handleOrderButtonClick }) {
 
 
     const handleZoomClick = (e) => {
@@ -163,7 +165,7 @@ function MenuItem({ item, handleOpenZoom }) {
                 <StyledDetails>{item.description}</StyledDetails>
             </StyledDescription>
             <StyledPrice>Price: $ {item.price.toFixed(2)}</StyledPrice>
-            <StyledButton>ORDER</StyledButton>
+            <StyledButton onClick={(e) => handleOrderButtonClick(item)}>ORDER</StyledButton>
         </StyledContainer>
     );
 }

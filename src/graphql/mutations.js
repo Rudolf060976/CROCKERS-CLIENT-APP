@@ -30,6 +30,7 @@ export const ADD_CART_LINE = gql`
             code
             success
             message
+            cartLine
         }
     }
 `;
@@ -64,4 +65,37 @@ export const UPDATE_CART_LINE = gql`
         }
     }
     
+`;
+
+export const ADD_MANY_EXTRAS_TO_CART = gql`
+    mutation AddManyExtrasToCart($cartLineId: ID!, $extrasIdArray: [ID!]!) {
+        addManyExtrasToCart(cartLineId: $cartLineId, extrasIdArray: $extrasIdArray) {
+            code
+            success
+            message
+        }
+    }
+
+`;
+
+export const REMOVE_MANY_EXTRAS_FROM_CART = gql`
+    mutation RemoveManyExtrasFromCart($cartLineId: ID!, $extrasIdArray: [ID!]!) {
+        removeManyExtrasFromCart(cartLineId: $cartLineId, extrasIdArray: $extrasIdArray) {
+            code
+            success
+            message
+        }
+    }
+
+`;
+
+export const REMOVE_ALL_EXTRAS_FROM_CART = gql`
+    mutation RemoveAllExtrasFromCart($cartLineId: ID!) {
+        removeAllExtrasFromCart(cartLineId: $cartLineId) {
+            code
+            success
+            message
+        }
+    }
+
 `;
