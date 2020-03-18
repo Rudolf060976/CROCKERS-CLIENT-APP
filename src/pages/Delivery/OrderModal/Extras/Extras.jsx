@@ -192,9 +192,9 @@ function Extras({ itemId, handleSelectedExtra }) {
 
     const extrasArray = data.getExtrasByItem;
 
-    const handleSelected = (extraId, e) => {
+    const handleSelected = (extra, e) => {
 
-        handleSelectedExtra(extraId, e.target.checked);
+        handleSelectedExtra(extra, e.target.checked);
 
     };       
 
@@ -219,7 +219,7 @@ function Extras({ itemId, handleSelectedExtra }) {
 
         return (
             <StyledExtraItemContainer key={extra.id} >
-                <StyledInput type="checkbox" onChange={(e) => handleSelected(extra.id, e)}/>
+                <StyledInput type="checkbox" onChange={(e) => handleSelected(extra, e)}/>
                 <StyledLabel>{extra.name}</StyledLabel>
                 <StyledPrice>[ + $ {extra.price} ]</StyledPrice>
             </StyledExtraItemContainer>            

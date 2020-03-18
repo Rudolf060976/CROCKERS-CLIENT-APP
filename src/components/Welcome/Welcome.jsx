@@ -16,6 +16,9 @@ const StyledContainer = styled.div`
 const StyledTitle = styled.h3`
 
 	padding: 20px 0;
+
+	font-family: "Lilita One", Verdana, Geneva, Tahoma, sans-serif;
+	letter-spacing: 2px;
 	
 `;
 

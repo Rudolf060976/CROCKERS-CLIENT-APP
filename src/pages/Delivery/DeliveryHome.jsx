@@ -56,7 +56,7 @@ function DeliveryHome() {
     };
 
     const handleBannerButtonClick = () => {
-        console.log('ESTOY AQUI');
+        
         const scrollPosY = scrollToRef.current.getBoundingClientRect().top;
 
         window.scrollTo(0,scrollPosY);

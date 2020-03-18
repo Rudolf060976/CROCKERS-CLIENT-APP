@@ -16,9 +16,9 @@ export const CALL_ME_AND_UPDATE_LOCAL_STATE = async (client) => {
 			me
 		}
 	} = data;
-	console.log('DATA :', data);
+	
 	if (!me) {
-		console.log('ESTOY AQUI!!!');
+		
 		await client.mutate({
 
 			mutation: localMutations.SET_LOGOUT_USER

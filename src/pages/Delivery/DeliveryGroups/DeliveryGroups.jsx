@@ -99,7 +99,7 @@ function DeliveryGroups() {
 
     return (
         <StyledContainer>
-            { orderItemModalOpen ? <OrderModal item={orderItem} handleClose={handleCloseOrder} /> : null }
+            { orderItemModalOpen && orderItem ? <OrderModal item={orderItem} handleClose={handleCloseOrder} /> : null }
             { zoomViewActive ? <ZoomView item={zoomViewItem} handleCloseZoom={handleCloseZoomView} /> : null }
             <DeliveryGroupSelection groups={groupsArray} handleSelected={handleSelectedGroup} />
             { selectedGroupId ?

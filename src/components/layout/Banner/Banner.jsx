@@ -58,6 +58,9 @@ const StyledTitle = styled.h1`
 
 	font-size: 4rem;
 	word-spacing: 5px;
+
+	
+
 `;
 
 const StyledSeparator = styled.div`

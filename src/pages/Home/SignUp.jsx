@@ -24,6 +24,9 @@ const StyledTitle = styled.h4`
 
     color: ${props => props.theme.colorMainBrownSand};
 
+    font-family: "Lilita One", Verdana, Geneva, Tahoma, sans-serif;
+	letter-spacing: 2px;
+
 `;
 
 const StyledButton = styled.button`

@@ -62,6 +62,9 @@ const StyledTitle = styled.h4`
 
     color: ${props => darken(0.1, props.theme.colorMainOrangeDark)};
 
+    font-family: "Lilita One", Verdana, Geneva, Tahoma, sans-serif;
+	letter-spacing: 2px;
+
 `;
 
 const StyledContent = styled.p`

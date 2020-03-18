@@ -26,11 +26,19 @@ export const LOG_IN = gql`
 
 export const ADD_CART_LINE = gql`
     mutation AddCartLine($input: cartLineInput!) {
-        AddCartLine(input: $input) {
+        addCartLine(input: $input) {
             code
             success
             message
-            cartLine
+            cartLine {
+                id 
+                user
+                menuItem
+                quantity
+                price
+                tax
+                comments
+            }
         }
     }
 `;
@@ -62,6 +70,15 @@ export const UPDATE_CART_LINE = gql`
             code
             success
             message
+            cartLine {
+                id 
+                user
+                menuItem
+                quantity
+                price
+                tax
+                comments
+            }
         }
     }
     
