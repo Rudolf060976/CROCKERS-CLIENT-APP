@@ -42,6 +42,25 @@ const StyledGridContainer = styled.div`
     
     gap: 10px;
 
+    @media (max-width: 1800px) {
+
+        width: 70%;
+
+    }
+
+    @media (max-width: 1500px) {
+
+        width: 80%;
+
+    }
+
+    @media (max-width: 1300px) {
+
+        width: 90%;
+        gap: 10px 30px;
+
+    }
+
 `;
 
 const StyledImage = styled.img`
@@ -52,7 +71,13 @@ const StyledImage = styled.img`
 
     animation-name: ${props => props.play ? imageEffect : 'none'};
     animation-duration: 1s;
-    animation-fill-mode: forwards;   
+    animation-fill-mode: forwards; 
+    
+    @media (max-width: 900px) {
+
+        max-width: 200px;
+
+    }
     
 `;
 
@@ -107,6 +132,12 @@ const StyledButton = styled.button`
 		background-color: ${props => props.theme.colorMainOrangeDark};
 		/* border: solid 1px ${props => props.theme.colorMainBlueDark}; */
 		transform: scale(1.1);
+    }
+
+    @media (max-width: 550px) {
+
+        font-size: 1.4rem;
+
     }
    
 `;

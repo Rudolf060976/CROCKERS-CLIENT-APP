@@ -19,7 +19,8 @@ const StyledContainer = styled.div`
 
 	width: 100%;
 	overflow: hidden;
-	margin-bottom: -8%;
+	
+	position: relative;
 	
 `;
 

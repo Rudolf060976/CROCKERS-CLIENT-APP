@@ -1,7 +1,22 @@
 .delivery-content-container {
-
+   
     width: 100%;
-    padding: 2rem 0;
+    transform: translateY(-15rem);
+    z-index: 100;
+    background-color: white;
+    
+
+    @media (max-width:1100px) {
+
+        margin-bottom: 10rem;
+
+    }
+
+    @media (max-width:730px) {
+
+        margin-bottom: 4rem;
+
+    }
 
 }
 

@@ -18,6 +18,8 @@ const StyledContainer = styled.div`
 
     grid-template-rows: repeat(2, auto);
 
+    gap: 0 10px;
+
 `;
 
 const StyledImage = styled.img`
@@ -25,6 +27,10 @@ const StyledImage = styled.img`
     grid-area: image;
 
     max-width: 120px;
+
+    width: 100%;
+
+    min-width: 50px;
 
     border-radius: 5px;
 

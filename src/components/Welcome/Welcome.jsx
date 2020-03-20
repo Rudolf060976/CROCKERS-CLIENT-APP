@@ -11,6 +11,18 @@ const StyledContainer = styled.div`
 	align-items: center;
 	font-family: 'Rubik', Verdana, Geneva, Tahoma, sans-serif;
 	
+
+	@media (max-width: 1500px) {
+
+		padding: 40px 0;
+
+	}
+
+	@media (max-width: 900px) {
+
+		padding: 30px 0;
+
+	}
 `;
 
 const StyledTitle = styled.h3`
@@ -29,6 +41,17 @@ const StyledMessage = styled.p`
 	font-size: 2rem;
 	text-indent: 40px;
 	font-weight: bold;
+
+	@media (max-width: 1650px) {
+
+		width: 60%;
+
+	}
+	@media (max-width: 900px) {
+
+		width: 70%;
+
+	}
 `;
 
 

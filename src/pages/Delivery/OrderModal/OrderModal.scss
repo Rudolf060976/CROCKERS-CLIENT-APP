@@ -2,18 +2,16 @@
 
 #order-modal-container {
 
-    position: fixed;
-    
-
+    position: fixed;    
     width: 50rem;
     height: auto;   
     top: 50%;
     left: 50%;
     margin-left: -25rem;
-	margin-top: -40rem;
+	margin-top: -20rem;
     z-index: 1000;
     
-    padding: 50px 30px 30px 30px;
+    padding: 50px 30px 20px 30px;
     
     border: solid 1px $Main-Green-Dark;
     box-shadow: 0px 0px 8px $Main-Green-Dark;
@@ -21,6 +19,16 @@
     background-color: lighten(lightgray, 16%);
 
     border-radius: 10px;
+
+    @media (max-width:1500px) {
+        padding-top: 40px;
+        padding-bottom: 15px;
+    }
+
+    @media (max-width:900px) {
+        padding-top: 30px;
+        padding-bottom: 10px;
+    }
 
 }
 

@@ -10,7 +10,7 @@ const animation = keyframes`
 	}
 
 	to {
-		transform: scale(1.1) translateY(-15%);
+		transform: scale(1.1) translateY(-17%);
 	}
 
 `;
@@ -19,7 +19,8 @@ const StyledContainer = styled.div`
 
 	width: 100%;
 	overflow: hidden;
-	margin-bottom: -8%;
+	
+	position: relative;
 	
 `;
 
@@ -33,9 +34,6 @@ const StyledImage = styled.img`
 	border-bottom: solid 2px ${ props => props.bottomBorderColor };
 
 `;
-
-
-
 
 
 function Hero(props) {
@@ -61,9 +59,9 @@ function Hero(props) {
 
 	
 	return (
-		<StyledContainer>
-			<StyledImage src={imageObject} animate={animate} onAnimationEnd={handleBanner} bottomBorderColor={bottomBorderColor} />
-			{showBanner ? SHOWBANNER : null}			
+		<StyledContainer>			
+				<StyledImage src={imageObject} animate={animate} onAnimationEnd={handleBanner} bottomBorderColor={bottomBorderColor} />
+				{showBanner ? SHOWBANNER : null}				
 		</StyledContainer>
 	);
 };

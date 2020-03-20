@@ -6,6 +6,7 @@ import Header from '../../components/layout/Header/Header';
 import SpecialHero from './SpecialHero';
 import Hero from './Hero';
 
+
 import DeliveryContent from './DeliveryContent/DeliveryContent';
 
 import * as queries from '../../graphql/queries';
@@ -14,6 +15,7 @@ import * as localMutations from '../../local-state/mutations';
 import * as queryFunctions from '../../Utilities/queryFunctions';
 
 import deliveryImage from '../../assets/images/Delivery_Main.jpg';
+import Footer from '../../components/layout/Footer/Footer';
 
 function DeliveryHome() {
 
@@ -92,7 +94,8 @@ function DeliveryHome() {
             <Header />            
             { isLoggedIn ? <Hero imageObject={deliveryImage} animate bannerProps={bannerProps} /> :
             <SpecialHero imageObject={deliveryImage} animate bannerProps={specialBannerProps} bottomBorderColor='#163237' /> }
-            { isLoggedIn ? <DeliveryContent refDiv={scrollToRef} /> : null }                 
+            { isLoggedIn ? <DeliveryContent refDiv={scrollToRef} /> : null }    
+            <Footer />             
         </main>
     );
 

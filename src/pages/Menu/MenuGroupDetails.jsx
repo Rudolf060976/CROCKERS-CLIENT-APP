@@ -24,8 +24,31 @@ const StyledContainer = styled.div`
     gap: 5rem;
     justify-items: center;
     justify-content: center;
-    padding-bottom: 5rem;
+    padding:0 2rem 5rem 2rem;
     
+
+    @media (max-width:1100px) {
+
+        width:90%;
+
+    }
+
+    @media (max-width:800px) {
+
+        width:100%;
+
+    }
+
+    @media (max-width:750px) {
+
+        width:90%;
+        grid-template-areas: 
+        "item item item";
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: repeat(1, auto);
+
+    }
+
 `;
 
 

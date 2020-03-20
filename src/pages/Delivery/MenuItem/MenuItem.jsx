@@ -12,6 +12,18 @@ const StyledContainer = styled.li`
     justify-content: space-between;
 
     padding: 10px 0;
+
+    @media (max-width:730px) {
+
+        display: grid;
+        grid-template-areas:
+        "image description description  price"
+        "image description description  order";
+        
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: repeat(2, auto);        
+    }
+
     
 `;
 
@@ -19,13 +31,22 @@ const StyledImageContainer = styled.div`
 
     position: relative;    
 
-    flex: 0 0 100px;
+    flex: 0 1 100px;
+
+    min-width: 60px;
+
+    @media (max-width:730px) {
+
+        grid-area: image;
+
+    }
 
 `;
 
 const StyledImage = styled.img`
 
     max-width: 100px;
+    width: 100%;
 
     border-radius: 5px;
 
@@ -57,6 +78,13 @@ const StyledZoomSpan = styled.span`
         transform: scale(1.1);
     }
 
+    @media (max-width:730px) {
+
+        grid-area: image;
+
+    }
+
+
 `;
 
 
@@ -65,6 +93,14 @@ const StyledDescription = styled.div`
     flex: 1 1 40%;
     
     padding: 0 15px;
+
+    @media (max-width:730px) {
+
+        grid-area: description;
+        align-self: start;
+
+    }
+
 
 `;
 
@@ -101,6 +137,14 @@ const StyledPrice = styled.p`
     font-weight: bold;
 
     color: ${props => props.theme.colorBrownDark};
+
+    @media (max-width:730px) {
+
+        grid-area: price;
+        padding: 0;
+
+    }
+
 `;
 
 
@@ -140,6 +184,13 @@ const StyledButton = styled.button`
 
     }
 
+    @media (max-width:730px) {
+
+        grid-area: order;
+        padding: 5px;
+        width: 60px;
+
+    }
 
 
 `;

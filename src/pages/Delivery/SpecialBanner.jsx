@@ -34,14 +34,10 @@ const StyledContainer = styled.div`
 	width: 60rem;
 	height: 30rem;
 	position: absolute;
-	top: 50%;
+	top: 40%;
 	left: 50%;
 	transform: translate(-50%, -50%);	
 	
-	
-	/* box-shadow: ${props => props.theme.whiteBoxShadow}; */
-
-
 	padding: 30px 0;
 	border-radius: 10px;
 
@@ -51,6 +47,23 @@ const StyledContainer = styled.div`
 	animation-fill-mode: forwards;
 
 	box-shadow: ${props => props.theme.glassBoxShadow};
+
+	@media (max-width: 1450px) {
+
+		height: 28rem;		
+	}
+	
+	@media (max-width: 900px) {
+		
+		padding: 20px 0;
+		width: 50rem;
+
+	}
+	@media (max-width: 650px) {
+		
+		height: 29rem;	
+
+	}
 `;
 
 
@@ -58,6 +71,12 @@ const StyledTitle = styled.h1`
 
 	font-size: 4rem;
 	word-spacing: 5px;
+
+	@media (max-width: 900px) {
+
+		font-size: 3.6rem;
+
+	}
 `;
 
 const StyledSeparator = styled.div`
@@ -71,13 +90,31 @@ const StyledSeparator = styled.div`
 	
 	animation-fill-mode: forwards;
 
+	@media (max-width: 1450px) {
+
+		height: 3px;
+		margin: 1rem auto;
+	}
+
+	@media (max-width: 900px) {
+
+		height: 3px;
+		margin: 1.2rem auto;
+	}
+
 `;
 
 const StyledSubtitle = styled.p`
 
 	padding: 20px 0;
 	font-size: 2rem;
-	
+
+	@media (max-width: 1450px) {
+		
+		padding: 10px 0;
+		font-size: 1.8rem;
+		
+	}	
 
 `;
 

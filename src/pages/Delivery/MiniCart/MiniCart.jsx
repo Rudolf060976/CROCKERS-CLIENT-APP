@@ -19,18 +19,21 @@ import FetchError from '../../../components/layout/FetchError/FetchError';
 const StyledContainer = styled.div`
 
     flex: 1 1 40%;
+    
   
     display: flex;
     justify-content: center;
     align-items: center;
    
-
+    padding-top: 3rem;
+    
 `;
 
 const StyledCart = styled.div`
 
     width: 70%;
     padding: 20px;
+    min-width: 170px;
 
     border-radius: 5px;
 
@@ -38,6 +41,20 @@ const StyledCart = styled.div`
     box-shadow: 0px 0px 8px ${props => props.theme.colorMainGreenDark };
     
     background-color: ${props => lighten(0.16, 'lightgray') };
+
+    @media (max-width:1300px) {
+
+        padding: 20px 10px;
+        width: 80%;
+
+    }
+
+    @media (max-width:950px) {
+
+        padding: 20px 10px 10px 10px;
+        width: 85%;
+        
+    }
 
 `;
 
@@ -146,6 +163,13 @@ const StyledButton = styled.button`
         background-color: ${props => props.theme.colorMainOrangeDark };
 
         color: ${props => props.theme.colorBrownDark };
+
+    }
+
+    @media (max-width:950px) {
+
+       font-size: 1.4rem;
+       padding: 8px 10px;
 
     }
 

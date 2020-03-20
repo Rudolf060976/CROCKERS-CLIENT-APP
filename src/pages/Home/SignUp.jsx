@@ -18,6 +18,13 @@ const StyledContainer = styled.div`
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 800px) {
+
+       
+        padding: 30px 20px;
+
+    }
 `;
 
 const StyledTitle = styled.h4`
@@ -26,6 +33,12 @@ const StyledTitle = styled.h4`
 
     font-family: "Lilita One", Verdana, Geneva, Tahoma, sans-serif;
 	letter-spacing: 2px;
+
+    @media (max-width: 650px) {
+
+        font-size: 2.2rem;
+        text-align: center;
+    }
 
 `;
 

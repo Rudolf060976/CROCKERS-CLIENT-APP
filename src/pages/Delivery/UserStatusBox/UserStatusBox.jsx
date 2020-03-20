@@ -15,6 +15,8 @@ const StyledContainer = styled.div`
     justify-content: flex-end;
     align-items: center;
     
+    border-top: solid 1px ${props => props.theme.colorMainBeigeDark};
+    
 
 `;
 
@@ -40,15 +42,14 @@ const StyledFullName = styled.span`
 
 
 const StyledLogoutIcon = styled.span`
-
-    cursor: pointer;
-
+    
+   
     color: ${props => props.theme.colorBrownDark}; 
 
     &:hover {
         
         color: ${props => props.theme.colorMainOrangeDark}; 
-
+        cursor: pointer;
 
     }
 
@@ -56,15 +57,14 @@ const StyledLogoutIcon = styled.span`
 
 const StyledCartIcon = styled.span`
 
-    cursor: pointer;
-
+    
     color: ${props => props.theme.colorBrownDark}; 
 
     &:hover {
-    
+        
         color: ${props => props.theme.colorMainOrangeDark}; 
-
-
+        cursor: pointer;
+        
     }
 
 `;

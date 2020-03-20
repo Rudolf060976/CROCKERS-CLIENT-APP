@@ -320,7 +320,7 @@ function Login() {
     return (
         <div id="login-form-container" ref={outerDiv}>
             <span id="login-form-close-button" onClick={handleCloseButtonClick} ><FontAwesomeIcon icon="window-close" size="lg" /></span>
-            <div id="signup-form">
+            <div id="login-form">
                 <div id="login-form-header">
 					<h6>Login to Continue</h6>
 				</div>

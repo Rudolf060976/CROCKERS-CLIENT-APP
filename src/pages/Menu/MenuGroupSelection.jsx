@@ -6,8 +6,9 @@ import {rgba, darken} from 'polished';
 const StyledContainer = styled.div`
 
     width: 100%;
-    padding-top: 10rem;
+    padding: 10rem 3rem;
     height: 30rem;
+   
 
 `;
 
@@ -21,8 +22,19 @@ const StyledList = styled.ul`
     align-items: center;
     list-style-type: none;
     margin-bottom: 5rem;
+    
+    @media (max-width:1100px) {
 
+        width: 90%;
 
+    }
+
+    @media (max-width:800px) {
+
+        width: 100%;
+
+    }
+ 
 `;
 
 const StyledTitleContainer = styled.div`
@@ -57,7 +69,7 @@ const StyledListItem = styled.li`
     font-family: 'Rubik', Verdana, Geneva, Tahoma, sans-serif;
     font-size: 2rem;
     font-weight: 500;
-    width: 20rem;
+    width: 20%;
     padding: 15px 25px;
     border-radius: 5px;
     text-align: center;
@@ -72,6 +84,20 @@ const StyledListItem = styled.li`
 
         transform: ${props => props.selected ? 'scale(1)' : 'scale(1.1)'};
         color: ${props => props.theme.colorMainBeigeDark};
+
+    }
+
+    @media (max-width:1100px) {
+
+        padding: 15px 20px;
+        font-size: 1.8rem;
+
+    }
+
+    @media (max-width:800px) {
+
+        padding: 15px 15px;
+        font-size: 1.6rem;
 
     }
 

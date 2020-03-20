@@ -25,7 +25,7 @@ function DeliveryContent({ refDiv }) {
 
     const handleLogOut = () => {
 
-
+       
         logOut();
 
         localStorage.removeItem('x-token');
@@ -40,7 +40,7 @@ function DeliveryContent({ refDiv }) {
     };
 
     return (
-        <div id="content-point" className="delivery-content-container" ref={refDiv}>
+        <div className="delivery-content-container" ref={refDiv}>
             <UserStatusBox user={loggedUser} handleLogoutButton={handleLogOut} handleCartButton={handleCart} />
             <DeliveryGroups />                            
         </div>

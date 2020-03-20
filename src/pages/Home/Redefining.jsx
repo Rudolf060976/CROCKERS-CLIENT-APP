@@ -15,6 +15,13 @@ const StyledContainer = styled.div`
     justify-content: center;
     align-items: center;
 
+    @media (max-width: 800px) {
+
+        flex-flow: row wrap;
+        padding: 30px 20px;
+
+    }
+
 `;
 
 const StyledTitle = styled.h4`
@@ -24,6 +31,13 @@ const StyledTitle = styled.h4`
     word-spacing: 5px;
 
     text-shadow: 0px 4px 3px ${rgba('black',0.4)}, 0px 8px 13px ${rgba('black',0.1)},0px 18px 23px ${rgba('black',0.1)};
+
+    @media (max-width: 550px) {
+
+       font-size: 2.2rem;
+       text-align: center;
+    }
+
 
 `;
 

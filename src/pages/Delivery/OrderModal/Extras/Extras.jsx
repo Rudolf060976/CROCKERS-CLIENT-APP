@@ -55,6 +55,7 @@ const StyledContainer = styled.div`
     
     padding: 20px 10px 20px 10px;
    
+   
 
 `;
 
@@ -130,6 +131,12 @@ const StyledContent = styled.div`
     grid-auto-flow: row;
     gap: 5px 0;
     
+    @media (max-width: 1650px) {
+
+        padding: 5px;
+
+    }
+
 
 `;
 
@@ -160,15 +167,35 @@ const StyledLabel = styled.label`
 
     letter-spacing: 1px;
 
+    @media (max-width:1650px) {
+
+        padding-left: 5px;
+        
+    }
+
+    @media (max-width:1050px) {
+
+        font-size: 1rem;
+        letter-spacing: 0;
+        padding-top: 3px;
+       
+    }
+
 `;
 
 const StyledPrice = styled.span`
 
-    padding: 0 0 5px 10px;
+    padding: 3px 0 5px 10px;
 
     font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
 
     font-weight: bold;
+
+    @media (max-width:1650px) {
+
+        padding-left: 0;
+    }
+    
 
 `;
 

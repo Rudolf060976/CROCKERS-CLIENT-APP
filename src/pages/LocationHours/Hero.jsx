@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
-import Banner from '../../components/layout/Banner/Banner';
+import Banner from './Banner';
 import ContentBanner from './ContentBanner';
 
 
@@ -21,6 +21,7 @@ const StyledContainer = styled.div`
 	width: 100%;
 	overflow: hidden;
 	margin-bottom: -8%;
+	position: relative;
 
 `;
 

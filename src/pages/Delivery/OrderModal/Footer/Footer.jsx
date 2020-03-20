@@ -34,7 +34,19 @@ const StyledPrice = styled.span`
 
 const StyledQuantity = styled.form`
 
-    margin-right: 60px;
+    margin-right: 4.5rem;
+
+    @media (max-width: 1800px) {
+
+        margin-right: 4rem;
+    }
+
+    
+
+    @media (max-width: 600px) {
+
+        margin-right: 3.5rem;
+    }
 
 `;
 

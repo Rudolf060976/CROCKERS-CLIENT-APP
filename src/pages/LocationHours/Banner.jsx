@@ -34,7 +34,7 @@ const StyledContainer = styled.div`
 	width: 60rem;
 	height: 30rem;
 	position: absolute;
-	top: 30%;
+	top: 20%;
 	left: 50%;
 	transform: translate(-50%, -50%);	
 	
@@ -56,20 +56,30 @@ const StyledContainer = styled.div`
 
 	@media (max-width: 1500px) {
 
-		top: 40%;
-		transform: translate(-50%, -60%);	
+		
+		height: 25rem;
 
 	}
 
-	@media (max-width: 950px) {
+	@media (max-width: 1000px) {
 
-		top: 40%;
-		transform: translate(-50%, -50%);	
-		padding-top: 20px;
+		top: 22%;
 
 	}
 
-	
+	@media (max-width: 800px) {
+
+		height: 20rem;
+		padding: 15px 0;
+		width: 50rem;
+
+	}
+
+	@media (max-width: 600px) {
+
+		height: 18rem;
+		padding: 10px 0;
+	}	
 
 `;
 
@@ -79,7 +89,11 @@ const StyledTitle = styled.h1`
 	font-size: 4rem;
 	word-spacing: 5px;
 
-	
+	@media (max-width: 1000px) {
+
+		font-size: 3rem;
+
+	}
 
 `;
 
@@ -94,6 +108,13 @@ const StyledSeparator = styled.div`
 	
 	animation-fill-mode: forwards;
 
+	@media (max-width:800px) {
+
+		margin: 1rem auto;
+		height: 3px;
+
+	}
+
 `;
 
 const StyledSubtitle = styled.p`
@@ -105,7 +126,13 @@ const StyledSubtitle = styled.p`
 
 		padding: 10px 0;
 
-	}	
+	}
+	
+	@media (max-width:800px) {
+
+		padding: 5px 0;
+
+	}
 
 `;
 
@@ -135,6 +162,12 @@ const StyledButton = styled.button`
 	@media (max-width: 1300px) {
 
 		margin-top: 10px;
+
+	}	
+
+	@media (max-width:600px) {
+
+		margin-top: 0;
 
 	}	
 `;

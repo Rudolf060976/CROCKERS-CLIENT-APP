@@ -35,6 +35,7 @@ const StyledContainer = styled.div`
         
     position: relative;
     overflow: hidden;
+   
       
 `;
 
@@ -42,6 +43,8 @@ const StyledImage = styled.img`
 
     max-width: 350px;
     border-radius: 5px;
+
+    width: 100%;
     
 `;
 
@@ -69,10 +72,14 @@ const StyledDescriptionContainer = styled.div`
     
     div:hover > & {
         height: 100%;
-        top: 0;
-        
+        top: 0;        
     }
 
+    @media (max-width:750px) {
+
+        top: 70%;
+        height: 30%;
+    }
 
 `;
 
@@ -105,8 +112,25 @@ const StyledName = styled.h6`
     div:hover > & {
         width: 90%;
         font-size: 2rem;
-        margin: 30px;
+        margin: 20px;
+
+        @media(max-width:600px) {
+
+            margin: 5px 0;
+            width: 95%;
+            font-size: 1.8rem;
+        }
+
+        @media(max-width:500px) {
+
+            margin: 15px 0;
+            width: 90%;
+           
+        }
+       
     }
+
+   
 `;
 
 const StyledDetails = styled.p`
@@ -138,6 +162,18 @@ const StyledButton = styled.button`
 		background-color: transparent;
 		border: solid 1px ${props => props.theme.colorMainBeigeDark};
 		
+    }
+
+    @media(max-width:600px) {
+
+       margin-top: 10px;
+
+    }
+
+    @media(max-width:500px) {
+
+        margin-top: 30px;
+
     }
     
 

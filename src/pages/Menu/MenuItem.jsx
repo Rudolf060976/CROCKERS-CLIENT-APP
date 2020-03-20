@@ -6,18 +6,18 @@ import { lighten } from 'polished';
 
 
 const StyledContainer = styled.div`
-    
-    max-width: 15rem;
+    width: 100%;
+    max-width: 20rem;
     grid-row: auto;
     grid-column: auto;
-    
+      
 
 `;
 
 const StyledImageContainer = styled.div`
 
     width: 100%;
-    max-height: 15rem;
+    max-height: 20rem;
     position: relative;
     overflow: hidden;
 
@@ -26,8 +26,8 @@ const StyledImageContainer = styled.div`
 
 const StyledImage = styled.img`
     
-    max-width: 15rem;
-    max-height: 15rem;
+    max-width: 20rem;
+    max-height: 20rem;
     border-radius: 5px;
     opacity: 1;
 
@@ -64,7 +64,7 @@ const StyledPriceSpan = styled.span`
 
     background-color: transparent;
     position: absolute;
-    top: 85%;
+    top: 88%;
     left: -2px;
     font-size: 1.5rem;  
     font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;

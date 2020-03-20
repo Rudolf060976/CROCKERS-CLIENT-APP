@@ -34,7 +34,7 @@ const StyledContainer = styled.div`
 	width: 60rem;
 	height: 30rem;
 	position: absolute;
-	top: 50%;
+	top: 40%;
 	left: 50%;
 	transform: translate(-50%, -50%);	
 	
@@ -51,6 +51,20 @@ const StyledContainer = styled.div`
 	animation-fill-mode: forwards;
 
 	box-shadow: ${props => props.theme.glassBoxShadow};
+
+
+	@media (max-width: 900px) {
+		top: 35%;
+		height: 25rem;
+		padding: 20px 0;
+		width: 50rem;
+
+	}
+
+	@media (max-width: 600px) {
+		height: 23rem;
+	}
+
 `;
 
 
@@ -58,6 +72,12 @@ const StyledTitle = styled.h1`
 
 	font-size: 4rem;
 	word-spacing: 5px;
+
+	@media (max-width: 900px) {
+
+		font-size: 3.6rem;
+
+	}
 `;
 
 const StyledSeparator = styled.div`
@@ -71,6 +91,17 @@ const StyledSeparator = styled.div`
 	
 	animation-fill-mode: forwards;
 
+	@media (max-width: 900px) {
+
+		height: 3px;
+		margin: 1.2rem auto;
+	}
+
+	@media (max-width: 600px) {
+		
+		margin: 1rem auto;
+	}
+
 `;
 
 const StyledSubtitle = styled.p`
@@ -78,6 +109,12 @@ const StyledSubtitle = styled.p`
 	padding: 20px 0;
 	font-size: 2rem;
 	
+	@media (max-width: 900px) {
+		
+		padding: 10px 0;
+		font-size: 1.8rem;
+		
+	}
 
 `;
 
@@ -101,6 +138,12 @@ const StyledButton = styled.button`
 		color: ${props => props.theme.colorMainBeigeDark};
 		background-color: transparent;
 		border: solid 1px ${props => props.theme.colorMainBeigeDark};
+		
+	}
+
+	@media (max-width: 600px) {
+		
+		margin-top: 10px;
 		
 	}
 `;
