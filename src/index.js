@@ -24,7 +24,7 @@ import App from './App';
 
 const cache = new InMemoryCache();
  
-const httpLink = new HttpLink({ uri: 'https://infinite-ravine-44036.herokuapp.com' });
+const httpLink = new HttpLink({ uri: Config.URL.apiURL + '/graphql' });
 
 const authMiddleware = new ApolloLink((operation, forward) => {
 	// add the authorization to the headers
