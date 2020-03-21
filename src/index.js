@@ -18,11 +18,13 @@ import './assets/fontAwesome/library'; // LOADING FONTAWESOME LIBRARY
 
 import { BrowserRouter as Router } from 'react-router-dom';
 
+import Config from './config';
+
 import App from './App';
 
 const cache = new InMemoryCache();
  
-const httpLink = new HttpLink({ uri: 'http://localhost:8000/graphql' });
+const httpLink = new HttpLink({ uri: Config.URL.apiURL });
 
 const authMiddleware = new ApolloLink((operation, forward) => {
 	// add the authorization to the headers

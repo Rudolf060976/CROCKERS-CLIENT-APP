@@ -65,5 +65,8 @@
     "regenerator-runtime": "^0.13.3",
     "styled-components": "^5.0.1",
     "yup": "^0.28.1"
+  },
+  "engines": {
+    "node": "12.16.1"
   }
 }

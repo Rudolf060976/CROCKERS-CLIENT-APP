@@ -14,7 +14,7 @@ const configPROD = {
 
 	URL: {
 
-		apiURL: 'http://localhost:3000'
+		apiURL: 'https://infinite-ravine-44036.herokuapp.com'
 
 	}
 };
