@@ -21,6 +21,7 @@ const StyledContainer = styled.div`
 	overflow: hidden;
 	margin-bottom: -8%;
 	position: relative;
+	z-index: 0;
 	
 `;
 
@@ -32,7 +33,7 @@ const StyledImage = styled.img`
 	animation-duration: 2s;
 	animation-fill-mode: forwards;
 	border-bottom: solid 2px ${ props => props.bottomBorderColor };
-
+	
 `;
 
 

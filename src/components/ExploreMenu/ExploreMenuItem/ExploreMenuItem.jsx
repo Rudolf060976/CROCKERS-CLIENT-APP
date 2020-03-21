@@ -75,7 +75,7 @@ const StyledDescriptionContainer = styled.div`
         top: 0;        
     }
 
-    @media (max-width:750px) {
+    @media (max-width:900px) {
 
         top: 70%;
         height: 30%;
@@ -104,7 +104,7 @@ const StyledName = styled.h6`
 
     width: 80%;
     text-align: center;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     transition: ${props => props.theme.mainTransition};
 
     margin: 15px 0;
@@ -130,13 +130,25 @@ const StyledName = styled.h6`
        
     }
 
+    @media (max-width:1600px) {
+
+        font-size: 2rem;
+
+    }
+
    
 `;
 
 const StyledDetails = styled.p`
 
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: white;
+
+    @media (max-width:1600px) {
+
+        font-size: 1.4rem;
+
+    }
 
 `;
 

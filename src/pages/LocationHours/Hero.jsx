@@ -22,7 +22,7 @@ const StyledContainer = styled.div`
 	overflow: hidden;
 	margin-bottom: -8%;
 	position: relative;
-
+	z-index: 0;
 `;
 
 const StyledImage = styled.img`

@@ -23,7 +23,9 @@ const StyledContainer = styled.div`
 
     width: 100%;
     position: relative;
-
+    transform: translateZ(1px);
+    background-color: white;
+    border-top: solid 2px ${props => props.theme.colorMainGreenDark};
 `;
 
 

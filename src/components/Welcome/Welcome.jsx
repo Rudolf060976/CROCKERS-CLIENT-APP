@@ -10,7 +10,8 @@ const StyledContainer = styled.div`
 	flex-flow: column nowrap;
 	align-items: center;
 	font-family: 'Rubik', Verdana, Geneva, Tahoma, sans-serif;
-	
+	transform: translateZ(1px); //PARA QUE LA IMAGEN EN MOVIMIENTO SE MANTENGA DETRAS DE LOS DIVS
+	border-top: solid 2px ${props => props.theme.colorMainGreenDark};
 
 	@media (max-width: 1500px) {
 

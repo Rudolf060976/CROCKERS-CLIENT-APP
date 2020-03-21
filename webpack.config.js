@@ -9,7 +9,7 @@ module.exports = {
        new CleanWebpackPlugin(),
        new HtmlWebpackPlugin({
        template: './templates/index.html',
-       favicon: './templates/ham.svg'
+	   favicon: './templates/ham.svg'
      }),
 		new webpack.HotModuleReplacementPlugin()
      ],

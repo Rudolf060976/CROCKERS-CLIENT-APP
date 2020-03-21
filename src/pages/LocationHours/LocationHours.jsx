@@ -26,6 +26,7 @@ function LocationHours() {
         <main className="location-container">
             <Header />
             <Hero imageObject={locationImage} animate bannerProps={bannerProps} />
+            <div id="location-div-helper"></div>
         </main>
     );
 }

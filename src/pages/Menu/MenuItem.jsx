@@ -42,16 +42,22 @@ const StyledTitle = styled.h6`
     text-align: center;
     padding: 20px 0;
 
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-family: 'Lilita One', Verdana, Geneva, Tahoma, sans-serif;
     color: ${props => props.theme.colorBrownDark};
     letter-spacing: 1px;
+
+    @media (max-width:750px) {
+
+        padding: 10px 0;
+
+    }
 
 `;
 
 const StyledDescription = styled.p`
 
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
 
