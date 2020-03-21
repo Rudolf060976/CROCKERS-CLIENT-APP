@@ -111,11 +111,11 @@ const StyledButtonContainer = styled.div`
 `;
 
 const StyledButton = styled.button`
-   
-    
-    width: 14rem;
-    font-size: 1.6rem;
-	padding: 8px 10px;
+      
+    font-family: "Rubik", Verdana, Geneva, Tahoma, sans-serif;    
+	font-size: 1.6rem;
+	font-weight: bold;
+	padding: 10px 30px;
     border-radius: 5px;
     border: none;
     margin-top: 30px;
@@ -128,10 +128,10 @@ const StyledButton = styled.button`
     }
     
     &:hover {
-		color: ${props => props.theme.colorMainBlueDark};
-		background-color: ${props => props.theme.colorMainOrangeDark};
+		color: ${props => lighten(0.1, props.theme.colorMainGreenDark) };
+		background-color: ${props => props.theme.colorMainOrangeDark };
 		/* border: solid 1px ${props => props.theme.colorMainBlueDark}; */
-		transform: scale(1.1);
+		transform: scale(1.2);
     }
 
     @media (max-width: 550px) {

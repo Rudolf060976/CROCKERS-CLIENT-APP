@@ -137,16 +137,16 @@ const StyledSubtitle = styled.p`
 `;
 
 const StyledButton = styled.button`
-
-	width: 10rem;
-	font-size: 1.5rem;
-	padding: 5px 2px;
+	
+	font-size: 1.8rem;
+	padding: 5px 30px;
 	border-radius: 5px;
 	background-color: ${props => props.theme.colorMainBeigeDark};
 	border: none;
 	color: ${props => props.theme.colorBrownDark};
 	transition: ${props => props.theme.mainTransition};
 	margin-top: 20px;
+	font-weight: bold;
 
 	&:focus {
 		outline: none;

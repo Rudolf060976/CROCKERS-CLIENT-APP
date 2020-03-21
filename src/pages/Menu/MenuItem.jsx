@@ -70,9 +70,9 @@ const StyledPriceSpan = styled.span`
 
     background-color: transparent;
     position: absolute;
-    top: 88%;
+    top: 86%;
     left: -2px;
-    font-size: 1.5rem;  
+    font-size: 2rem;  
     font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
    

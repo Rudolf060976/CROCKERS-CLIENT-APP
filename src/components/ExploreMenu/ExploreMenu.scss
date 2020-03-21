@@ -76,15 +76,15 @@
 
 .explore-menu-full-menu-button {
 
-    margin-left: 25px;
-
-    width: 10rem;
-	font-size: 1.5rem;
-	padding: 5px 2px;
+    margin-left: 40px;
+	font-family: "Rubik", Verdana, Geneva, Tahoma, sans-serif;    
+	font-size: 1.6rem;
+	font-weight: bold;
+	padding: 5px 15px;
 	border-radius: 5px;
-	background-color: $Main-Orange-Dark;
+	background-color: lighten($Main-Green-Dark,10%);
 	border: none;
-	color: $Main-Blue-Dark;
+	color: $Main-Orange-Dark;
 	transition: $mainTransition;
 	
 	&:focus {
@@ -92,9 +92,9 @@
 	}
 
 	&:hover {
-		color: $Main-Orange-Dark;
+		color: lighten($Main-Green-Dark,10%);
 		//background-color: $Main-Blue-Dark;
-		background-color: lighten($Main-Green-Dark,10%);
+		background-color: $Main-Orange-Dark;
         //font-size: 1.6rem;		
 	}
 
@@ -102,15 +102,16 @@
 
 .explore-menu-order-now-button {
 
-    margin-left: 25px;
-
-    width: 10rem;
-	font-size: 1.5rem;
-	padding: 5px 2px;
+    margin-left: 40px;
+	font-family: "Rubik", Verdana, Geneva, Tahoma, sans-serif;    
+	font-size: 1.6rem;
+	font-weight: bold;
+   	
+	padding: 5px 15px;
 	border-radius: 5px;
-	background-color: $Main-Orange-Dark;
+	background-color: lighten($Main-Green-Dark,10%);
 	border: none;
-	color: $Main-Blue-Dark;
+	color: $Main-Orange-Dark;
 	transition: $mainTransition;
 	
 	&:focus {
@@ -118,9 +119,9 @@
 	}
 
 	&:hover {
-		color: $Main-Orange-Dark;
+		color: lighten($Main-Green-Dark,10%);
 		//background-color: $Main-Blue-Dark;
-		background-color: lighten($Main-Green-Dark,10%);
+		background-color: $Main-Orange-Dark;
         //font-size: 1.6rem;		
 	}
 

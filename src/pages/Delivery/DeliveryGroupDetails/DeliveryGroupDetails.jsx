@@ -16,9 +16,7 @@ import NavigationControl from '../../../components/NavigationControl/NavitationC
 const StyledContainer = styled.div`
     
     flex: 1 1 60%;
-        
-    height: 60rem;
-     
+         
     display: flex;
 
     justify-content: center;    

@@ -13,7 +13,7 @@ const StyledLine = styled.li`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 
     padding: 5px 0;
 

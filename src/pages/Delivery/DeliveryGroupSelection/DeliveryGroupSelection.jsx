@@ -65,7 +65,7 @@ const StyledSeparator = styled.div`
 const StyledListItem = styled.li`
 
     font-family: 'Rubik', Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 500;
     width: 20%;
     padding: 15px 25px;

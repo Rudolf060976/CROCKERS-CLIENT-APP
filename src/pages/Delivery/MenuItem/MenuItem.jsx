@@ -13,7 +13,7 @@ const StyledContainer = styled.li`
 
     padding: 10px 0;
 
-    @media (max-width:730px) {
+    @media (max-width:900px) {
 
         display: grid;
         grid-template-areas:
@@ -35,9 +35,10 @@ const StyledImageContainer = styled.div`
 
     min-width: 60px;
 
-    @media (max-width:730px) {
+    @media (max-width:900px) {
 
         grid-area: image;
+        align-self: start;
 
     }
 
@@ -94,7 +95,9 @@ const StyledDescription = styled.div`
     
     padding: 0 15px;
 
-    @media (max-width:730px) {
+    
+
+    @media (max-width:900px) {
 
         grid-area: description;
         align-self: start;
@@ -106,7 +109,7 @@ const StyledDescription = styled.div`
 
 const StyledName = styled.p`
 
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-family: 'Lilita One', Verdana, Geneva, Tahoma, sans-serif;
     color: ${props => props.theme.colorBrownDark};
     letter-spacing: 1px;
@@ -116,7 +119,7 @@ const StyledName = styled.p`
 
 const StyledDetails = styled.p`
 
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
 
@@ -129,7 +132,7 @@ const StyledPrice = styled.p`
 
     flex: 0 0 auto;
 
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 
     padding: 0 20px;
 
@@ -138,7 +141,7 @@ const StyledPrice = styled.p`
 
     color: ${props => props.theme.colorBrownDark};
 
-    @media (max-width:730px) {
+    @media (max-width:900px) {
 
         grid-area: price;
         padding: 0;
@@ -160,9 +163,9 @@ const StyledButton = styled.button`
 
     border-radius: 5px;
 
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 
-    padding: 5px 10px;
+    padding: 5px 15px;
 
     transition: ${props => props.theme.mainTransition};
 
@@ -184,11 +187,10 @@ const StyledButton = styled.button`
 
     }
 
-    @media (max-width:730px) {
+    @media (max-width:900px) {
 
         grid-area: order;
-        padding: 5px;
-        width: 60px;
+        
 
     }
 

@@ -32,7 +32,7 @@ const StyledContainer = styled.div`
 const StyledCart = styled.div`
 
     width: 70%;
-    padding: 20px;
+    padding: 25px;
     min-width: 170px;
 
     border-radius: 5px;
@@ -69,11 +69,9 @@ const StyledHeader = styled.div`
 `;
 
 const StyledImage = styled.img`
-
-    max-width: 50px;
-
-    flex: 0 0 20%;
-
+    
+    max-width: 40px;
+    
 `;
 
 const StyledTitle = styled.span`
@@ -82,7 +80,7 @@ const StyledTitle = styled.span`
 
     text-align: center;
 
-    font-size: 1.4rem;
+    font-size: 1.8rem;
 
     font-family: "Lilita One", Verdana, Geneva, Tahoma, sans-serif;
 
@@ -102,7 +100,7 @@ const StyledSubTotal = styled.p`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
 
     padding: 20px 20px;
 
@@ -140,13 +138,15 @@ const StyledButtonContainer = styled.div`
 
 const StyledButton = styled.button`
 
-    padding: 10px 15px;
+    padding: 10px 20px;
     border-radius: 5px;
     border: none;
 
     background-color: ${props => lighten(.10, props.theme.colorMainGreenDark) };
 
     color: ${props => props.theme.colorMainBeigeDark };
+
+    font-size: 1.8rem;
 
     font-family: 'Rubik', Verdana, Geneva, Tahoma, sans-serif;
 
@@ -181,7 +181,7 @@ const StyledEmptyTitle = styled.p`
     padding: 30px 20px;
     text-align: center;
 
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     
 
 `;

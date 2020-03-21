@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { lighten } from 'polished';
+import { lighten, rgba } from 'polished';
 
 import { useMutation } from '@apollo/client';
 
@@ -43,15 +43,16 @@ const StyledTitle = styled.h4`
 `;
 
 const StyledButton = styled.button`
-
-    width: 12rem;
-    font-size: 1.6rem;
     
-    padding: 5px 2px;
+    font-family: "Rubik", Verdana, Geneva, Tahoma, sans-serif;    
+	font-size: 1.6rem;
+	font-weight: bold;   	
+	padding: 10px 30px;
     border-radius: 5px;
-    background-color: ${props => props.theme.colorMainOrangeDark};
+    letter-spacing: 2px;
+    background-color: ${props => rgba(props.theme.colorMainBlueDark,0.9) };
     border: none;
-    color: ${props => props.theme.colorMainBlueDark};
+    color: ${props => props.theme.colorMainBeigeDark};
     transition: ${props => props.theme.mainTransition};
     margin-top: 30px;
 
@@ -61,8 +62,9 @@ const StyledButton = styled.button`
     }
 
     &:hover {
-        color: ${props => props.theme.colorMainOrangeDark};
-        background-color: ${props => lighten(0.1, props.theme.colorMainGreenDark)};
+        border: solid 1px ${props => rgba(props.theme.colorMainBlueDark,0.9)};
+        color: ${props => rgba(props.theme.colorMainBlueDark,0.9)};
+        background-color: ${props => props.theme.colorMainBeigeDark};
         /* background-color: ${props => props.theme.colorMainBlueDark}; */
         /* font-size: 1.6rem; */
     }

@@ -30,7 +30,7 @@ const StyledContainer = styled.div`
 
 
 
-function MenuGroup() {
+function MenuGroup({ refDiv }) {
 
     const [selectedGroupId, setSelectedGroupId] = useState(null);
 
@@ -70,7 +70,7 @@ function MenuGroup() {
     };
 
     return (
-        <StyledContainer>
+        <StyledContainer ref={refDiv}>
             { zoomViewActive ? <ZoomView item={zoomViewItem} handleCloseZoom={handleCloseZoomView} /> : null }            
             <MenuGroupSelection groups={groupsArray} handleSelected={handleSelectedGroup} />
             { selectedGroupId ? <MenuGroupDetails groupId={selectedGroupId} handleOpenZoom={handleOpenZoomView} /> : null }            

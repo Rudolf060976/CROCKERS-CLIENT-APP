@@ -61,9 +61,9 @@ const StyledDescriptionContainer = styled.div`
     background-color: rgba(0,0,0,0.5);
     color: white;
 
-    top: 80%;
+    top: 75%;
     left:0;
-    height: 20%;
+    height: 25%;
     width: 100%;
     z-index: 500; 
     transition: all .3s linear;
@@ -75,10 +75,10 @@ const StyledDescriptionContainer = styled.div`
         top: 0;        
     }
 
-    @media (max-width:900px) {
+    @media (max-width:800px) {
 
-        top: 70%;
-        height: 30%;
+        top: 73%;
+        
     }
 
 `;
@@ -102,61 +102,42 @@ const StyledDescriptionBody = styled.div`
 
 const StyledName = styled.h6`
 
-    width: 80%;
+    width: 95%;
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 2rem;
     transition: ${props => props.theme.mainTransition};
 
     margin: 15px 0;
 
     div:hover > & {
-        width: 90%;
-        font-size: 2rem;
+               
         margin: 20px;
 
-        @media(max-width:600px) {
+        @media (max-width:600px) {
 
-            margin: 5px 0;
-            width: 95%;
-            font-size: 1.8rem;
-        }
-
-        @media(max-width:500px) {
-
-            margin: 15px 0;
-            width: 90%;
-           
-        }
+            margin: 5px 0;            
+            
+        }      
        
     }
-
-    @media (max-width:1600px) {
-
-        font-size: 2rem;
-
-    }
-
+  
    
 `;
 
 const StyledDetails = styled.p`
 
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: white;
 
-    @media (max-width:1600px) {
-
-        font-size: 1.4rem;
-
-    }
+   
 
 `;
 
 const StyledButton = styled.button`
 
-	width: 8rem;
-	font-size: 1.2rem;
-	padding: 5px 2px;
+	
+	font-size: 1.4rem;
+	padding: 5px 15px;
 	border-radius: 5px;
 	background-color: ${props => props.theme.colorMainBeigeDark};
 	border: none;
@@ -181,12 +162,7 @@ const StyledButton = styled.button`
        margin-top: 10px;
 
     }
-
-    @media(max-width:500px) {
-
-        margin-top: 30px;
-
-    }
+   
     
 
 `;

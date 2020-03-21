@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {rgba} from 'polished';
-import { lighten } from 'polished';
+
+import { lighten, rgba } from 'polished';
 import { Link } from 'react-router-dom';
 
 const StyledContainer = styled.div`
@@ -17,8 +17,8 @@ const StyledContainer = styled.div`
 
     @media (max-width: 800px) {
 
-        flex-flow: row wrap;
-        padding: 30px 20px;
+        flex-flow: column nowrap;        
+        padding: 20px 20px;
 
     }
 
@@ -43,21 +43,21 @@ const StyledTitle = styled.h4`
 
 const StyledButton = styled.button`
 
-    width: 14rem;
-    font-size: 1.6rem;
+    
+    font-size: 1.8rem;
     font-weight: bold;
     letter-spacing: 2px;
-    padding: 5px 2px;
+    padding: 10px 20px;
     border-radius: 5px;
     
     border: none;
     /* background-color: ${props => props.theme.colorMainBeigeDark};
     color: ${props => props.theme.colorMainBlueDark}; */
     transition: all .2s linear;
-    margin-left: 40px;
+    margin-left: 60px;
 
-    color: ${props => props.theme.colorMainBeigeDark};
-    background-color: ${props => lighten(0.05,props.theme.colorMainGreenDark) };
+    color: ${props => rgba(props.theme.colorMainBlueDark,0.8) };
+    background-color: ${props => props.theme.colorMainOrangeDark };
     box-shadow: 1px 1px 15px white;
     
     &:focus {
@@ -65,14 +65,15 @@ const StyledButton = styled.button`
     }
 
     &:hover {
-        /* color: ${props => props.theme.colorMainBeigeDark};
-        background-color: ${props => props.theme.colorMainGreenDark}; */
-
-        background-color: ${props => props.theme.colorMainBeigeDark};
-        color: ${props => props.theme.colorMainBlueDark};
-        font-size: 1.6rem;	
-        box-shadow: none;
+       transform: scale(1.2);       
+       
 	
+    }
+
+    @media (max-width: 800px) {
+
+        margin: 25px 0 0 0;
+
     }
 
 `;
@@ -82,7 +83,7 @@ function Redefining() {
     return (
         <StyledContainer>
             <StyledTitle>Redefining the way the World eats Burgers</StyledTitle>            
-            <Link to="/delivery"><StyledButton>Order Now</StyledButton></Link>
+            <Link to="/delivery"><StyledButton>ORDER NOW</StyledButton></Link>
         </StyledContainer>
     );
 }

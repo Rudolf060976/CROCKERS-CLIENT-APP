@@ -80,7 +80,7 @@ function DeliveryHome() {
         bannerProps = {
             title: "DELIVERY AREA",
             subtitle: "Welcome back " + loggedUser.fullname + "!",
-            buttonTitle: "START NOW",
+            buttonTitle: "ORDER NOW",
             handleButtonClick: handleBannerButtonClick
         };
 

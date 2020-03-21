@@ -29,6 +29,8 @@ const StyledPrevButton = styled.span`
 
     color: ${props => props.disabled ? '#DBDEE1' : props.theme.colorMainBrownSand};
 
+    font-size: 2.2rem;
+
     &:hover {
 
         color: ${props => props.disabled ? '#DBDEE1' : props.theme.colorMainOrangeDark};
@@ -40,9 +42,9 @@ const StyledPrevButton = styled.span`
 
 const StyledContent = styled.span`
 
-    padding: 0 30px;
+    padding: 0 50px;
 
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 
     font-family: 'Montserrat', Verdana, Geneva, Tahoma, sans-serif;
 
@@ -57,6 +59,7 @@ const StyledNextButton = styled.span`
 
     color: ${props => props.disabled ? '#DBDEE1' : props.theme.colorMainBrownSand};
 
+    font-size: 2.2rem;
 
     &:hover {
 
