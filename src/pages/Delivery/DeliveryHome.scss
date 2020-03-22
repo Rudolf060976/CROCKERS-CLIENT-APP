@@ -1,0 +1,10 @@
+@import '../../mainStyles/globalVariables.scss';
+
+#delivery-home-helper {
+    width: 100%;
+    height: 500px;
+    background-color: $Main-Green-Dark;
+    transform: translateZ(1px) translateY(-150px);
+    border-top: solid 1px $Main-Beige-Dark;
+    margin-bottom: -150px;
+}

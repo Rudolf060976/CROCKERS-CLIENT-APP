@@ -5,14 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const StyledContainer = styled.div`
     
-    position: fixed;
-
+    position:absolute;
+    
     max-width: 700px;
     height: auto;   
 
-    top: 50%;
+    top: ${props => props.positionY}px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     z-index: 300;
     
     
@@ -33,8 +33,8 @@ const StyledClose = styled.span`
     width: 5rem;
     height: 5rem;
     position: absolute;
-    top: 3%;
-    right: 3%;
+    top: 1rem;
+    right: 1rem;
     background-color: transparent;
     color: ${props => props.theme.colorMainBeigeDark};
     font-size: 3rem;
@@ -47,7 +47,7 @@ const StyledClose = styled.span`
 `;
 
 
-function ZoomView({ item, handleCloseZoom }) {
+function ZoomView({ item, handleCloseZoom, positionY }) {
 
     const outerDiv = useRef();
 
@@ -84,7 +84,7 @@ function ZoomView({ item, handleCloseZoom }) {
 
 
     return (
-        <StyledContainer ref={outerDiv}>
+        <StyledContainer ref={outerDiv} positionY={positionY}>
             <StyledImage src={item.imageURL} />
             <StyledClose onClick={() => handleCloseZoom()} ><FontAwesomeIcon icon="window-close" size="lg" /></StyledClose>            
         </StyledContainer>

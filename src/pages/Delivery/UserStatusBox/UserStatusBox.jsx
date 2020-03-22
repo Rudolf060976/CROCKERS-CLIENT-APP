@@ -5,24 +5,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const StyledContainer = styled.div`
 
     width: 100%;
-    height: 6rem;
+    
 
     background-color: ${props => props.theme.colorMainBlueDark};
 
-    padding: 0 2rem;
+    padding: 2rem;
     
     display: flex;
     justify-content: flex-end;
     align-items: center;
     
-    border-top: solid 1px ${props => props.theme.colorMainBeigeDark};
+    border-top: solid 2px ${props => props.theme.colorMainBeigeDark};
     
-
+    border-bottom: solid 1px ${props => props.theme.colorMainBeigeDark};
 `;
 
 const StyledBox = styled.div`
 
-    width: 30rem;
+    width: 50rem;
     background-color: ${props => props.theme.colorMainBeigeDark};  
     border-radius: 5px;
     padding: 10px;
@@ -37,13 +37,14 @@ const StyledBox = styled.div`
 
 const StyledFullName = styled.span`
 
+    font-size: 1.8rem;
 
 `;
 
 
 const StyledLogoutIcon = styled.span`
     
-   
+    font-size: 1.8rem;
     color: ${props => props.theme.colorBrownDark}; 
 
     &:hover {
@@ -57,7 +58,7 @@ const StyledLogoutIcon = styled.span`
 
 const StyledCartIcon = styled.span`
 
-    
+    font-size: 1.8rem;
     color: ${props => props.theme.colorBrownDark}; 
 
     &:hover {

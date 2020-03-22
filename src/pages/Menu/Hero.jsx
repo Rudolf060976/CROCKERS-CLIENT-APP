@@ -18,8 +18,7 @@ const animation = keyframes`
 const StyledContainer = styled.div`
 
 	width: 100%;
-	overflow: hidden;
-	margin-bottom: -8%;
+	overflow: hidden;	
 	position: relative;
 	z-index: 0;
 	

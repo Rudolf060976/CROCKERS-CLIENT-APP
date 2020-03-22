@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 
 import { useQuery } from '@apollo/client';
@@ -39,11 +39,15 @@ const StyledSplitContainer = styled.div`
 
 function DeliveryGroups() {
 
+    const refDiv = useRef();
+
     const [selectedGroupId, setSelectedGroupId] = useState(null);
 
     const [zoomViewActive, setZoomViewActive] = useState(false);
 
     const [zoomViewItem, setZoomViewItem] = useState(null);
+
+    const [zoomPositionY, setZoomPositionY] = useState(0);
 
     const [orderItemModalOpen, setOrderItemModalOpen] = useState(false);
     
@@ -74,6 +78,18 @@ function DeliveryGroups() {
 
     const handleOpenZoomView = (item) => {
 
+          // itemPosY ES LA POSICION VERTICAL EN PIXELS DEL MENU ITEM RESPECTO DEL LIMITE SUPERIOR DEL VIEWPORT
+        // NOSOTROS DESEAMOS UBICAR EL COMPONENTE ZoomView EN LA MISMA POSICION VERTICAL DEL MENU ITEM
+        // PARA LOGRAR ESO, RESTAMOS LA POSICION DEL MENU ITEM DE LA POSICION DEL DIV MenuGroup PARA QUE NOS DE LA POSICION DEL ITEM RESPECTO A SU PADRE MenuGroup, Y ASIGNAR ESA POSICION A LA PROPIEDAD CSS top, PARA UBICAR EL ZoomView ADECUADAMENTE
+
+        const parentTop = refDiv.current.getBoundingClientRect().top;
+
+        const parentBottom = refDiv.current.getBoundingClientRect().bottom;
+
+        const parentHeight = parentBottom - parentTop;
+
+        setZoomPositionY(Number.parseFloat(parentHeight / 4));
+
         setZoomViewItem(item);
 
         setZoomViewActive(true);
@@ -98,9 +114,9 @@ function DeliveryGroups() {
 
 
     return (
-        <StyledContainer>
+        <StyledContainer ref={refDiv}>
             { orderItemModalOpen && orderItem ? <OrderModal item={orderItem} handleClose={handleCloseOrder} /> : null }
-            { zoomViewActive ? <ZoomView item={zoomViewItem} handleCloseZoom={handleCloseZoomView} /> : null }
+            { zoomViewActive ? <ZoomView item={zoomViewItem} handleCloseZoom={handleCloseZoomView} positionY={zoomPositionY} /> : null }
             <DeliveryGroupSelection groups={groupsArray} handleSelected={handleSelectedGroup} />
             { selectedGroupId ?
                 (

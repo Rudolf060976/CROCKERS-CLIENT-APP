@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { Badge } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { lighten } from 'polished';
+
 
 
 const StyledContainer = styled.div`
@@ -109,16 +110,21 @@ const StyledZoomSpan = styled.span`
 
 function MenuItem({ item, handleOpenZoom }) {
 
+    const refDiv = useRef();
    
     const handleZoomClick = (e) => {
 
-        handleOpenZoom(item);
+        // HAYAMOS LA POSICION VERTICAL DEL ITEM RESPECTO AL TOP DEL NAVEGADOR PARA ENVIARLA AL COMPONENTE PADRE
+
+        const posY = refDiv.current.getBoundingClientRect().top;
+
+        handleOpenZoom(item, posY);
 
     };
 
 
     return (
-        <StyledContainer>
+        <StyledContainer ref={refDiv}>
             <StyledImageContainer>
                 <StyledImage src={item.imageURL}/>
                 <StyledPriceSpan><Badge variant="warning">$ {item.price.toFixed(2)}</Badge> </StyledPriceSpan>

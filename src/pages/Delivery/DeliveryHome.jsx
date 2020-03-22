@@ -86,15 +86,12 @@ function DeliveryHome() {
 
     }
 
-   
-
-
     return (
         <main className="delivery-container">
             <Header />            
             { isLoggedIn ? <Hero imageObject={deliveryImage} animate bannerProps={bannerProps} /> :
             <SpecialHero imageObject={deliveryImage} animate bannerProps={specialBannerProps} bottomBorderColor='#163237' /> }
-            { isLoggedIn ? <DeliveryContent refDiv={scrollToRef} /> : null }    
+            { isLoggedIn ? <DeliveryContent refDiv={scrollToRef} /> : <div id="delivery-home-helper"></div> }    
             <Footer />             
         </main>
     );

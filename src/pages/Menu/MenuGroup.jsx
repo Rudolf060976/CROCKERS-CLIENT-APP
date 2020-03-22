@@ -21,11 +21,14 @@ import ZoomView from './ZoomView';
 
 const StyledContainer = styled.div`
 
-    width: 100%;
-    position: relative;
-    transform: translateZ(1px);
+    width: 100%;    
+    z-index: 300;
     background-color: white;
     border-top: solid 2px ${props => props.theme.colorMainGreenDark};
+    margin-top: -120px;
+    transform: translateZ(1px);
+    position: relative;
+        
 `;
 
 
@@ -37,6 +40,8 @@ function MenuGroup({ refDiv }) {
     const [zoomViewActive, setZoomViewActive] = useState(false);
 
     const [zoomViewItem, setZoomViewItem] = useState(null);
+
+    const [zoomPositionY, setZoomPositionY] = useState(0);
 
 
     const {loading, error, data} = useQuery(queries.GET_ALL_MENU_GROUPS);
@@ -55,7 +60,15 @@ function MenuGroup({ refDiv }) {
 
     };
 
-    const handleOpenZoomView = (item) => {
+    const handleOpenZoomView = (item, itemPosY) => {
+
+        // itemPosY ES LA POSICION VERTICAL EN PIXELS DEL MENU ITEM RESPECTO DEL LIMITE SUPERIOR DEL VIEWPORT
+        // NOSOTROS DESEAMOS UBICAR EL COMPONENTE ZoomView EN LA MISMA POSICION VERTICAL DEL MENU ITEM
+        // PARA LOGRAR ESO, RESTAMOS LA POSICION DEL MENU ITEM DE LA POSICION DEL DIV MenuGroup PARA QUE NOS DE LA POSICION DEL ITEM RESPECTO A SU PADRE MenuGroup, Y ASIGNAR ESA POSICION A LA PROPIEDAD CSS top, PARA UBICAR EL ZoomView ADECUADAMENTE
+
+        const parentPosY = refDiv.current.getBoundingClientRect().top;
+
+        setZoomPositionY(Number.parseFloat(itemPosY) - Number.parseFloat(parentPosY));
 
         setZoomViewItem(item);
 
@@ -71,7 +84,7 @@ function MenuGroup({ refDiv }) {
 
     return (
         <StyledContainer ref={refDiv}>
-            { zoomViewActive ? <ZoomView item={zoomViewItem} handleCloseZoom={handleCloseZoomView} /> : null }            
+            { zoomViewActive ? <ZoomView item={zoomViewItem} handleCloseZoom={handleCloseZoomView} positionY={zoomPositionY} /> : null }            
             <MenuGroupSelection groups={groupsArray} handleSelected={handleSelectedGroup} />
             { selectedGroupId ? <MenuGroupDetails groupId={selectedGroupId} handleOpenZoom={handleOpenZoomView} /> : null }            
         </StyledContainer>
