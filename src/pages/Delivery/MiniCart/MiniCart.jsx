@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useQuery, useMutation } from '@apollo/client';
-import { lighten } from 'polished';
+import { lighten, rgba } from 'polished';
 
 import * as queries from '../../../graphql/queries';
 
@@ -181,12 +181,33 @@ const StyledEmptyTitle = styled.p`
     padding: 30px 20px;
     text-align: center;
 
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+
+    font-weight: bold;
+
+    color: ${ rgba('black', 0.6)};
     
 
 `;
 
-function MiniCart({ user }) {
+const StyledErrorTitle = styled.p`
+
+    padding: 30px 20px;
+
+    color: ${props => props.theme.errorColor};
+
+    text-align: center;
+
+    font-size: 1.8rem;
+
+    font-weight: bold;
+
+`;
+
+function MiniCart({ user, handleCartButtonClick }) {
+
+    const [errorMessage, setErrorMessage] = useState(null);
+   
 
     const { loading, error, data } = useQuery(queries.GET_CART, {
         variables: {
@@ -223,27 +244,65 @@ function MiniCart({ user }) {
 
     };
 
+    const cartContent = () => {
 
-    return (
-        <StyledContainer>
-            <StyledCart>
-                <StyledHeader>
-                    <StyledImage src={imageCart} />
-                    <StyledTitle>YOUR CART ( { totals.count } ITEMS )</StyledTitle>
-                </StyledHeader>
-                { totals.count > 0 ? <MiniCartDetails cart={cart} handleDeleteButtonClick={handleDeleteClick} /> : <StyledEmptyTitle>( Empty )</StyledEmptyTitle> }
-                                
-                <StyledFooter>
-                    <StyledSubTotal>
-                        <StyledSubTotalTitle>SubTotal:</StyledSubTotalTitle>
-                        <StyledSubTotalAmount>$ { totals.subtotal.toFixed(2) }</StyledSubTotalAmount>
-                    </StyledSubTotal>
-                    <StyledButtonContainer>
-                        <StyledButton>GO TO CART</StyledButton>
-                    </StyledButtonContainer>
-                </StyledFooter>
-            </StyledCart>
-        </StyledContainer>
+        if (errorMessage) {
+
+            return (<StyledErrorTitle>{errorMessage}</StyledErrorTitle>)
+
+        }
+
+        if (totals.count > 0) {
+
+            return (<MiniCartDetails cart={cart} handleDeleteButtonClick={handleDeleteClick} />);
+    
+        }
+        
+        return (<StyledEmptyTitle>( Empty )</StyledEmptyTitle>);
+
+
+    };
+
+    const handleGotoCartClick = (e) => {
+
+        if (totals.count <= 0) {
+
+            setErrorMessage('Your Cart is Empty!');
+
+            setTimeout(() => {
+    
+                setErrorMessage(null);
+    
+            }, 1000);
+
+        } else {
+
+            handleCartButtonClick();
+
+        }       
+
+    };
+
+
+    return (  
+                <StyledContainer>
+                    <StyledCart>
+                        <StyledHeader>
+                            <StyledImage src={imageCart} />
+                            <StyledTitle>YOUR CART ( { totals.count } ITEMS )</StyledTitle>
+                        </StyledHeader>
+                        { cartContent() }                                
+                        <StyledFooter>
+                            <StyledSubTotal>
+                                <StyledSubTotalTitle>SubTotal:</StyledSubTotalTitle>
+                                <StyledSubTotalAmount>$ { totals.subtotal.toFixed(2) }</StyledSubTotalAmount>
+                            </StyledSubTotal>
+                            <StyledButtonContainer>
+                                <StyledButton onClick={handleGotoCartClick}>GO TO CART</StyledButton>
+                            </StyledButtonContainer>
+                        </StyledFooter>
+                    </StyledCart>
+                </StyledContainer>
     );
 }
 

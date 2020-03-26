@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './DeliveryContent.scss';
 import { useQuery, useMutation } from '@apollo/client';
 
@@ -9,10 +9,14 @@ import * as localMutations from '../../../local-state/mutations';
 
 import DeliveryGroups from '../DeliveryGroups/DeliveryGroups';
 
+import { Redirect } from 'react-router-dom';
+
 
 
 
 function DeliveryContent({ refDiv }) {
+
+    const [redirectToProcess, setRedirectToProcess] = useState(false);
 
     const {data: { userState }} = useQuery(localQueries.GET_USER_STATE);
 
@@ -34,16 +38,26 @@ function DeliveryContent({ refDiv }) {
 
     const handleCart = () => {
 
+        setRedirectToProcess(true);
+
+    };
+
+    const handleProfile = () => {
 
 
 
     };
 
     return (
-        <div className="delivery-content-container" ref={refDiv}>
-            <UserStatusBox user={loggedUser} handleLogoutButton={handleLogOut} handleCartButton={handleCart} />
-            <DeliveryGroups />                            
-        </div>
+        <>
+            { redirectToProcess ? (<Redirect to="/process_order" push={true} />) : (
+                <div className="delivery-content-container" ref={refDiv}>
+                    <UserStatusBox user={loggedUser} handleLogoutButtonClick={handleLogOut} handleCartButtonClick={handleCart} cartVisible handleProfileButtonClick={handleProfile} />
+                    <DeliveryGroups handleCartButtonClick={handleCart} />                            
+                </div>
+            )
+            }        
+        </>
     );
 }
 

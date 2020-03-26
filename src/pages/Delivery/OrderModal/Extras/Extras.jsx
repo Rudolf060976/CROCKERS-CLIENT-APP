@@ -213,7 +213,7 @@ function Extras({ itemId, handleSelectedExtra }) {
         }
     });
    
-    if (loading) return <Loading />
+    if (loading) return <Loading height="0" />
 
     if (error) return <FetchError />
 

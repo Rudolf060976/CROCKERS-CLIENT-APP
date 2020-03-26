@@ -109,9 +109,25 @@ const StyledListItem = styled.li`
 function MenuGroupSelection(props) {
  
     const { groups, handleSelected } = props;
+
+    let orderedGroups = [...groups];
+    
+    orderedGroups = orderedGroups.sort((a, b) => {
+
+        if (a.name === b.name) return 0;
+
+        if (a.name==='BEVERAGES') return 1;
+
+        if (b.name ==='BEVERAGES') return -1;        
+        
+        if (a.name < b.name) return -1;        
+
+        if (a.name > b.name) return 1
+
+    });
  
-    const [ selectedId, setSelectedId ] = useState(groups[0].id);
-    const [ selectedName, setSelectedName] = useState(groups[0].name);
+    const [ selectedId, setSelectedId ] = useState(orderedGroups[0].id);
+    const [ selectedName, setSelectedName] = useState(orderedGroups[0].name);
 
     useEffect(() => {
         
@@ -131,7 +147,7 @@ function MenuGroupSelection(props) {
     };
 
     
-    const groupList = groups.map(groupItem => {
+    const groupList = orderedGroups.map(groupItem => {
 
         return (
             <StyledListItem key={groupItem.id} onClick={(e) => handleClick(groupItem.id, groupItem.name) } selected={ selectedId === groupItem.id }>{ groupItem.name }</StyledListItem>

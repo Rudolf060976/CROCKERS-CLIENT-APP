@@ -9,6 +9,7 @@ import Home from './pages/Home/Home';
 import Menu from './pages/Menu/Menu';
 import LocationHours from './pages/LocationHours/LocationHours';
 import DeliveryHome from './pages/Delivery/DeliveryHome';
+import OrderProcess from './pages/OrderProcess/OrderProcess';
 
 
 import SignUp from './components/SignUp/SignUp';
@@ -41,6 +42,9 @@ function App() {
 				</Route>
 				<Route exact path="/delivery">
 					<DeliveryHome />
+				</Route>
+				<Route exact path="/process_order">
+					<OrderProcess />
 				</Route>
 			</Switch>
 		</>

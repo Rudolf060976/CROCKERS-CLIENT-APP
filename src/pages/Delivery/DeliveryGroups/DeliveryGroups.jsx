@@ -37,7 +37,7 @@ const StyledSplitContainer = styled.div`
 `;
 
 
-function DeliveryGroups() {
+function DeliveryGroups({ handleCartButtonClick }) {
 
     const refDiv = useRef();
 
@@ -122,7 +122,7 @@ function DeliveryGroups() {
                 (
                     <StyledSplitContainer>
                         <DeliveryGroupDetails groupId={selectedGroupId} handleOpenZoom={handleOpenZoomView} handleOrderButtonClick={handleOrderButtonClick} /> 
-                        <MiniCart user={loggedUser} />
+                        <MiniCart user={loggedUser} handleCartButtonClick={handleCartButtonClick} />
                     </StyledSplitContainer>
                 ) : null
             }        

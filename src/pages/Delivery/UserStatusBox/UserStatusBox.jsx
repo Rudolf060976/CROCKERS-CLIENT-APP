@@ -70,15 +70,31 @@ const StyledCartIcon = styled.span`
 
 `;
 
-function UserStatusBox({ user, handleLogoutButton, handleCartButton }) {
+const StyledProfileIcon = styled.span`
+
+    font-size: 1.8rem;
+    color: ${props => props.theme.colorBrownDark}; 
+
+    &:hover {
+        
+        color: ${props => props.theme.colorMainOrangeDark}; 
+        cursor: pointer;
+        
+    }
+
+
+`;
+
+function UserStatusBox({ user, handleLogoutButtonClick, handleCartButtonClick, cartVisible, handleProfileButtonClick }) {
     
-   
+       
     return (
         <StyledContainer>
             <StyledBox>
                 <StyledFullName>Hello, { user.fullname }</StyledFullName>
-                <StyledLogoutIcon onClick={handleLogoutButton}><FontAwesomeIcon icon="sign-out-alt" size="lg" /></StyledLogoutIcon>
-                <StyledCartIcon onClick={handleCartButton}><FontAwesomeIcon icon="shopping-cart" size="lg" /></StyledCartIcon>
+                <StyledLogoutIcon onClick={(e) => handleLogoutButtonClick()}><FontAwesomeIcon icon="sign-out-alt" size="lg" /></StyledLogoutIcon>
+                <StyledProfileIcon onClick={(e) => handleProfileButtonClick()}><FontAwesomeIcon icon="user-shield" size="lg" /></StyledProfileIcon>
+                { cartVisible ? <StyledCartIcon onClick={(e) => handleCartButtonClick()}><FontAwesomeIcon icon="shopping-cart" size="lg" /></StyledCartIcon> : null }
             </StyledBox>
         </StyledContainer>
     );
