@@ -3,11 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
-const TerserPlugin = require('terser-webpack-plugin');
-
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -18,28 +14,13 @@ module.exports = {
 	   favicon: './templates/ham.svg'
      }),
 		new webpack.HotModuleReplacementPlugin(),
-		new BundleAnalyzerPlugin({ openAnalyzer: true }),
-		new MiniCssExtractPlugin()
+		new BundleAnalyzerPlugin({ openAnalyzer: true })
      ],
   output: {
-    filename: '[name].bundle.js',  //'main.js',
+    filename: 'main.js',
     path: path.resolve(__dirname, './', 'dist'),
     publicPath: '/'
   },
-  devServer: {
-  	contentBase: path.join(__dirname,'dist'),
-  	publicPath: '/',
-  	port: 3000,
-  	hot: true,
-  	open: true,
-  	historyApiFallback: true,
-  	proxy: {
-  		'/api': {
-  		target: 'http://localhost:8000',
-  		pathRewrite: { '^/api': '' }
-  		} 	  
-  	}
-},
   module: {
 	rules: [
 	  {
@@ -57,13 +38,12 @@ module.exports = {
 	  },
 	  {
         test: /\.css$/i,
-        use: ['style-loader',MiniCssExtractPlugin.loader, 'css-loader'],
+        use: ['style-loader', 'css-loader'],
 	  },
 	  {
 		test: /\.scss$/,
 		use: [
 			"style-loader", // creates style nodes from JS strings
-			MiniCssExtractPlugin.loader,
 			"css-loader", // translates CSS into CommonJS
 			"sass-loader" // compiles Sass to CSS, using Node Sass by default
 		]
@@ -88,9 +68,6 @@ module.exports = {
 	  maxAssetSize: 250000
   },
   optimization: {
-	minimizer: [new TerserPlugin()],
-	splitChunks: {
-		chunks: 'all'
-	}
+    minimizer: [new UglifyJsPlugin()],
   }
 };

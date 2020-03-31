@@ -1,7 +1,7 @@
 /* eslint react/jsx-filename-extension: "off" */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import "core-js/stable";
+//import "core-js/stable";
 import "regenerator-runtime/runtime";
 
 
