@@ -17,6 +17,7 @@ import Login from './components/Login/Login';
 
 import * as localQueries from './local-state/queries';
 
+import NotFound from './pages/NotFound/NotFound';
 
 
 
@@ -45,6 +46,9 @@ function App() {
 				</Route>
 				<Route exact path="/process_order">
 					<OrderProcess />
+				</Route>
+				<Route>
+					<NotFound />
 				</Route>
 			</Switch>
 		</>
