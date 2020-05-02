@@ -22,6 +22,10 @@ const configPROD = {
 
 const Config = {
 	URL: (process.env.NODE_ENV === 'production' ? configPROD.URL : configDEV.URL),
+	SITE_METADATA: {
+		title: 'Crockers Restaurant',
+		description: "Crocker Restaurant Home Page offering our main food services."
+	},
 	ROUTES: {
 		MENU_ITEMS: {
 			GET_Image: imageId => {

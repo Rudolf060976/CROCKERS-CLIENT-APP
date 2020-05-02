@@ -11,6 +11,8 @@ import Redefining from './Redefining';
 import OnlineOrdering from './OnlineOrdering';
 import HomeGallery from '../../components/HomeGallery/HomeGallery';
 import Footer from '../../components/layout/Footer/Footer';
+import SEO from '../../components/SEO/seo';
+
 
 function Home() {
 	
@@ -27,6 +29,7 @@ function Home() {
 	
 	return (
 		<main className="home-container">
+			<SEO title="Home" description="Welcome" />
 			<Header />
 			<Hero imageObject={homeImage} animate bannerProps={bannerProps} bottomBorderColor='#163237' />
 			<Welcome />	

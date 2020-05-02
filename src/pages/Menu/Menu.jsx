@@ -6,6 +6,7 @@ import Hero from './Hero';
 import Footer from '../../components/layout/Footer/Footer';
 import MenuGroup from './MenuGroup';
 import { Events, scrollSpy } from 'react-scroll';
+import SEO from '../../components/SEO/seo';
 
 
 function Menu() {
@@ -39,6 +40,7 @@ function Menu() {
 
     return (
         <main className="menu-container">
+            <SEO title="Our Menu" description="Meet our great food Menu" />
             <Header />
             <Hero imageObject={menuImage} animate bannerProps={bannerProps} bottomBorderColor='#163237' />
             <MenuGroup />            

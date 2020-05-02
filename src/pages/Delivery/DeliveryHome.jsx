@@ -15,6 +15,8 @@ import * as queryFunctions from '../../Utilities/queryFunctions';
 
 import deliveryImage from '../../assets/images/Delivery_Main.jpg';
 import Footer from '../../components/layout/Footer/Footer';
+import SEO from '../../components/SEO/seo';
+
 
 function DeliveryHome() {
 
@@ -91,7 +93,8 @@ function DeliveryHome() {
 
     return (
         <main className="delivery-container">
-            <Header />            
+            <Header />  
+            <SEO title="Delivery Area" description="Register and Order Now" />          
             { isLoggedIn ? <Hero imageObject={deliveryImage} animate bannerProps={bannerProps} /> :
             <SpecialHero imageObject={deliveryImage} animate bannerProps={specialBannerProps} bottomBorderColor='#163237' /> }
             { isLoggedIn ? <DeliveryContent /> : <div id="delivery-home-helper"></div> }    
