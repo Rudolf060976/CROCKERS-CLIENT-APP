@@ -33,7 +33,7 @@ const StyledContainer = styled.div`
 
 
 
-function MenuGroup({ refDiv }) {
+function MenuGroup() {
 
     const [selectedGroupId, setSelectedGroupId] = useState(null);
 
@@ -83,7 +83,7 @@ function MenuGroup({ refDiv }) {
     };
 
     return (
-        <StyledContainer ref={refDiv}>
+        <StyledContainer id="menu-scroll-point">
             { zoomViewActive ? <ZoomView item={zoomViewItem} handleCloseZoom={handleCloseZoomView} positionY={zoomPositionY} /> : null }            
             <MenuGroupSelection groups={groupsArray} handleSelected={handleSelectedGroup} />
             { selectedGroupId ? <MenuGroupDetails groupId={selectedGroupId} handleOpenZoom={handleOpenZoomView} /> : null }            

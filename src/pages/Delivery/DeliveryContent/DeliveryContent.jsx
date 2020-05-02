@@ -14,7 +14,7 @@ import { Redirect } from 'react-router-dom';
 
 
 
-function DeliveryContent({ refDiv }) {
+function DeliveryContent() {
 
     const [redirectToProcess, setRedirectToProcess] = useState(false);
 
@@ -51,7 +51,7 @@ function DeliveryContent({ refDiv }) {
     return (
         <>
             { redirectToProcess ? (<Redirect to="/process_order" push={true} />) : (
-                <div className="delivery-content-container" ref={refDiv}>
+                <div className="delivery-content-container" id="delivery-scroll-point">
                     <UserStatusBox user={loggedUser} handleLogoutButtonClick={handleLogOut} handleCartButtonClick={handleCart} cartVisible handleProfileButtonClick={handleProfile} />
                     <DeliveryGroups handleCartButtonClick={handleCart} />                            
                 </div>

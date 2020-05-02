@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import { Link } from 'react-scroll';
 
 
 const bannerEffect = keyframes`
@@ -148,14 +149,21 @@ const StyledButton = styled.button`
 	}
 `;
 
+const StyledLink = styled(Link)`
 
-function Banner({ title, subtitle, buttonTitle, handleButtonClick, animate }) {
+
+
+`;
+
+
+
+function Banner({ title, subtitle, buttonTitle, animate }) {
 	return (
 		<StyledContainer animate={animate}>
 			<StyledTitle>{ title }</StyledTitle>
 			<StyledSeparator animate={animate} />
 			<StyledSubtitle>{ subtitle }</StyledSubtitle>
-			<StyledButton onClick={(e) => handleButtonClick()}>{buttonTitle}</StyledButton>
+			<StyledButton><StyledLink to="delivery-scroll-point" smooth={true} duration={1000}>{buttonTitle}</StyledLink></StyledButton>
 		</StyledContainer>
 	)
 }
