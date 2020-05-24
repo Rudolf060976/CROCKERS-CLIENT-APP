@@ -34,6 +34,7 @@ module.exports = {
 			description: 'CROCKERS FOOD DELIVERY APP',
 			background_color: '#ffffff',
 			crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
+			theme_color: '#D9CA9C',
 			icons: [
 			  {
 				src: path.resolve('src/assets/images/ICON_192X192.png'),
