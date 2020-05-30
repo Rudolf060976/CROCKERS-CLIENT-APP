@@ -19,6 +19,14 @@ const StyledFootBody = styled.div`
     flex-flow: row nowrap;
     justify-content: space-evenly;
     align-items: flex-start;
+
+    @media (max-width: 350px) {
+
+        flex-flow: column nowrap;
+        align-items: center;
+        height: auto;
+        
+    }
 `;
 
 const StyledVisitUsContainer = styled.div`
@@ -37,10 +45,21 @@ const StyledVisitUsTitle = styled.h5`
     
     padding: 20px 0;
 
+    @media (max-width: 350px) {
+
+        width: 100%;
+        text-align: center;        
+    }
+
 `;
 
 const StyledVisitUsContent = styled.p`
 
+    @media (max-width: 350px) {
+
+        width: 100%;
+        text-align: center;        
+    }
 
 `;
 
@@ -48,16 +67,31 @@ const StyledOpeningTitle = styled.h5`
 
     padding: 20px 0;
 
+    @media (max-width: 350px) {
+
+        width: 100%;
+        text-align: center;        
+    }
+
 `;
 
 const StyledOpeningContentDays = styled.p`
 
-    
+    @media (max-width: 350px) {
+
+        width: 100%;
+        text-align: center;        
+    }
 
 `;
 
 const StyledOpeningContentHours = styled.p`
 
+    @media (max-width: 350px) {
+
+        width: 100%;
+        text-align: center;        
+    }
 
 `;
 

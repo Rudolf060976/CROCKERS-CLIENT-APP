@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.scss';
 import Logo from '../../../assets/images/Logo.png';
 import { Link } from 'react-router-dom';
 
 function Header() {
+
+	const [open, setOpen] = useState(false);
+
+
+	const handleMenuClick = (e) => {
+
+		setOpen(!open);
+
+	};
+
+
+
 	return (
 		<header className="masthead">
 			<div className="masthead-address-line">
@@ -13,7 +25,10 @@ function Header() {
 				<figure className="header-logo-container">
 					<Link to="/"><img className="header-logo" src={Logo} alt="logo" /></Link>
 				</figure>
-				<nav className="main-nav">
+				<div className={open ? "main-nav-mobile-btn menu-open" : "main-nav-mobile-btn"} onClick={handleMenuClick} >
+					<div className="main-nav-mobile-btn-bar"></div>
+				</div>
+				<nav className={open ? "main-nav menu-open" : "main-nav"}>
 					<ul>
 						<li><Link to="/location">LOCATION & HOURS</Link></li>
 						<li><Link to="/menu">MENU</Link></li>
@@ -22,6 +37,7 @@ function Header() {
 						<li><Link to="/">RESERVATIONS</Link></li>
 					</ul>
 				</nav>
+				<div className={open ? "main-nav-mobile-bkg menu-open" : "main-nav-mobile-bkg"}></div>
 			</div>
 		</header>
 	);

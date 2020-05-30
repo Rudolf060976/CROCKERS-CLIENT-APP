@@ -17,7 +17,9 @@ const StyledContainer = styled.div`
 
     width: 100%;
     
-    padding: 5rem 0;
+    padding: 0;    
+
+    background-color: ${props => props.theme.colorMainBeigeDark};
 
 `;
 
@@ -26,7 +28,7 @@ const StyledTitle = styled.h4`
     color: ${props => props.theme.colorMainBeigeDark};
     width: 100%;
     text-align: center;
-    margin-bottom: 30px;
+    
     padding: 20px 0;
     border-top: solid 2px ${props => props.theme.colorMainBeigeDark};
     border-bottom: solid 2px ${props => props.theme.colorMainBeigeDark};
@@ -36,12 +38,12 @@ const StyledTitle = styled.h4`
 
 `;
 
+
 const StyledImage = styled.img`
 
     width: 100%;
     max-width: 1170px;
-    max-height: 780px;    
-    border-radius: 10px;
+    max-height: 780px;       
        
 `;
 

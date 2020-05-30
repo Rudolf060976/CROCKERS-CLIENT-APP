@@ -23,6 +23,13 @@ const StyledContainer = styled.div`
     width: 100%;
     background-color: white;
     padding: 10rem 0;
+    padding-bottom: 8rem;
+
+    @media (max-width: 500px) {
+
+        padding-bottom: 6rem;
+
+    }
 
 `;
 
@@ -61,6 +68,29 @@ const StyledGridContainer = styled.div`
 
     }
 
+    @media (max-width: 500px) {
+
+        width: 60%;
+        margin: 0 auto;
+        grid-template-areas:
+        "title"
+        "image"
+        "content"
+        "button";
+
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, auto);
+    
+        gap: 10px;
+
+    }
+
+    @media (max-width: 400px) {
+
+        width: 80%;
+
+    }
+
 `;
 
 const StyledImage = styled.img`
@@ -88,7 +118,16 @@ const StyledTitle = styled.h4`
     color: ${props => darken(0.1, props.theme.colorMainOrangeDark)};
 
     font-family: "Lilita One", Verdana, Geneva, Tahoma, sans-serif;
-	letter-spacing: 2px;
+
+    letter-spacing: 2px;
+    
+    @media (max-width: 500px) {
+
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        padding-bottom: 20px;
+    }
 
 `;
 
@@ -101,6 +140,11 @@ const StyledContent = styled.p`
     font-size: 1.8rem;
     font-family: Roboto;
     font-weight: bold;
+
+     @media (max-width: 500px) {
+
+        padding: 20px;
+    }
 `;
 
 const StyledButtonContainer = styled.div`

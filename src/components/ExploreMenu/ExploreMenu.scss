@@ -38,15 +38,17 @@
 	@media (max-width:500px) {
 
 		grid-template-areas:
-    	"header header"
+		"header header"		
     	"one    two   "
 		"three  four  "
 		"five   six "
 		"seven  eight";
 
 		grid-template-columns: 1fr 1fr;
-		grid-template-rows: repeat(5, auto);
-		
+		grid-template-rows: repeat(6, auto);
+
+		gap: 30px 10px;
+			
 		
 	}
 
@@ -61,6 +63,18 @@
     justify-content: center;
     align-items: center;
 
+	@media (max-width:500px) {
+		width: 100%;
+		display: grid;
+		grid-template-areas:
+		"area1 area1"
+		"area2 area3";
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: repeat(2, auto);
+		gap: 20px 0px;		
+		justify-items: center;
+		
+	}
     
 }
 
@@ -71,6 +85,14 @@
 	font-family: "Lilita One", Verdana, Geneva, Tahoma, sans-serif;
 
 	letter-spacing: 2px;
+
+	@media (max-width:500px) {
+
+		grid-area: area1;
+		width: 100%;
+		text-align: center;
+
+	}
 
 }
 
@@ -86,7 +108,14 @@
 	border: none;
 	color: $Main-Orange-Dark;
 	transition: $mainTransition;
-	
+
+	@media (max-width:500px) {
+
+		margin-left: 0;
+
+	}
+
+		
 	&:focus {
 		outline: none;
 	}
@@ -113,6 +142,12 @@
 	border: none;
 	color: $Main-Orange-Dark;
 	transition: $mainTransition;
+
+	@media (max-width:500px) {
+
+		margin-left: 0;
+
+	}
 	
 	&:focus {
 		outline: none;
@@ -126,4 +161,34 @@
 	}
 
 
+}
+
+a#explore-menu-link1 {
+	
+
+	@media (max-width:500px) {
+
+		grid-area: area2;		
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+	}
+
+}
+
+a#explore-menu-link2 {
+		
+
+	@media (max-width:500px) {
+
+		grid-area: area3;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+	}
+	
 }

@@ -69,6 +69,31 @@ const StyledContainer = styled.div`
 
 	}
 
+	@media (max-width: 400px) {
+
+		width: 55rem;
+		padding: 15px 15px;
+
+	}
+	@media (max-width: 400px) {
+
+		top: 45%;
+
+	}
+
+	@media (max-width: 370px) {
+
+		width: 48rem;
+		height: 28rem;
+
+	}
+
+	@media (max-width: 320px) {
+		
+		height: 26rem;
+
+	}
+
 	
 
 `;
@@ -79,7 +104,11 @@ const StyledTitle = styled.h1`
 	font-size: 4rem;
 	word-spacing: 5px;
 
-	
+	@media (max-width: 370px) {
+
+		font-size: 3.6rem;
+
+	}	
 
 `;
 
@@ -104,6 +133,12 @@ const StyledSubtitle = styled.p`
 	@media (max-width: 1950px) {
 
 		padding: 10px 0;
+
+	}	
+
+	@media (max-width: 370px) {
+
+		padding: 0 0;
 
 	}	
 

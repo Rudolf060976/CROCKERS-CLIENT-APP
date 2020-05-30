@@ -75,11 +75,7 @@ const StyledDescriptionContainer = styled.div`
         top: 0;        
     }
 
-    @media (max-width:800px) {
-
-        top: 73%;
-        
-    }
+         
 
 `;
 
@@ -96,7 +92,11 @@ const StyledDescriptionBody = styled.div`
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
 
-    
+    @media (max-width:350px) {
+        
+        width: 90%;
+        
+    }
 `;
 
 
@@ -109,6 +109,34 @@ const StyledName = styled.h6`
 
     margin: 15px 0;
 
+    @media (max-width:700px) {
+        
+        margin: 10px 0 15px 0;
+        
+    }
+
+    @media (max-width:600px) {
+
+        font-size: 1.8rem;
+        margin: 7px 0 15px 0;
+        
+    }
+
+    @media (max-width: 600px) {
+        
+        margin: 10px 0 15px 0;
+        
+    }
+
+    @media (max-width: 350px) {
+        
+        margin: 5px 0 0 0;
+        
+        
+    }
+   
+    
+
     div:hover > & {
                
         margin: 20px;
@@ -117,7 +145,14 @@ const StyledName = styled.h6`
 
             margin: 5px 0;            
             
-        }      
+        }  
+        
+        @media (max-width: 350px) {
+        
+        margin: 5px 0 0 0;
+        
+        
+        }
        
     }
   
@@ -160,6 +195,12 @@ const StyledButton = styled.button`
     @media(max-width:600px) {
 
        margin-top: 10px;
+
+    }
+
+    @media(max-width:350px) {
+
+       margin-top: 3px;
 
     }
    
