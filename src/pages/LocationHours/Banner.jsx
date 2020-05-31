@@ -77,8 +77,15 @@ const StyledContainer = styled.div`
 
 	@media (max-width: 600px) {
 
-		height: 18rem;
-		padding: 10px 0;
+		height: 22rem;
+		padding: 15px 0;
+		top: 20%;
+	}	
+
+	@media (max-width: 400px) {
+		top: 18%;
+		width: 48rem;
+		height: 23rem;
 	}	
 
 `;
@@ -167,7 +174,8 @@ const StyledButton = styled.button`
 
 	@media (max-width:600px) {
 
-		margin-top: 0;
+		margin-top: 15px;
+		font-size: 2rem;
 
 	}	
 `;

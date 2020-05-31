@@ -64,6 +64,20 @@ const StyledContainer = styled.div`
 
     }
 
+    @media (max-width: 600px) {
+        
+        top: 38%;
+        height: 30rem;
+
+    }
+
+    @media (max-width: 400px) {
+        
+        top: 36%;
+        
+
+    }
+
 `;
 
 const StyledFootBody = styled.div`
@@ -121,7 +135,17 @@ const StyledFootBody = styled.div`
 
     @media (max-width: 600px) {
 
-        padding: 1rem 2rem 2rem 4rem;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        padding-top: 20px;
+
+    }
+
+    @media (max-width: 400px) {
+        
+        padding-top: 10px;
 
     }
 
@@ -132,6 +156,13 @@ const StyledVisitUsContainer = styled.div`
     color: ${props => props.theme.colorMainBeigeDark};
 
     flex: 0 1 50%;
+
+     @media (max-width: 600px) {
+
+        width: 80%;
+        margin: 0 auto;
+
+    }
 
 `;
 
@@ -149,7 +180,9 @@ const StyledOpeningHoursContainer = styled.div`
 
     @media (max-width: 600px) {
 
-        margin-left: 10px;
+        width: 80%;
+        margin: 0 auto;
+                
 
     }
 
@@ -166,11 +199,23 @@ const StyledVisitUsTitle = styled.h5`
         font-size: 2rem;
     }
 
+     @media (max-width: 600px) {
+
+       text-align: center;
+                
+
+    }
+
 `;
 
 const StyledVisitUsContent = styled.p`
 
-    
+     @media (max-width: 600px) {
+
+       text-align: center;
+                
+
+    }
 
 `;
 
@@ -184,16 +229,34 @@ const StyledOpeningTitle = styled.h5`
         font-size: 2rem;
     }
 
+     @media (max-width: 600px) {
+
+       text-align: center;
+                
+
+    }
+
 `;
 
 const StyledOpeningContentDays = styled.p`
 
-    
+     @media (max-width: 600px) {
+
+       text-align: center;
+                
+
+    }
 
 `;
 
 const StyledOpeningContentHours = styled.p`
 
+    @media (max-width: 600px) {
+
+       text-align: center;
+                
+
+    }
 
 `;
 

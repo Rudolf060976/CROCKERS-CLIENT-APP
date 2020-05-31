@@ -4,7 +4,7 @@
 .location-container {
 
     background-color: $Main-Green-Dark;
-    height: 1400px;
+    height: 100vh;
     
 }
 
@@ -14,5 +14,15 @@
     background-color: $Main-Green-Dark;
     transform: translateZ(5px);
     border-top: solid 1px $Main-Beige-Dark;
+
+    @media (max-width: 600px) {
+
+        height: 150px;
+        transform: translateZ(5px);
+        margin-top: -95px;
+        border-top: none;
+        border-top: solid 1px $Main-Beige-Dark;
+
+	}
 
 }

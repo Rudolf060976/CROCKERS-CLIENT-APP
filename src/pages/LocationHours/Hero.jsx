@@ -23,16 +23,31 @@ const StyledContainer = styled.div`
 	margin-bottom: -8%;
 	position: relative;
 	z-index: 0;
+
+	@media (max-width: 600px) {
+
+		height: 100vh;
+		border-top: solid 2px ${props => props.theme.colorMainBeigeDark};
+
+	}
 `;
 
 const StyledImage = styled.img`
 
 	width: 100%;
+	
 	transform: scale(1);
 	animation-name: ${props => props.animate ? animation : "none" };
 	animation-duration: 2s;
     animation-fill-mode: forwards;
-    border-bottom: solid 2px ${props => props.theme.colorMainBeigeDark};
+	border-bottom: solid 2px ${props => props.theme.colorMainBeigeDark};
+	
+	@media (max-width: 600px) {
+
+		height: 100vh;
+
+		width: 200%;
+	}
 `;
 
 
