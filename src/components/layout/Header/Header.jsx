@@ -30,6 +30,7 @@ function Header() {
 				</div>
 				<nav className={open ? "main-nav menu-open" : "main-nav"}>
 					<ul>
+						<li><Link to="/">HOME</Link></li>
 						<li><Link to="/location">LOCATION & HOURS</Link></li>
 						<li><Link to="/menu">MENU</Link></li>
 						<li><Link to="/">CONTACT</Link></li>

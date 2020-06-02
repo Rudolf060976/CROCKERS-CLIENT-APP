@@ -7,6 +7,8 @@ export const GET_ALL_MENU_GROUPS = gql`
 			id
 			name
 			description
+			image
+			imageURL @client
 		}
 	}
 

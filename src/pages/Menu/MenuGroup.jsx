@@ -28,6 +28,85 @@ const StyledContainer = styled.div`
     margin-top: -120px;
     transform: translateZ(1px);
     position: relative;
+
+    @media (max-width: 1400px) {
+
+        margin-top: -100px;
+
+
+    }
+
+    @media (max-width: 1200px) {
+
+        margin-top: -80px;
+
+
+    }
+
+    @media (max-width: 950px) {
+
+        margin-top: -70px;
+
+
+    }
+
+    @media (max-width: 800px) {
+
+        margin-top: -60px;
+
+
+    }
+
+    @media (max-width: 700px) {
+
+        margin-top: -50px;
+
+
+    }
+
+     @media (max-width: 600px) {
+
+        margin-top: -45px;
+
+
+    }
+
+     @media (max-width: 550px) {
+
+        margin-top: -40px;
+
+
+    }
+
+     @media (max-width: 500px) {
+
+        margin-top: -35px;
+
+
+    }
+
+     @media (max-width: 400px) {
+
+        margin-top: -30px;
+
+
+    }
+
+     @media (max-width: 350px) {
+
+        margin-top: -25px;
+
+
+    }
+
+     @media (max-width: 300px) {
+
+        margin-top: -20px;
+
+
+    }
+
+
         
 `;
 

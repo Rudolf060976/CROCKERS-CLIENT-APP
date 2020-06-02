@@ -17,11 +17,11 @@ const animation = keyframes`
 
 const StyledContainer = styled.div`
 
-	width: 100%;
+	width: 100%;	
 	overflow: hidden;	
 	position: relative;
 	z-index: 0;
-	
+
 `;
 
 const StyledImage = styled.img`
@@ -33,6 +33,10 @@ const StyledImage = styled.img`
 	animation-fill-mode: forwards;
 	border-bottom: solid 2px ${ props => props.bottomBorderColor };
 	
+
+	
+
+
 `;
 
 

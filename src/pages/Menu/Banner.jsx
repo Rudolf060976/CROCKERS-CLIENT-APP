@@ -61,11 +61,38 @@ const StyledContainer = styled.div`
 
 	}
 
-	@media (max-width: 950px) {
+	@media (max-width: 1000px) {
 
-		top: 40%;
+		
+		width: 50rem;
+		height: 25rem;
 		transform: translate(-50%, -50%);	
 		padding-top: 20px;
+
+	}
+
+	@media (max-width: 500px) {
+
+		padding-top: 10px;
+		width: 45rem;
+		height: 23rem;
+
+	}
+
+	@media (max-width: 400px) {
+
+		top: 42%;
+		padding-top: 10px;
+		width: 40rem;
+		height: 22rem;
+
+	}
+
+	@media (max-width: 350px) {
+
+		top: 43%;		
+		width: 38rem;
+		height: 20rem;
 
 	}
 
@@ -79,7 +106,12 @@ const StyledTitle = styled.h1`
 	font-size: 4rem;
 	word-spacing: 5px;
 
-	
+	@media (max-width: 1000px) {
+
+		font-size: 3.8rem;
+		word-spacing: 3px;
+
+	}
 
 `;
 
@@ -94,6 +126,12 @@ const StyledSeparator = styled.div`
 	
 	animation-fill-mode: forwards;
 
+	@media (max-width: 500px) {
+
+		margin: 1rem auto;
+
+	}
+
 `;
 
 const StyledSubtitle = styled.p`
@@ -104,6 +142,12 @@ const StyledSubtitle = styled.p`
 	@media (max-width: 1950px) {
 
 		padding: 10px 0;
+
+	}	
+
+	@media (max-width: 350px) {
+
+		padding: 5px 0;
 
 	}	
 
@@ -137,6 +181,27 @@ const StyledButton = styled.button`
 		margin-top: 10px;
 
 	}	
+
+	@media (max-width: 700px) {
+
+		font-size: 1.6rem;
+		padding: 5px 20px;
+
+	}	
+
+	@media (max-width: 500px) {
+
+		margin-top: 5px;
+
+	}	
+
+	@media (max-width: 350px) {
+
+		margin-top: 0;
+
+	}	
+
+	
 `;
 
 const StyledLink = styled(Link)`

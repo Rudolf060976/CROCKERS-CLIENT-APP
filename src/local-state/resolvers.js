@@ -132,6 +132,24 @@ const resolvers = {
 			}
 			
 		}
+	},
+	MenuGroup: {
+		imageURL: async (menuGroup, args, { cache }) => {
+
+			try {
+
+				const imageObject = await fetchFunctions.fetchGetImageFile(menuGroup.image);
+
+				return imageObject.imageURL;
+
+			} catch (error) {
+
+				return null;
+
+			}
+
+		}
+
 	}
 
 };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {rgba, darken} from 'polished';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const StyledContainer = styled.div`
@@ -8,7 +9,14 @@ const StyledContainer = styled.div`
     width: 100%;
     padding: 10rem 3rem;
     height: 30rem;
+    padding-top: 8rem;
    
+    @media (max-width:600px) {
+
+        padding: 10rem 1rem;
+
+        padding-top: 5rem;
+    }
 
 `;
 
@@ -34,7 +42,32 @@ const StyledList = styled.ul`
         width: 100%;
 
     }
+
+    @media (max-width:600px) {
+
+        display: none;
+
+    }
  
+`;
+
+const StyledMobileList = styled.ul`
+
+    display: none;
+
+    @media (max-width:600px) {
+
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        align-items: center;
+        list-style-type: none;
+        margin-bottom: 6rem;
+        
+    }
+
+
 `;
 
 const StyledTitleContainer = styled.div`
@@ -47,6 +80,9 @@ const StyledTitleContainer = styled.div`
     align-items: center;
 
 `;
+
+
+
 
 const StyledTitle = styled.h4`
 
@@ -103,6 +139,33 @@ const StyledListItem = styled.li`
 
 `;
 
+const StyledMobileListItem = styled.li`
+
+    position: relative;
+    
+    transition: all .3s linear;
+   
+    transform: ${props => props.selected ? 'scale(1.3)' : 'none'};
+
+    &:hover {
+
+        transform: scale(1.3);
+
+    }
+
+    
+`;
+
+const StyledMobileImage = styled.img`
+
+    width: 100%;
+    max-width: 50px;
+    transition: all .3s linear;
+    background-color:${props => props.selected ? '#D9CA9C' : 'none'};
+    border-radius: 5px;
+    
+
+`;
 
 
 
@@ -111,7 +174,7 @@ function MenuGroupSelection(props) {
     const { groups, handleSelected } = props;
 
     let orderedGroups = [...groups];
-    
+        
     orderedGroups = orderedGroups.sort((a, b) => {
 
         if (a.name === b.name) return 0;
@@ -125,7 +188,9 @@ function MenuGroupSelection(props) {
         if (a.name > b.name) return 1
 
     });
- 
+
+    console.log('Ordered Groups', orderedGroups);
+        
     const [ selectedId, setSelectedId ] = useState(orderedGroups[0].id);
     const [ selectedName, setSelectedName] = useState(orderedGroups[0].name);
 
@@ -154,6 +219,15 @@ function MenuGroupSelection(props) {
         );
     });
 
+    const groupMobileList = orderedGroups.map(groupItem => {
+
+        return (
+        <StyledMobileListItem key={groupItem.id} onClick={(e) => handleClick(groupItem.id, groupItem.name) } selected={ selectedId === groupItem.id }>            
+            <StyledMobileImage src={groupItem.imageURL} selected={ selectedId === groupItem.id } />
+        </StyledMobileListItem>
+        );
+    });
+
 
 
     return (
@@ -161,6 +235,9 @@ function MenuGroupSelection(props) {
             <StyledList >
                 { groupList }
             </StyledList>
+            <StyledMobileList>                
+                    { groupMobileList }                
+            </StyledMobileList>
             <StyledTitleContainer>
                 <StyledTitle>{ selectedName }</StyledTitle>
                 <StyledSeparator />
