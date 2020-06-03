@@ -49,6 +49,16 @@ const StyledContainer = styled.div`
 
     }
 
+    @media (max-width:600px) {
+
+        width:90%;
+        grid-template-areas: 
+        "item item";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(1, auto);
+
+    }
+
 `;
 
 

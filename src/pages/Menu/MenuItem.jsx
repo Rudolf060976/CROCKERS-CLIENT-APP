@@ -54,6 +54,12 @@ const StyledTitle = styled.h6`
 
     }
 
+    @media (max-width:600px) {
+
+        font-size: 1.9rem;
+
+    }
+
 `;
 
 const StyledDescription = styled.p`
@@ -63,6 +69,12 @@ const StyledDescription = styled.p`
     font-weight: bold;
 
     color: ${props => lighten(.2, 'black') };
+
+    @media (max-width:600px) {
+
+        font-size: 1.5rem;
+
+    }
 
 
 `;
