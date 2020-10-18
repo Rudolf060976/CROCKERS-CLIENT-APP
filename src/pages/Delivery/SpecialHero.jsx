@@ -21,6 +21,8 @@ const StyledContainer = styled.div`
 	overflow: hidden;
 	
 	position: relative;
+
+	z-index: 0;
 	
 `;
 
@@ -34,9 +36,6 @@ const StyledImage = styled.img`
 	border-bottom: solid 2px ${ props => props.bottomBorderColor };
 
 `;
-
-
-
 
 
 function SpecialHero(props) {

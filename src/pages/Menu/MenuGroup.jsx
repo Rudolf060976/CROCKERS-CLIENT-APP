@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 import styled from 'styled-components';
 
@@ -122,6 +122,7 @@ function MenuGroup() {
 
     const [zoomPositionY, setZoomPositionY] = useState(0);
 
+    const refDiv = useRef();
 
     const {loading, error, data} = useQuery(queries.GET_ALL_MENU_GROUPS);
 
@@ -162,7 +163,7 @@ function MenuGroup() {
     };
 
     return (
-        <StyledContainer id="menu-scroll-point">
+        <StyledContainer id="menu-scroll-point" ref={refDiv}>
             { zoomViewActive ? <ZoomView item={zoomViewItem} handleCloseZoom={handleCloseZoomView} positionY={zoomPositionY} /> : null }            
             <MenuGroupSelection groups={groupsArray} handleSelected={handleSelectedGroup} />
             { selectedGroupId ? <MenuGroupDetails groupId={selectedGroupId} handleOpenZoom={handleOpenZoomView} /> : null }            

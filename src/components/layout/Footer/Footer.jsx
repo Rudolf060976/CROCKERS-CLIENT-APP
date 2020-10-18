@@ -6,7 +6,8 @@ const StyledContainer = styled.div`
     
     background-color: ${props => props.theme.colorMainGreenDark};
     border-top: solid 3px ${props => props.theme.colorMainBeigeDark};
-    
+    position: relative;
+    z-index: 2;
 `;
 
 

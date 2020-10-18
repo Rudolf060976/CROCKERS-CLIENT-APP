@@ -1,10 +1,58 @@
 @import '../../mainStyles/globalVariables.scss';
 
+
+
 #delivery-home-helper {
     width: 100%;
     height: 500px;
     background-color: $Main-Green-Dark;
-    transform: translateZ(1px) translateY(-150px);
+    margin-top: -150px;
     border-top: solid 1px $Main-Beige-Dark;
     margin-bottom: -150px;
+    position: relative;
+    z-index: 1;
+
+    @media (max-width: 1700px) {
+
+        margin-top: -120px;
+
+    }
+
+    @media (max-width: 1400px) {
+
+        margin-top: -100px;
+
+    }
+
+    @media (max-width: 1100px) {
+
+        margin-top: -80px;
+
+    }
+
+    @media (max-width: 900px) {
+
+        margin-top: -65px;
+
+    }
+
+    @media (max-width: 700px) {
+
+        margin-top: -50px;
+
+    }
+
+    @media (max-width: 500px) {
+
+        margin-top: -35px;
+
+    }
+
+    @media (max-width: 400px) {
+
+        margin-top: -25px;
+
+    }
+
+   
 }
