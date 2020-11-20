@@ -116,6 +116,7 @@ function Login() {
 
     const handleFormSubmit = async (values, options) => {
 
+        
 
         const {
             login,
@@ -194,7 +195,8 @@ function Login() {
                 }
             }
         }= mutData;
-              
+          
+        
 
         if (!success) {
 
@@ -215,6 +217,7 @@ function Login() {
 
          // AHORA CONSULTAMOS EL ME DEL SERVIDOR PARA QUE NOS ENVIE LOS DATOS BASICOS DEL USUARIO
 
+         
         
          try {
             
@@ -223,6 +226,8 @@ function Login() {
                 query: queries.ME,
                 fetchPolicy: "no-cache"
             });
+
+            console.log('ESTOY EN LA RESPUESTA DEL LOGIN meData: ', JSON.stringify(meData, null, 2));
                       
             if (meData.data && meData.data.me) {
 
@@ -239,6 +244,7 @@ function Login() {
                     }
                 } = meData;
 
+                
 
                 // Y CON ESOS DATOS DEL USUARIO ACTUALIZAMOS EL ESTADO LOCAL ( CACHE )
 

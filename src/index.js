@@ -40,21 +40,21 @@ const httpLink = new HttpLink({ uri: Config.URL.apiURL + '/graphql' });
 
 const authMiddleware = new ApolloLink((operation, forward) => {
 	// add the authorization to the headers
-	/* operation.setContext({
+	  operation.setContext({
 	  headers: {
 		'x-token': localStorage.getItem('x-token') || '',
 	  }
-	}); */
+	}); 
 
-	operation.setContext(({ headers }) => {
-
+	/* operation.setContext(({ headers } ) => {
+		console.log('HEADERS :',JSON.stringify(headers, null, 2));
 		return {
 			...headers,
 			'x-token': localStorage.getItem('x-token') || '',
 		};
 
 	});
-  
+   */
 	return forward(operation);
   })
 
