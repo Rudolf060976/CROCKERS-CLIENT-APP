@@ -227,8 +227,7 @@ function Login() {
                 fetchPolicy: "no-cache"
             });
 
-            console.log('ESTOY EN LA RESPUESTA DEL LOGIN meData: ', JSON.stringify(meData, null, 2));
-                      
+                                  
             if (meData.data && meData.data.me) {
 
                 const {
