@@ -14,7 +14,7 @@ const configPROD = {
 
 	URL: {
 
-		apiURL: 'https://infinite-ravine-44036.herokuapp.com'
+		apiURL: 'http://ec2-54-221-156-129.compute-1.amazonaws.com:8000'
 
 	}
 };
